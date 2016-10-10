@@ -33,6 +33,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
  group :development do
  	gem 'pg'
  	gem 'rails_12factor'
+ 	# Access an IRB console on exception pages or by using <%= console %> in views
+  gem 'web-console'
  end
 
 group :development, :test do
@@ -40,15 +42,13 @@ group :development, :test do
   gem 'sqlite3'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-  # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'jasmine-rails' # if you plan to use JavaScript/CoffeeScript
 end
 
 group :test do
-  gem 'rspec-rails', '~> 3.5'
+  gem 'rspec-rails'
   gem 'simplecov', :require => false
   gem 'cucumber-rails', :require => false
   gem 'cucumber-rails-training-wheels' # basic imperative step defs
