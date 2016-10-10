@@ -1,4 +1,4 @@
-require 'support/env'
+# require 'support/env'
 require 'simplecov'
 
 SimpleCov.start
