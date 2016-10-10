@@ -54,5 +54,6 @@ group :test do
   gem 'cucumber-rails-training-wheels' # basic imperative step defs
   gem 'database_cleaner' # required by Cucumber
   gem 'autotest-rails'
+  gem 'factory_girl_rails'
   gem 'metric_fu'        # collect code metrics
 end
