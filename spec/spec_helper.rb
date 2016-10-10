@@ -1,4 +1,3 @@
-# require 'support/env'
 require 'simplecov'
 
 SimpleCov.start
