@@ -19,8 +19,9 @@ Rails.application.routes.draw do
   
   
   # match '/users/homefeed', :controller => 'users', :action => 'homefeed'
-  resources :users
   get '/users/homefeed', :to => 'users#homefeed'
+  resources :users
+  
    
   
   # Example resource route with options:
