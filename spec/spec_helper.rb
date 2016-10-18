@@ -1,5 +1,3 @@
-require 'support/factory_girl'
-require 'support/env'
 require 'simplecov'
 
 SimpleCov.start
