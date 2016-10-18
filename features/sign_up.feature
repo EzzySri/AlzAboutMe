@@ -1,14 +1,17 @@
-Feature: Logging in as a returning user
+Feature: Signing up for a user account
   
-  As a returning user
-  So that I can view my profile
-  I should be able to log in
+  As a new user
+  So that I can have an account
+  I should be able to sign up
   
-  Scenario: logging in
-    
-    Given I have an account
+  Scenario: go to "Sign Up" page
     Given I'm on the home page
-    When I type in my username
-    And I type in my password
-    When I click "Log In"
+    When I click on "Sign Up"
+    Then I should be on the "Sign Up" page
+  
+  Scenario: signing up
+    Given I'm on the "Sign Up" page
+    When I input my username
+    And I input my password
+    When I click on "Submit"
     Then I should be logged in
