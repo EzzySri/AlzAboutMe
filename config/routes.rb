@@ -16,7 +16,13 @@ Rails.application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-  resources: users
+  
+  
+  # match '/users/homefeed', :controller => 'users', :action => 'homefeed'
+  resources :users
+  get '/users/homefeed', :to => 'users#homefeed'
+   
+  
   # Example resource route with options:
   #   resources :products do
   #     member do
@@ -28,6 +34,7 @@ Rails.application.routes.draw do
   #       get 'sold'
   #     end
   #   end
+  
 
   # Example resource route with sub-resources:
   #   resources :products do
