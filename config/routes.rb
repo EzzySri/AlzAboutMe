@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'welcome/index'
+  get 'users/new'
 
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
   # The priority is based upon order of creation: first created -> highest priority.
@@ -16,7 +16,14 @@ Rails.application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-
+  
+  
+  # match '/users/homefeed', :controller => 'users', :action => 'homefeed'
+  get '/users/homefeed', :to => 'users#homefeed'
+  resources :users
+  
+   
+  
   # Example resource route with options:
   #   resources :products do
   #     member do
@@ -28,6 +35,7 @@ Rails.application.routes.draw do
   #       get 'sold'
   #     end
   #   end
+  
 
   # Example resource route with sub-resources:
   #   resources :products do
