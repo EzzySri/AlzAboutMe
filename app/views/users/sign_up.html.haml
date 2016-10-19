@@ -5,7 +5,7 @@
 .container-fluid
 %h2 Sign Up with AlzAboutMe
 
-= form_tag user_index_path do
+= form_tag users_path do
   .form-group
     = label :user, :first_name, 'First Name: '
     = text_field :user, 'first name', {:type => "text", :class => "form-control", :id => "signUpEmail", :placeholder => "First"}
