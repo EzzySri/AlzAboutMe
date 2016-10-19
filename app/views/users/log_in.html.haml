@@ -1,0 +1,16 @@
+-# in app/views/users/log_in.html.haml
+
+%h2 Sign In to AlzAboutMe
+
+= form_tag user_path do
+
+  = label :user, :username, 'username'
+  = text_field :user, 'title'
+
+  = label :user, :email, 'email'
+  = text_field :user, 'email'
+
+  = label :user, :password, 'password'
+  = password_field :user, 'password'
+
+  = submit_tag 'Log In'
