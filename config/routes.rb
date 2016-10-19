@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'sessions/login'
+
+  get 'sessions/logout'
+
   get 'users/new'
 
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
@@ -20,7 +24,9 @@ Rails.application.routes.draw do
   
   # match '/users/homefeed', :controller => 'users', :action => 'homefeed'
   get '/users/homefeed', :to => 'users#homefeed'
-  resources :users
+  get '/users/login', :to => 'users#log_in.html.haml'
+  get '/users/signup', :to => 'users#sign_up.html.haml'
+  resources :user
   
    
   
