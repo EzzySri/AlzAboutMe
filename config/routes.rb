@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   get '/users/homefeed', :to => 'users#homefeed'
   get '/users/login', :to => 'users#log_in.html.haml'
   get '/users/signup', :to => 'users#sign_up.html.haml'
-  resources :user
+  resources :users
   
    
   
