@@ -130,6 +130,8 @@ GEM
     gherkin (4.0.0)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
+    haml (4.0.7)
+      tilt
     hirb (0.7.3)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
@@ -338,6 +340,7 @@ DEPENDENCIES
   cucumber-rails-training-wheels
   database_cleaner
   factory_girl_rails
+  haml
   jasmine-rails
   jbuilder (~> 2.0)
   jquery-rails

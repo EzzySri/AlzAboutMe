@@ -1,0 +1,12 @@
+-# homefeed.html.haml using partial
+
+%h1 Your name here
+
+= form_tag users_homefeed_path, :method => :put do
+
+  = label :memory, :title, 'Title'
+  = text_field :memory, 'Memory'
+
+  = submit_tag 'Update Memory'
+  
+   
