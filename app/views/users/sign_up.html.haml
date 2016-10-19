@@ -1,0 +1,22 @@
+-# in app/views/users/sign_up.html.haml
+
+%h2 Sign Up with AlzAboutMe
+
+= form_tag user_path do
+
+  = label :user, :first_name, 'first_name'
+  = text_field :user, 'first name'
+  
+  = label :user, :last_name, 'last_name'
+  = text_field :user, 'last name'
+
+  = label :user, :username, 'username'
+  = text_field :user, 'title'
+
+  = label :user, :email, 'email'
+  = text_field :user, 'email'
+
+  = label :user, :password, 'password'
+  = password_field :user, 'password'
+
+  = submit_tag 'Sign Up'
