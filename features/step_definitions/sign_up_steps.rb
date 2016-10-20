@@ -16,6 +16,10 @@ When(/^I click on "([^"]*)"$/) do |arg1|
       click_on(:id => 'signUpButton')
     when /^Submit$/
       click_on(:id => 'signUpSubmitButton')
+    when /^Log In$/ 
+      click_on(:id => "loginButton")
+    when  /^Login$/ 
+      click_on(:id => "loginLink")
   end
 end
 

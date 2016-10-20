@@ -9,9 +9,9 @@
 <body>
 
 <% if current_user %>
-  Signed in as <%= current_user.username %> | <%= link_to "Logout", '/logout' %>
+  Signed in as <%= current_user.username %> | <%= link_to("Logout", '/logout', id: "logoutLink") %>
 <% else %>
-  <%= link_to( 'Login', login_path, id: "loginButton") %> | <%= link_to('Signup', users_signup_path, id: "signUpButton") %>
+  <%= link_to( 'Login', login_path, id: "loginLink") %> | <%= link_to('Signup', users_signup_path, id: "signUpButton") %>
 <% end %>
 
 <%= yield %>

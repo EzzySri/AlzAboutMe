@@ -10,11 +10,11 @@
   .form-group
   %p
     = label :user, :username, 'Username: '
-    = text_field :user, 'username', {:type => "text", :class => "form-control", :id => "Username", :placeholder => "Username"}
+    = text_field :user, 'username', {:type => "text", :class => "form-control", :id => "username", :placeholder => "Username"}
 
   %p
     = label :user, :password, 'Password: '
-    = password_field :user, 'password', {:type => "password", :class => "form-control", :id => "Password", :placeholder => "Password"}
+    = password_field :user, 'password', {:type => "password", :class => "form-control", :id => "password", :placeholder => "Password"}
   .btn
     = submit_tag 'Log In', :id => "loginButton"
 

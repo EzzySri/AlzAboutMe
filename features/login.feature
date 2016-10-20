@@ -7,8 +7,9 @@ Feature: Logging in as a returning user
   Scenario: logging in
     
     Given I have an account
-    Given I'm on the home page
-    When I type in my username
-    And I type in my password
-    When I click "Log In"
+    Given I am on the home page
+    And I click on "Login"
+    And I fill in "Username" with "username1"
+    And I fill in "Password" with "password1"
+    And I click on "Log In"
     Then I should be logged in
