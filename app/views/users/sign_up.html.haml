@@ -8,13 +8,13 @@
 = form_tag users_path do
   .form-group
     = label :user, :first_name, 'First Name: '
-    = text_field :user, 'first_name', {:type => "text", :class => "form-control", :id => "signUpEmail", :placeholder => "First"}
+    = text_field :user, 'first_name', {:type => "text", :class => "form-control", :id => "signUpFirstName", :placeholder => "First"}
   .form-group
     = label :user, :last_name, 'Last Name: '
-    = text_field :user, 'last_name', {:type => "text", :class => "form-control", :id => "signUpEmail", :placeholder => "Last" }
+    = text_field :user, 'last_name', {:type => "text", :class => "form-control", :id => "signUpLastName", :placeholder => "Last" }
   .form-group
     = label :user, :username, 'Username: '
-    = text_field :user, 'username', {:type => "text", :class => "form-control", :id => "signUpEmail", :placeholder => "Username" }
+    = text_field :user, 'username', {:type => "text", :class => "form-control", :id => "signUpUsername", :placeholder => "Username" }
   .form-group
     = label :user, :email, 'Email: '
     = text_field :user, 'email', {:type => "email", :class => "form-control", :id => "signUpEmail", :placeholder => "Email" }
@@ -26,4 +26,4 @@
     = password_field :user, 'password_confirmation', {:type => "password", :class => "form-control", :id => "signUpPasswordConfirmation", :placeholder => "Password" }
 
   .btn 
-    = submit_tag 'Sign Up'
+    = submit_tag 'Sign Up', {:id => "signUpButton"}

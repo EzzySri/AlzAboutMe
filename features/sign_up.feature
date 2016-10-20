@@ -11,7 +11,10 @@ Feature: Signing up for a user account
   
   Scenario: signing up
     Given I'm on the "Sign Up" page
-    When I input my username
+    When I input my first name
+    And I input my last name 
+    And I input my username
     And I input my password
-    When I click on "Submit"
+    And I confirm my password
+    And I click on "Submit"
     Then I should be logged in

@@ -12,6 +12,6 @@ Then /I should see "memory added"/ do
 end
 
 
-Then(/^I should be on the "([^"]*)" page$/) do |arg1|
-  pending # Write code here that turns the phrase above into concrete actions
-end
+# Then(/^I should be on the "([^"]*)" page$/) do |arg1|
+#     visit('/users/' + arg1)
+# end
