@@ -8,22 +8,22 @@
 = form_tag users_path do
   .form-group
     = label :user, :first_name, 'First Name: '
-    = text_field :user, 'first_name', {:type => "text", :class => "form-control", :id => "signUpFirstName", :placeholder => "First"}
+    = text_field :user, 'first_name', {:type => "text", :class => "form-control", :id => "firstname", :placeholder => "First"}
   .form-group
     = label :user, :last_name, 'Last Name: '
-    = text_field :user, 'last_name', {:type => "text", :class => "form-control", :id => "signUpLastName", :placeholder => "Last" }
+    = text_field :user, 'last_name', {:type => "text", :class => "form-control", :id => "lastname", :placeholder => "Last" }
   .form-group
     = label :user, :username, 'Username: '
-    = text_field :user, 'username', {:type => "text", :class => "form-control", :id => "signUpUsername", :placeholder => "Username" }
+    = text_field :user, 'username', {:type => "text", :class => "form-control", :id => "username", :placeholder => "Username" }
   .form-group
     = label :user, :email, 'Email: '
-    = text_field :user, 'email', {:type => "email", :class => "form-control", :id => "signUpEmail", :placeholder => "Email" }
+    = text_field :user, 'email', {:type => "email", :class => "form-control", :id => "email", :placeholder => "Email" }
   .form-group
     = label :user, :password, 'Password: '
-    = password_field :user, 'password', {:type => "password", :class => "form-control", :id => "signUpPassword", :placeholder => "Password" }
+    = password_field :user, 'password', {:type => "password", :class => "form-control", :id => "password", :placeholder => "Password" }
   .form-group
     = label :user, :password_confirmation, 'Confirm Password'
-    = password_field :user, 'password_confirmation', {:type => "password", :class => "form-control", :id => "signUpPasswordConfirmation", :placeholder => "Password" }
+    = password_field :user, 'password_confirmation', {:type => "password", :class => "form-control", :id => "confirmpassword", :placeholder => "Password" }
 
   .btn 
-    = submit_tag 'Sign Up', {:id => "signUpButton"}
+    = submit_tag 'Submit', {:id => "signUpSubmitButton"}
