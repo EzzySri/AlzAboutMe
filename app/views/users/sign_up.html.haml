@@ -27,3 +27,9 @@
 
   .btn 
     = submit_tag 'Submit', {:id => "signUpSubmitButton"}
+
+#flash-display
+  - flash.each do |type, msg|
+    %div{:class => "alert alert-#{type == :notice ? "success" : type} fadeout", "data-dismiss" => "alert"}
+      %button.close &times;
+      = msg if msg.is_a?(String)
