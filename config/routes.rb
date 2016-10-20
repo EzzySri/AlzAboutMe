@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  
+  # these routes are for showing users a login form, logging them in, and logging them out.
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  get '/logout' => 'sessions#destroy'
+  
   get 'users/new'
 
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
@@ -6,7 +12,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'welcome#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
@@ -20,6 +26,7 @@ Rails.application.routes.draw do
   
   # match '/users/homefeed', :controller => 'users', :action => 'homefeed'
   get '/users/homefeed', :to => 'users#homefeed'
+  get '/users/signup', :to => 'users#sign_up.html.haml'
   resources :users
   
    

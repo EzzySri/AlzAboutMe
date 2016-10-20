@@ -1,17 +1,16 @@
-Given(/^I am on the homefeed page$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+Given /I am logged in/ do 
+  visit('/users/signup')
+  fill_in(:id => "firstname", :with => "first")
+  fill_in(:id => "lastname", :with => "last")
+  fill_in(:id => "username", :with => "username1")
+  fill_in(:id => "email", :with => "email@email.com")
+  fill_in(:id => "password", :with => "password1")
+  fill_in(:id => "confirmpassword", :with => "password1")
+  click_on(:id => 'signUpSubmitButton')
 end
-And /I fill in the memory box with "my memory here"/ do
-    pending
-end
-Then /I should see "my memory here"/ do
-    pending
-end
-Then /I should see "memory added"/ do
-    pending
-end
+    
 
-
-Then(/^I should be on the "([^"]*)" page$/) do |arg1|
-  pending # Write code here that turns the phrase above into concrete actions
+Then /I should see "(.*)"/ do |arg1|
+    expect(page.html).to include(arg1)
+    # expect(page.body).to have_content(arg1)
 end
