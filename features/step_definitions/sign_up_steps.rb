@@ -1,5 +1,5 @@
 Given(/^I'm on the home page$/) do
-  visit('/users/signup')
+  visit('/')
 end
 
 When(/^I click on "([^"]*)"$/) do |arg1|

@@ -1,15 +1,17 @@
 Given(/^I have an account$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+ User.create(:first_name => "fn", :last_name => "ln", :username => "username1" , :email => "fake@google.com", :password  => "pass1", :password_confirmation  => "pass1")
 end
 
 When(/^I type in my username$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  fill_in(:id => "signUpUsername", :with => "username1")
 end
 
 When(/^I type in my password$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  fill_in(:id => "signUpPassword", :with => "pass1")
 end
 
 When(/^I click "([^"]*)"$/) do |arg1|
-  pending # Write code here that turns the phrase above into concrete actions
+  if arg1 == "Log In"
+    click_on(:id => "loginButton")
+  end
 end

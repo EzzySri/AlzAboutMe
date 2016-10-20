@@ -16,7 +16,7 @@
     = label :user, :password, 'Password: '
     = password_field :user, 'password', {:type => "password", :class => "form-control", :id => "Password", :placeholder => "Password"}
   .btn
-    = submit_tag 'Log In'
+    = submit_tag 'Log In', :id => "loginButton"
 
 #flash-display
   - flash.each do |type, msg|
