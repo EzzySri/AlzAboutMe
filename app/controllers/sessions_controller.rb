@@ -3,6 +3,7 @@ class SessionsController < ApplicationController
   end
 
   def create
+    puts "QQQQ", params
     user = User.find_by_username(params[:username])
     # If the user exists AND the password entered is correct.
     
