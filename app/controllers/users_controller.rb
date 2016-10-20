@@ -29,7 +29,8 @@ class UsersController < ApplicationController
         session[:user_id] = @user.id
         redirect_to '/'
       else 
-        redirect_to users_path
+        flash[:notice] = "Invalid Sign Up Information, Please Try Again"
+        redirect_to users_signup_path
       end
   end
 
