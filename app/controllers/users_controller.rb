@@ -56,6 +56,14 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def homefeed
+    if params["user"] != nil and params["user"]["memory"] != nil
+      flash[:notice] = "memory was successfully edited"
+      session[:recorded_memory] = params["user"]["memory"]
+    end
+    redirect_to '/'
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -68,3 +76,7 @@ class UsersController < ApplicationController
       params.require(:user).permit(:first_name, :last_name, :username, :email, :password, :password_confirmation)
     end
 end
+
+
+    
+  

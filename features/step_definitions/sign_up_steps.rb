@@ -7,6 +7,8 @@ Given(/^(?:I )am on (.+)$/) do |page_name|
       visit('/users/signup')
     when /^the homefeed page$/
       visit('/')
+    when /^the homefeed page$/
+      visit()
   end
 end
 
@@ -20,6 +22,8 @@ When(/^I click on "([^"]*)"$/) do |arg1|
       click_on(:id => "loginButton")
     when  /^Login$/ 
       click_on(:id => "loginLink")
+    when /^Update Memory$/ 
+      click_on(:id => "updateMemoryButton")
   end
 end
 
