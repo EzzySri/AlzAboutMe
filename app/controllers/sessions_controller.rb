@@ -3,10 +3,10 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by_username(params[:username])
+    user = User.find_by_username(user_params[:username])
     # If the user exists AND the password entered is correct.
     
-    if user && user.authenticate(params[:password])
+    if user && user.authenticate(user_params[:password])
       # Save the user id inside the browser cookie. This is how we keep the user 
       # logged in when they navigate around our website.
       session[:user_id] = user.id
@@ -23,4 +23,10 @@ class SessionsController < ApplicationController
     session[:user_id] = nil
     redirect_to '/'
   end 
+  
+  private
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def user_params
+      params.require(:user).permit(:first_name, :last_name, :username, :email, :password, :password_confirmation)
+    end
 end
