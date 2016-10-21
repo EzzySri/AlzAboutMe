@@ -41,6 +41,7 @@ index e69de29..d2ca424 100644
 +  - "**.php"
 +  - "**.py"
 +exclude_paths:
++- coverage/
 +- config/
 +- db/
 +- features/
