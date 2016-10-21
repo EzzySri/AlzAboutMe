@@ -15,3 +15,7 @@
 /log/*
 !/log/.keep
 /tmp
+
+# Ignore SimpleCov GEM coverage files
+/coverage
+
