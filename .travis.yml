@@ -3,7 +3,9 @@ rvm:
   - 2.2.2
 # uncomment and edit the following line if your project needs to run something other than `rake`:
 # script: bundle exec rspec spec
-
+notifications:
+  slack: cal169:Hk9SUd7vXh1BWrz7zDf0dvV3
+  
 script:
   - RAILS_ENV=test bundle exec rake db:migrate --trace
   - bundle exec rake db:test:prepare
@@ -14,3 +16,5 @@ after_script:
 addons:
     code_climate:
         repo_token: 1e3b79e8b685fcc6007636d7411dc697c9ddf7ebf6669e8a4477306b6bb16567
+        
+        
