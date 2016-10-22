@@ -18,9 +18,13 @@ class UsersController < ApplicationController
   end
 
   def homefeed
+    puts "flash recorded"
     if params["user"] != nil and params["user"]["memory"] != nil
       flash[:notice] = "memory was successfully created."
       session[:recorded_memory] = params["user"]["memory"]
+      puts flash
+    end
+  end
 
 
   # GET /users/1/edit
@@ -61,7 +65,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
->>>>>>> f2c4ca2e9b3aee5f25a84a7c5a1812361b300ca1
+
     end
   end
   

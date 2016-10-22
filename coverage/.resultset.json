@@ -1,14 +1,14 @@
 {
   "Cucumber Features": {
     "coverage": {
-      "/Users/ezzysriram/Documents/Dev/projects/SE/AlzAboutMe/config/environment.rb": [
+      "/home/ubuntu/workspace/AlzAboutMe/config/environment.rb": [
         null,
         1,
         null,
         null,
         1
       ],
-      "/Users/ezzysriram/Documents/Dev/projects/SE/AlzAboutMe/config/application.rb": [
+      "/home/ubuntu/workspace/AlzAboutMe/config/application.rb": [
         1,
         null,
         1,
@@ -47,12 +47,12 @@
         null,
         null
       ],
-      "/Users/ezzysriram/Documents/Dev/projects/SE/AlzAboutMe/config/boot.rb": [
+      "/home/ubuntu/workspace/AlzAboutMe/config/boot.rb": [
         1,
         null,
         1
       ],
-      "/Users/ezzysriram/Documents/Dev/projects/SE/AlzAboutMe/config/environments/test.rb": [
+      "/home/ubuntu/workspace/AlzAboutMe/config/environments/test.rb": [
         1,
         null,
         null,
@@ -96,7 +96,7 @@
         null,
         null
       ],
-      "/Users/ezzysriram/Documents/Dev/projects/SE/AlzAboutMe/config/initializers/assets.rb": [
+      "/home/ubuntu/workspace/AlzAboutMe/config/initializers/assets.rb": [
         null,
         null,
         null,
@@ -109,7 +109,7 @@
         null,
         null
       ],
-      "/Users/ezzysriram/Documents/Dev/projects/SE/AlzAboutMe/config/initializers/backtrace_silencers.rb": [
+      "/home/ubuntu/workspace/AlzAboutMe/config/initializers/backtrace_silencers.rb": [
         null,
         null,
         null,
@@ -118,179 +118,139 @@
         null,
         null
       ],
-      "/Users/ezzysriram/Documents/Dev/projects/SE/AlzAboutMe/config/initializers/cookies_serializer.rb": [
+      "/home/ubuntu/workspace/AlzAboutMe/config/initializers/cookies_serializer.rb": [
         null,
         null,
         1
       ],
-      "/Users/ezzysriram/Documents/Dev/projects/SE/AlzAboutMe/config/initializers/filter_parameter_logging.rb": [
-        null,
-        null,
-        null,
-        1
-      ],
-      "/Users/ezzysriram/Documents/Dev/projects/SE/AlzAboutMe/config/initializers/inflections.rb": [
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
-      ],
-      "/Users/ezzysriram/Documents/Dev/projects/SE/AlzAboutMe/config/initializers/mime_types.rb": [
-        null,
-        null,
-        null,
-        null
-      ],
-      "/Users/ezzysriram/Documents/Dev/projects/SE/AlzAboutMe/config/initializers/session_store.rb": [
-        null,
-        null,
-        1
-      ],
-      "/Users/ezzysriram/Documents/Dev/projects/SE/AlzAboutMe/config/initializers/wrap_parameters.rb": [
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        1,
-        1,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
-      ],
-      "/Users/ezzysriram/Documents/Dev/projects/SE/AlzAboutMe/config/routes.rb": [
-        1,
-        null,
-        null,
-        1,
-        1,
-        1,
-        null,
-        1,
-        null,
-        1,
-        null,
-        null,
-        null,
-        null,
-        1,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        1,
-        1,
-        1,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
-      ],
-      "/Users/ezzysriram/Documents/Dev/projects/SE/AlzAboutMe/features/support/paths.rb": [
-        null,
-        null,
-        null,
-        null,
-        null,
-        1,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        1,
-        0,
-        null,
-        null,
-        0,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        null,
-        null,
-        null,
+      "/home/ubuntu/workspace/AlzAboutMe/config/initializers/filter_parameter_logging.rb": [
         null,
         null,
         null,
         1
       ],
-      "/Users/ezzysriram/Documents/Dev/projects/SE/AlzAboutMe/features/support/selectors.rb": [
+      "/home/ubuntu/workspace/AlzAboutMe/config/initializers/inflections.rb": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/home/ubuntu/workspace/AlzAboutMe/config/initializers/mime_types.rb": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "/home/ubuntu/workspace/AlzAboutMe/config/initializers/session_store.rb": [
+        null,
+        null,
+        1
+      ],
+      "/home/ubuntu/workspace/AlzAboutMe/config/initializers/wrap_parameters.rb": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        1,
+        1,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/home/ubuntu/workspace/AlzAboutMe/config/routes.rb": [
+        1,
+        null,
+        null,
+        1,
+        1,
+        1,
+        null,
+        1,
+        null,
+        1,
+        null,
+        null,
+        null,
+        null,
+        1,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/home/ubuntu/workspace/AlzAboutMe/features/support/paths.rb": [
         null,
         null,
         null,
@@ -316,19 +276,13 @@
         null,
         null,
         null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
+        0,
+        0,
+        0,
+        0,
+        0,
         0,
         null,
-        null,
-        0,
         null,
         null,
         null,
@@ -336,7 +290,53 @@
         null,
         1
       ],
-      "/Users/ezzysriram/Documents/Dev/projects/SE/AlzAboutMe/features/step_definitions/homefeed_steps.rb": [
+      "/home/ubuntu/workspace/AlzAboutMe/features/support/selectors.rb": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        1,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        1,
+        0,
+        null,
+        null,
+        0,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        0,
+        null,
+        null,
+        0,
+        null,
+        null,
+        null,
+        null,
+        null,
+        1
+      ],
+      "/home/ubuntu/workspace/AlzAboutMe/features/step_definitions/homefeed_steps.rb": [
         1,
         1,
         1,
@@ -354,7 +354,7 @@
         null,
         null
       ],
-      "/Users/ezzysriram/Documents/Dev/projects/SE/AlzAboutMe/features/step_definitions/login_steps.rb": [
+      "/home/ubuntu/workspace/AlzAboutMe/features/step_definitions/login_steps.rb": [
         1,
         null,
         1,
@@ -371,7 +371,7 @@
         null,
         null
       ],
-      "/Users/ezzysriram/Documents/Dev/projects/SE/AlzAboutMe/features/step_definitions/sign_up_steps.rb": [
+      "/home/ubuntu/workspace/AlzAboutMe/features/step_definitions/sign_up_steps.rb": [
         null,
         1,
         3,
@@ -417,7 +417,7 @@
         2,
         null
       ],
-      "/Users/ezzysriram/Documents/Dev/projects/SE/AlzAboutMe/features/step_definitions/web_steps.rb": [
+      "/home/ubuntu/workspace/AlzAboutMe/features/step_definitions/web_steps.rb": [
         null,
         null,
         null,
@@ -673,7 +673,7 @@
         null,
         null
       ],
-      "/Users/ezzysriram/Documents/Dev/projects/SE/AlzAboutMe/app/controllers/users_controller.rb": [
+      "/home/ubuntu/workspace/AlzAboutMe/app/controllers/users_controller.rb": [
         1,
         1,
         null,
@@ -691,6 +691,16 @@
         null,
         1,
         0,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null,
         null,
         null,
         null,
@@ -706,6 +716,7 @@
         3,
         null,
         0,
+        0,
         null,
         null,
         null,
@@ -730,6 +741,7 @@
         0,
         0,
         0,
+        null,
         null,
         null,
         null,
@@ -757,14 +769,14 @@
         null,
         null
       ],
-      "/Users/ezzysriram/Documents/Dev/projects/SE/AlzAboutMe/app/controllers/application_controller.rb": [
+      "/home/ubuntu/workspace/AlzAboutMe/app/controllers/application_controller.rb": [
         1,
         null,
         null,
         1,
         null,
         1,
-        18,
+        5,
         null,
         1,
         null,
@@ -774,36 +786,42 @@
         null,
         null
       ],
-      "/Users/ezzysriram/Documents/Dev/projects/SE/AlzAboutMe/app/helpers/application_helper.rb": [
+      "/home/ubuntu/workspace/AlzAboutMe/app/helpers/application_helper.rb": [
         1,
         null
       ],
-      "/Users/ezzysriram/Documents/Dev/projects/SE/AlzAboutMe/app/helpers/sessions_helper.rb": [
+      "/home/ubuntu/workspace/AlzAboutMe/app/helpers/sessions_helper.rb": [
         1,
         null
       ],
-      "/Users/ezzysriram/Documents/Dev/projects/SE/AlzAboutMe/app/helpers/users_helper.rb": [
+      "/home/ubuntu/workspace/AlzAboutMe/app/helpers/users_helper.rb": [
         1,
         null
       ],
-      "/Users/ezzysriram/Documents/Dev/projects/SE/AlzAboutMe/app/helpers/welcome_helper.rb": [
+      "/home/ubuntu/workspace/AlzAboutMe/app/helpers/welcome_helper.rb": [
         1,
         null
       ],
-      "/Users/ezzysriram/Documents/Dev/projects/SE/AlzAboutMe/app/models/user.rb": [
+      "/home/ubuntu/workspace/AlzAboutMe/app/models/user.rb": [
         1,
         null,
         1,
         null,
         null
       ],
-      "/Users/ezzysriram/Documents/Dev/projects/SE/AlzAboutMe/app/controllers/welcome_controller.rb": [
+      "/home/ubuntu/workspace/AlzAboutMe/app/controllers/welcome_controller.rb": [
         1,
+        1,
+        null,
+        null,
+        1,
+        31,
+        null,
         1,
         null,
         null
       ],
-      "/Users/ezzysriram/Documents/Dev/projects/SE/AlzAboutMe/app/controllers/sessions_controller.rb": [
+      "/home/ubuntu/workspace/AlzAboutMe/app/controllers/sessions_controller.rb": [
         1,
         1,
         null,
@@ -838,6 +856,6 @@
         null
       ]
     },
-    "timestamp": 1477008423
+    "timestamp": 1477094393
   }
 }
