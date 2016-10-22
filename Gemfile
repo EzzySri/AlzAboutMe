@@ -43,8 +43,6 @@ group :development, :test do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'jasmine-rails' # if you plan to use JavaScript/CoffeeScript
-  # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console'
 end
 
 group :test do
