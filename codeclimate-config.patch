@@ -48,6 +48,7 @@ index e69de29..d2ca424 100644
 +- script/
 +- spec/
 +- vendor/
++- public/assets/
 diff --git a/.csslintrc b/.csslintrc
 index e69de29..aacba95 100644
 --- a/.csslintrc
