@@ -8,4 +8,4 @@ Feature: Logging in as a returning user
         And I fill in "memory field" with "my memory here"
         And I click on "Update Memory"
         Then I should see "my memory here" 
-        Then I should see "memory was successfully edited"
+        Then I should see "Memory Saved!"
