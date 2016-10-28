@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all
+    @memorycards = MemoryCard.all
   end
 
   # GET /users/1
