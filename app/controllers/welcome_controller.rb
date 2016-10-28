@@ -1,6 +1,6 @@
 class WelcomeController < ApplicationController
   def index
-    @memorycards = MemoryCard.all
+  
   end
   
   def current_user
