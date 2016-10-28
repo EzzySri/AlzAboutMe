@@ -17,9 +17,9 @@
         .form-group
         = label :memory, :field, 'Answer: '
         - if memcard.answer.nil? == false
-          = text_field :user, 'memory', :type => "text", :class => "form-control", :id => "memoryfield", :placeholder => "Answer here"
+          = text_field :user, 'memory', :value => memcard.answer, :type => "text", :class => "form-control", :id => "memoryfield", :placeholder => "Answer here"
         -else
-          = text_field :user, 'memory', :type => "text", :class => "form-control", :id => "memoryfield", :placeholder => "Answer here"
+          = text_field :user, 'memory', :value => memcard.answer, :type => "text", :class => "form-control", :id => "memoryfield", :placeholder => "Answer here"
         = submit_tag 'Update Memory', {:id => "updateMemoryButton"}
   %br
       
