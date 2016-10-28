@@ -5,8 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-memories = [ {:question => "Question here", :answer => "answer here", :completed => false},
-             {:question => "Question 2 here", :answer => "answer 2 here", :completed => false},
+memories = [ {:question => "Question here", :answer => "answer here", :type => "text", :completed => false},
+             {:question => "Question 2 here", :answer => "answer 2 here", :type => "text", :completed => false},
 ]
 
 memories.each do |mem|

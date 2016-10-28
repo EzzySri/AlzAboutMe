@@ -16,7 +16,9 @@ class MemoryCardsController < ApplicationController
     # puts params["user"]["memory"], "FFFFFFFF"
     @memcard = MemoryCard.find(params[:id])
     @memcard.editing = false
-    @memcard.answer = params["user"]["memory"]
+    if params["user"].nil? == false
+      @memcard.answer = params["user"]["memory"]
+    end
     @memcard.save
     redirect_to memory_cards_path
   end

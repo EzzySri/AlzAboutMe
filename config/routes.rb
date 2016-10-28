@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   # get 'memory_cards/save'
 
   post 'memory_cards/:id/edit' => 'memory_cards#edit'
-  # post 'memory_cards/:id' => 'memory_cards#update'
+  post 'memory_cards/:id' => 'memory_cards#update' #for the 'cancel button on memory cards'
 
   # these routes are for showing users a login form, logging them in, and logging them out.
   get '/login' => 'sessions#new'
