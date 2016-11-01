@@ -24,14 +24,29 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(user_params)
-      if @user.save
-        session[:user_id] = @user.id
-        redirect_to '/'
-      else 
-        flash[:notice] = "Invalid Sign Up Information, Please Try Again"
+    if (user_params[:first_name] != "" &&
+        user_params[:last_name] != "" &&
+        user_params[:username] != "" &&
+        user_params[:email] != "" &&
+        user_params[:password] != "" &&
+        user_params[:password_confirmation] != "")
+      @user = User.find_by_username(user_params[:username])
+      if (@user)
+        flash[:notice] = 'Username already exists'
         redirect_to users_signup_path
-      end
+      else
+        @user = User.new(user_params)
+          if @user.save
+            session[:user_id] = @user.id
+            redirect_to '/'
+          else 
+            redirect_to users_path
+          end
+        end
+    else
+      flash[:notice] = 'All fields are required'
+      redirect_to users_signup_path
+    end
   end
 
   # PATCH/PUT /users/1

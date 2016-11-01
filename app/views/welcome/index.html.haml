@@ -11,7 +11,6 @@
       = text_field :user, 'memory', :value => session[:recorded_memory], :type => "text", :class => "form-control", :id => "memoryfield", :placeholder => "Answer here"
     -else
       = text_field :user, 'memory', :type => "text", :class => "form-control", :id => "memoryfield", :placeholder => "Answer here"
-  %p
     = submit_tag 'Update Memory', {:id => "updateMemoryButton"}
     - if flash[:notice]
       = flash[:notice]
