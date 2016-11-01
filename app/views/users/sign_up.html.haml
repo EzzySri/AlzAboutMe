@@ -14,22 +14,22 @@
 = form_tag users_path do
   .form-group
     = label :user, :first_name, 'First Name: '
-    = text_field :user, 'first_name', {:type => "text", :class => "form-control", :id => "firstname", :placeholder => "First"}
+    = text_field :user, 'first_name', {:type => "text", :class => "form-control", :id => "firstname", :placeholder => "First", :value => @user_params[:first_name]}
   .form-group
     = label :user, :last_name, 'Last Name: '
-    = text_field :user, 'last_name', {:type => "text", :class => "form-control", :id => "lastname", :placeholder => "Last" }
+    = text_field :user, 'last_name', {:type => "text", :class => "form-control", :id => "lastname", :placeholder => "Last", :value => @user_params[:last_name] }
   .form-group
     = label :user, :username, 'Username: '
-    = text_field :user, 'username', {:type => "text", :class => "form-control", :id => "username", :placeholder => "Username" }
+    = text_field :user, 'username', {:type => "text", :class => "form-control", :id => "username", :placeholder => "Username", :value => @user_params[:username] }
   .form-group
     = label :user, :email, 'Email: '
-    = text_field :user, 'email', {:type => "email", :class => "form-control", :id => "email", :placeholder => "Email" }
+    = text_field :user, 'email', {:type => "email", :class => "form-control", :id => "email", :placeholder => "Email", :value => @user_params[:email] }
   .form-group
     = label :user, :password, 'Password: '
-    = password_field :user, 'password', {:type => "password", :class => "form-control", :id => "password", :placeholder => "Password" }
+    = password_field :user, 'password', {:type => "password", :class => "form-control", :id => "password", :placeholder => "Password", :value => @user_params[:password] }
   .form-group
     = label :user, :password_confirmation, 'Confirm Password'
-    = password_field :user, 'password_confirmation', {:type => "password", :class => "form-control", :id => "confirmpassword", :placeholder => "Password" }
+    = password_field :user, 'password_confirmation', {:type => "password", :class => "form-control", :id => "confirmpassword", :placeholder => "Password", :value => @user_params[:password_confirmation] }
 
   .btn 
     = submit_tag 'Submit', {:id => "signUpSubmitButton"}

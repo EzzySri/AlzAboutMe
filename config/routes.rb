@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   
   # match '/users/homefeed', :controller => 'users', :action => 'homefeed'
   get '/users/homefeed', :to => 'users#homefeed'
-  get '/users/signup', :to => 'users#sign_up.html.haml'
+  get '/users/signup', :to => 'users#sign_up'
   resources :users
   
    
