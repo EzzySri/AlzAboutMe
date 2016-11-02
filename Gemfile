@@ -33,8 +33,6 @@ gem 'bcrypt', '~> 3.1.7'
  group :production do
  	gem 'pg'
  	gem 'rails_12factor'
- 	# Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console'
  end
 
 group :development, :test do
@@ -47,6 +45,11 @@ group :development, :test do
   gem 'jasmine-rails' # if you plan to use JavaScript/CoffeeScript
 end
 
+group :development do  
+  # Access an IRB console on exception pages or by using <%= console %> in views
+  gem 'web-console', '~> 2.3.0'
+end
+
 group :test do
   gem 'rspec-rails'
   gem 'simplecov', :require => false
@@ -56,4 +59,5 @@ group :test do
   gem 'autotest-rails'
   gem 'factory_girl_rails'
   gem 'metric_fu'        # collect code metrics
+  gem 'codeclimate-test-reporter', require: nil
 end

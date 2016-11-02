@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all
+    @memorycards = MemoryCard.all
   end
 
   # GET /users/1
@@ -16,6 +17,16 @@ class UsersController < ApplicationController
   def new
     @user = User.new
   end
+
+  def homefeed
+    puts "flash recorded"
+    if params["user"] != nil and params["user"]["memory"] != nil
+      flash[:notice] = "memory was successfully created."
+      session[:recorded_memory] = params["user"]["memory"]
+      puts flash
+    end
+  end
+
 
   # GET /users/1/edit
   def edit
@@ -83,6 +94,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
+
     end
   end
   

@@ -1,0 +1,16 @@
+-# homefeed.html.haml using partial
+
+%h1 Your Question Here
+
+= form_tag users_homefeed_path, :method => :get do
+
+  = label :memory, :title, 'Title'
+  - if session[:recorded_memory] == nil
+    = text_field(:user, 'memory')
+  - else
+    = text_field :user, 'memory', :value => session[:recorded_memory] 
+  = submit_tag 'Update Memory' 
+  - if flash[:notice]
+    = flash[:notice]
+  
+

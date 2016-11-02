@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161019181730) do
+ActiveRecord::Schema.define(version: 20161102025507) do
+
+  create_table "memory_cards", force: :cascade do |t|
+    t.string   "question"
+    t.string   "answer"
+    t.boolean  "completed"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.boolean  "editing"
+    t.string   "question_type"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "username"
