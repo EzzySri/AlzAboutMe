@@ -17,16 +17,15 @@
                 .pull-right
                     = link_to( 'Login', login_path, id: "loginLink") 
                     = link_to('Signup', users_signup_path, id: "signUpButton")
-            
-            -if current_user
-                // We probably want to iterate over a list of categories to populate...
-                .list-group.pull-left
-                    %a.list-group-item{:href => memory_cards_path} All Categories
-                    %a.list-group-item{:href => "#"} Category 1
-                    %a.list-group-item{:href => "#"} Category 2
-                    %a.list-group-item{:href => "#"} Category 3
-                    %a.list-group-item{:href => "#"} Category 4
             .col-xs-4
+                -if current_user
+                    // We probably want to iterate over a list of categories to populate...
+                    .list-group.pull-left
+                        %a.list-group-item{:href => memory_cards_path} All Categories
+                        %a.list-group-item{:href => "#"} Category 1
+                        %a.list-group-item{:href => "#"} Category 2
+                        %a.list-group-item{:href => "#"} Category 3
+                        %a.list-group-item{:href => "#"} Category 4
             .col-xs-4
                 =yield
             .col-xs-4
