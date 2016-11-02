@@ -3,7 +3,7 @@ Feature: Answering a question as a logged in user
     So that I can have correctly answered questions
     I should be able to answer and edit my answer to questions
 
-    Scenario: Answer or edit a fill in the blank question
+    Scenario: Successful save when user answers short answer
         Given I am logged in
         Given I am on the menu page
         And I press menu 
@@ -14,18 +14,18 @@ Feature: Answering a question as a logged in user
         Then I should see "my memory here" 
         Then I should see "Memory Saved"
         
-    Scenario: Answer or edit a multiple choice question
+    Scenario: Successful save when user answers multiple choice
         Given I am logged in
         Given I am on the menu page
         And I press menu 
         And I click "Personal"
         And I click on a multiple choice memory card
-        And I click "Answer A"
+        And I choose "Answer A"
         And I click "Save Memory"
-        Then A should be checked
+        Then the A radio button should be selected
         Then I should see "Memory Saved"
     
-    Scenario: Answer or edit a fill in the blank question
+    Scenario: Don't save when user closes while answering short answer
         Given I am logged in
         Given I am on the menu page
         And I press menu 
@@ -36,14 +36,14 @@ Feature: Answering a question as a logged in user
         Then I should not see "my memory here" 
         Then I should not see "Memory Saved"
 
-    Scenario: Answer or edit a multiple choice question
+    Scenario: Don't save when user closes while answering multiple choice
         Given I am logged in
         Given I am on the menu page
         And I press menu
         And I click "Personal"
         And I click on a multiple choice memory card
-        And I click "Answer A"
+        And I choose "Answer A"
         And I click "Close"
-        Then A should not be checked
+        Then the A radio button should not be selected
         Then I should not see "Memory Saved"
         

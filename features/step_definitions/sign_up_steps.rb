@@ -31,14 +31,6 @@ Then(/^I should be on the "Sign Up" page$/) do
   expect(page.body).to have_content("Sign Up with AlzAboutMe")
 end
 
-When(/^I fill in "([^"]*)" with "(.*)"$/) do |field, input|
-  # These two lines 1) get rid of white space and 2) make all letters lowercase
-  # This should also be the naming convention for the id of all input text fields
-  field = field.delete(" ")
-  field.downcase!
-  fill_in(:id => field, :with => input)
-end
-  
 Then(/^I should be logged in$/) do
   expect(page.body).to have_content("Signed in as username1")
 end
