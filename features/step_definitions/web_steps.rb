@@ -252,15 +252,13 @@ end
    end
  end
  
-  Then (/^the "([^"]*)" radio button(?: within (.*))? should be selected$/) do |label, parent|
-   with_scope(parent) do
+  Then (/^the "([^"]*)" radio button should be selected$/) do |label|
      field_checked = find_field(label)['checked']
      if field_checked.respond_to? :should
        field_checked.should be_true
      else
        assert field_checked
      end
-   end
  end
 
  Then (/^the "([^"]*)" radio button(?: within (.*))? should not be selected$/) do |label, parent|
