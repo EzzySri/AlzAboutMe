@@ -12,7 +12,7 @@ class MemoryCardsController < ApplicationController
   end
   
   def update
-    # puts params, "QQQQ"
+    puts params, "QQQQ"
     # puts params["user"]["memory"], "FFFFFFFF"
     @memcard = MemoryCard.find(params[:id])
     @memcard.editing = false

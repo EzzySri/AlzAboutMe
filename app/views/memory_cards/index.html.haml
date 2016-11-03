@@ -4,27 +4,43 @@
 %h1= "Welcome #{current_user.first_name} #{current_user.last_name}"
  
 - @memorycards.each do |memcard|
- - @memorycards.each do |memcard|
- -if memcard.editing == false
-   = link_to (edit_memory_card_path(:id => memcard.id)) do
-     %div{:class => "frontCard"}
-       // = button_to "Edit Memory", edit_memory_card_path(:id => memcard.id)
-       %h1= memcard.question
-       -if memcard.answer.nil? == false
-         %h1= memcard.answer
- -if memcard.editing == true
+  -if memcard.editing == false
+    = link_to (edit_memory_card_path(:id => memcard.id)) do
+      -if memcard.question_type == "text"
+        %div{:class => "frontCard"}
+          // = button_to "Edit Memory", edit_memory_card_path(:id => memcard.id)
+          %h1= memcard.question
+          -if memcard.answer.nil? == false
+            %h1= memcard.answer
+      -if memcard.question_type == "multiple_choice"
+        %div{:class => "frontCard"}
+          // = button_to "Edit Memory", edit_memory_card_path(:id => memcard.id)
+          %h1= memcard.question
+          %h1= memcard.answer
+          // - memcard.multiple_choice_entries.each do |entry|
+          //   %h1= entry 
+  -if memcard.editing == true
     %div{:class => "backCard"}
       %h1= memcard.question
-      = form_tag "/memory_cards/"+ memcard.id.to_s , :method => :put do
-        .form-group
-        = label :memory, :field, 'Answer: '
-        - if memcard.answer.nil? == false
-          = text_field :user, 'memory', :value => memcard.answer, :type => "text", :class => "form-control", :id => "memoryfield", :placeholder => "Answer here"
-        -else
-          = text_field :user, 'memory', :value => memcard.answer, :type => "text", :class => "form-control", :id => "memoryfield", :placeholder => "Answer here"
-        = submit_tag 'Update Memory', {:id => "updateMemoryButton"}
-      = button_to "Cancel", "/memory_cards/"+ memcard.id.to_s
-  
+      -if memcard.question_type == "text"
+        = form_tag "/memory_cards/"+ memcard.id.to_s , :method => :put do
+          .form-group
+          = label :memory, :field, 'Answer: '
+          - if memcard.answer.nil? == false
+            = text_field :user, 'memory', :value => memcard.answer, :type => "text", :class => "form-control", :id => "memoryfield", :placeholder => "Answer here"
+          -else
+            = text_field :user, 'memory', :value => memcard.answer, :type => "text", :class => "form-control", :id => "memoryfield", :placeholder => "Answer here"
+          = submit_tag 'Update Memory', {:id => "updateMemoryButton"}
+        = button_to "Cancel", "/memory_cards/"+ memcard.id.to_s
+      
+      -if memcard.question_type == "multiple_choice"
+        = form_tag "/memory_cards/"+ memcard.id.to_s , :method => :put do
+          .form-group
+          = label :memory, :field, 'Answer: '
+          = memcard.multiple_choice_entries.each do |choice|
+            = radio_button :user, "memory", choice
+            = label "user_memory", choice
+          = submit_tag 'Update Memory', {:id => "updateMemoryButton"}
+        = button_to "Cancel", "/memory_cards/"+ memcard.id.to_s
   %br
       
-     
