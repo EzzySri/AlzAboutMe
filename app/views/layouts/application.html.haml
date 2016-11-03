@@ -8,25 +8,26 @@
         %link{:rel => :stylesheet, :href => "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css", :integrity => "sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u", :crossorigin => "anonymous"}
         %script{:src => "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js", :integrity => "sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa", :crossorigin => "anonymous"}
     %body
-        .fluid-container
+        .container-fluid
             -if current_user
                 .pull-right
                     = "Signed in as #{current_user.username} |" 
                     = link_to("Logout", '/logout', id: "logoutLink")
+                .pull-left
+                    %a#menubutton{:href => "javascript:void(0)"} Menu
             -else
                 .pull-right
                     = link_to( 'Login', login_path, id: "loginLink") 
                     = link_to('Signup', users_signup_path, id: "signUpButton")
-            .col-xs-4
-                -if current_user
-                    // We probably want to iterate over a list of categories to populate...
-                    .list-group.pull-left
-                        %a.list-group-item{:href => memory_cards_path} All Categories
-                        %a.list-group-item{:href => "#"} Category 1
-                        %a.list-group-item{:href => "#"} Category 2
-                        %a.list-group-item{:href => "#"} Category 3
-                        %a.list-group-item{:href => "#"} Category 4
-            .col-xs-4
-                =yield
-            .col-xs-4
+        .col-xs-4
+            -if current_user
+                .list-group.pull-left#menu
+                    - cats = categories
+                    - cats.each do |cat|
+                        // removing all spaces and making all characters lowercase for id
+                        - id = cat.downcase.delete(" ")
+                        = link_to cat, memory_cards_path(:category => cat.to_s), :class => "list-group-item", :id => id.to_s
+        .col-xs-4
+            =yield
+        .col-xs-4
 

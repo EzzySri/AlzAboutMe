@@ -36,6 +36,7 @@ Rails.application.routes.draw do
   get '/users/signup', :to => 'users#sign_up'
   resources :users
   resources :memory_cards
+  get '/memory_cards/:category', :to => 'memory_cards#index'
   
    
   

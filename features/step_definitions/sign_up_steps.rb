@@ -24,6 +24,10 @@ When(/^I click on "([^"]*)"$/) do |arg1|
       click_on(:id => "loginLink")
     when /^Update Memory$/ 
       click_on(:id => "updateMemoryButton")
+    when /^Personal$/
+      click_on(:id=> "personal")
+    when/^Menu$/
+      click_on(:id=> "menubutton")
   end
 end
 

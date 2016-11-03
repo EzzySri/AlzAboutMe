@@ -1,6 +1,13 @@
 class MemoryCardsController < ApplicationController
   def index
-    @memorycards = MemoryCard.all
+    if (params[:category] == "all")
+      @memorycards = MemoryCard.all
+    elsif(params[:category])
+      @memorycards = MemoryCard.where(:category => params[:category])
+    else
+      @memorycards = MemoryCard.all
+    end
+    @category = params[:category] || "All Categories"
   end
   
   def edit
