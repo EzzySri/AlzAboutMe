@@ -57,3 +57,13 @@ end
 # The :transaction strategy is faster, but might give you threading problems.
 # See https://github.com/cucumber/cucumber-rails/blob/master/features/choose_javascript_database_strategy.feature
 Cucumber::Rails::Database.javascript_strategy = :truncation
+Before do
+  memories = [ {:question => "Question here", :answer => "answer here", :question_type => "text", :completed => false, :editing => false, :category => "Personal"},
+             {:question => "Question 2 here", :answer => "answer 2 here", :question_type => "text", :completed => false, :editing => false, :category => "Personal"},
+             {:question => "Multiple-choice question here", :answer => "answer here", :question_type => "multiple_choice", :question_choices => "red|blue|yellow", :completed => false, :editing => false}
+  ]
+
+  memories.each do |mem|
+      MemoryCard.create!(mem)
+  end
+end
