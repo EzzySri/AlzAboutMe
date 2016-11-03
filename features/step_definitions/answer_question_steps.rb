@@ -1,6 +1,7 @@
 
 Given(/^I click on a fill in memory card$/) do
   # TODO: need to find a way to select short answer memcard in general 
+  card = FactoryGirl.build(:user, question_type: "text")
   page.find("#short_answer_card", :visible => false).click
 end
 

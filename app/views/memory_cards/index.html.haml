@@ -11,13 +11,13 @@
           // = button_to "Edit Memory", edit_memory_card_path(:id => memcard.id)
           %h1= memcard.question
           -if memcard.answer.nil? == false
-            %h2= memcard.answer
+            %h3= memcard.answer
       -if memcard.question_type == "multiple_choice"
         .frontCard{:id => "mult_answer_card"}
           // = button_to "Edit Memory", edit_memory_card_path(:id => memcard.id)
           %h1= memcard.question
           -if memcard.answer.nil? == false
-            %h2= memcard.answer
+            %h3= memcard.answer
           // - memcard.multiple_choice_entries.each do |entry|
           //   %h1= entry 
   -if memcard.editing == true
