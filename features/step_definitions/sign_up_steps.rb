@@ -1,17 +1,3 @@
-
-Given(/^(?:I )am on (.+)$/) do |page_name|
-  case page_name
-    when /^the home\s?page$/
-      visit('/')
-    when /^the "Sign Up" page$/
-      visit('/users/signup')
-    when /^the homefeed page$/
-      visit('/')
-    when /^the homefeed page$/
-      visit()
-  end
-end
-
 When(/^I click on "([^"]*)"$/) do |arg1|
   case arg1
     when /^Sign Up$/
