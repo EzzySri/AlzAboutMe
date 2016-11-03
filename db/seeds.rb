@@ -7,6 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 memories = [ {:question => "Question here", :answer => "answer here", :question_type => "text", :completed => false, :editing => false, :category => "Personal"},
              {:question => "Question 2 here", :answer => "answer 2 here", :question_type => "text", :completed => false, :editing => false, :category => "Personal"},
+             {:question => "Multiple-choice question here", :answer => "answer here", :question_type => "multiple_choice", :question_choices => "red|blue|yellow", :completed => false, :editing => false}
 ]
 
 memories.each do |mem|

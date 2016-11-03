@@ -37,6 +37,7 @@ Rails.application.routes.draw do
   resources :users
   resources :memory_cards
   get '/memory_cards/:category', :to => 'memory_cards#index'
+  get '/memory_cards', :to => 'memory_cards#index'
   
    
   

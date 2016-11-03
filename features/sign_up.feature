@@ -66,4 +66,4 @@ Feature: Signing up for a user account
     Given I am on the "Sign Up" page
     When I fill in "First Name" with "Spongebob"
     And I click on "Submit"
-    Then I should see "Spongebob"
+    Then I should see Spongebob
