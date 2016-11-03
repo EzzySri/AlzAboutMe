@@ -6,7 +6,3 @@ end
 Given(/^I click on a multiple choice memory card$/) do
   pending # Write code here that turns the phrase above into concrete actions
 end
-
-When (/^(?:|I )choose "([^"]*)"$/) do |radioButton|
-  choose(radioButton)
-end 
