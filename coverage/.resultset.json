@@ -358,13 +358,10 @@
       ],
       "/home/ubuntu/workspace/AlzAboutMe/features/step_definitions/answer_question_steps.rb": [
         null,
-        1,
-        null,
-        null,
         null,
         1,
         null,
-        null,
+        1,
         null,
         null,
         1,
@@ -974,6 +971,6 @@
         null
       ]
     },
-    "timestamp": 1478155278
+    "timestamp": 1478155449
   }
 }
