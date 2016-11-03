@@ -1,3 +1,21 @@
 // Place all the styles related to the Welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.frontCard {
+    height: 200px;
+    width: 500px;
+    background-color: grey;
+}
+
+.backCard{
+    height: 200px;
+    width: 500px;
+    background-color: rgb(217, 217, 217);
+}
+
+#welcome_header{
+    text-align: center;
+}
+
+

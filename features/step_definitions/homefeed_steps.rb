@@ -10,7 +10,7 @@ Given /I am logged in/ do
 end
     
 
-Then /I should see "(.*)"/ do |arg1|
-    expect(page.html).to include(arg1)
-    # expect(page.body).to have_content(arg1)
-end
+# Then /I should see "(.*)"/ do |arg1|
+#     expect(page.html).to include(arg1)
+#     # expect(page.body).to have_content(arg1)
+# end

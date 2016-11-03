@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all
+    @memorycards = MemoryCard.all
   end
 
   # GET /users/1
@@ -34,16 +35,44 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(user_params)
-      if @user.save
-        session[:user_id] = @user.id
-        redirect_to '/'
-      else 
-        flash[:notice] = "Invalid Sign Up Information, Please Try Again"
-        redirect_to users_signup_path
+    if (user_params[:first_name] == "" || user_params[:last_name] == "" ||
+        user_params[:username] == "" || user_params[:email] == "" ||
+        user_params[:password] == "" || user_params[:password_confirmation] == "")
+        flash[:notice] = 'All fields are required'
+        redirect_to users_signup_path(:user => user_params)
+    else
+      username_check = User.find_by_username(user_params[:username])
+      email_check = User.find_by_email(user_params[:email])
+      if (username_check)
+        flash[:notice] = 'Username already exists'
+        redirect_to users_signup_path(:user => user_params)
+      elsif(email_check)
+        flash[:notice] = 'email is associated with an existing user'
+        redirect_to users_signup_path(:user => user_params)
+      elsif (user_params[:password] != user_params[:password_confirmation])
+        flash[:notice] = 'Password confirmation did not match password'
+        redirect_to users_signup_path(:user => user_params)
+      else
+        @user = User.new(user_params)
+          if @user.save
+            session[:user_id] = @user.id
+            redirect_to '/'
+          else 
+            redirect_to users_path
+          end
       end
+    end
   end
 
+  # Get /users/signup
+  def sign_up
+    if (params.key?("user"))
+      @user_params = user_params
+    else
+      redirect_to users_signup_path(:user => {:first_name => "", :last_name => "", :username => "", :email => "", :password => "", :password_confirmation => ""})
+    end
+  end
+  
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update

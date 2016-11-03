@@ -11,5 +11,10 @@ class ApplicationController < ActionController::Base
   def authorize
     redirect_to '/login' unless current_user
   end
+  
+  def categories
+    @categories = MemoryCard.all_categories
+  end
+  helper_method :categories
 
 end
