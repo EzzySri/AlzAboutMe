@@ -81,6 +81,7 @@ end
  When (/^(?:|I )fill in "([^"]*)" with "([^"]*)"$/) do |field, value|
   # These two lines 1) get rid of white space and 2) make all letters lowercase
   # This should also be the naming convention for the id of all input text fields
+#   expect(page).to have_content("dsfdsfsd")
    field = field.delete(" ")
    field.downcase!
    fill_in(field, :with => value)

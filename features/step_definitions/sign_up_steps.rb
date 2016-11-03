@@ -10,6 +10,8 @@ When(/^I click on "([^"]*)"$/) do |arg1|
       click_on(:id => "loginLink")
     when /^Update Memory$/ 
       click_on(:id => "updateMemoryButton")
+    when /^Save Memory$/
+      click_on(:id => "updateMemoryButton")
   end
 end
 

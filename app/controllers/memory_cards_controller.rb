@@ -12,6 +12,7 @@ class MemoryCardsController < ApplicationController
   end
   
   def update
+    flash[:message] = "Memory Saved"
     puts params, "QQQQ"
     # puts params["user"]["memory"], "FFFFFFFF"
     @memcard = MemoryCard.find(params[:id])
