@@ -7,20 +7,21 @@
   -if memcard.editing == false
     = link_to (edit_memory_card_path(:id => memcard.id)) do
       -if memcard.question_type == "text"
-        %div{:class => "frontCard"}
+        .frontCard{:id => "short_answer_card"}
           // = button_to "Edit Memory", edit_memory_card_path(:id => memcard.id)
           %h1= memcard.question
           -if memcard.answer.nil? == false
-            %h1= memcard.answer
+            %h2= memcard.answer
       -if memcard.question_type == "multiple_choice"
-        %div{:class => "frontCard"}
+        .frontCard{:id => "mult_answer_card"}
           // = button_to "Edit Memory", edit_memory_card_path(:id => memcard.id)
           %h1= memcard.question
-          %h1= memcard.answer
+          -if memcard.answer.nil? == false
+            %h2= memcard.answer
           // - memcard.multiple_choice_entries.each do |entry|
           //   %h1= entry 
   -if memcard.editing == true
-    %div{:class => "backCard"}
+    .backCard
       %h1= memcard.question
       -if memcard.question_type == "text"
         = form_tag "/memory_cards/"+ memcard.id.to_s , :method => :put do

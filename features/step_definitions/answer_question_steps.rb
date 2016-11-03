@@ -1,11 +1,11 @@
 
 Given(/^I click on a fill in memory card$/) do
   # TODO: need to find a way to select short answer memcard in general 
-  visit('/memory_cards/1/edit')
+  page.find_by_id('short_answer_card').click
 end
 
 Given(/^I click on a multiple choice memory card$/) do
   # TODO: need to find a way to select mult choice answer memcard in general 
-  visit('/memory_cards/2/edit')
+  page.find_by_id('mult_answer_card').click
 end
 
