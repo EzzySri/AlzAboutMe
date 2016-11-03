@@ -92,6 +92,11 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = :random
+  config.before(:all) do
+    FactoryGirl.reload
+    FactoryGirl.find_definitions
+  end
+  config.include FactoryGirl::Syntax::Methods
 
   # Seed global randomization in this process using the `--seed` CLI option.
   # Setting this allows you to use `--seed` to deterministically reproduce

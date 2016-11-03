@@ -1,23 +1,13 @@
-Given(/^I click on the menu button$/) do
-  pending # Write code here that turns the phrase above into concrete actions
-end
-
 Given(/^I click on a fill in memory card$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  # TODO: need to find a way to select short answer memcard in general
+  # expect(page).to have_content("SDSSDSDFSDF")
+  click_on(:id => "memLink1")
 end
 
-Given(/^I click on a multiple choice memory card$/) do
-  pending # Write code here that turns the phrase above into concrete actions
-end
-
-Then(/^A should be checked$/) do
-  pending # Write code here that turns the phrase above into concrete actions
-end
 
 Then(/^I should not see "([^"]*)"$/) do |arg1|
-  pending # Write code here that turns the phrase above into concrete actions
+  expect(page).to_not have_content(arg1)
+  # TODO: need to find a way to select mult choice answer memcard in general 
+  # page.find("#mult_answer_card").click
 end
 
-Then(/^A should not be checked$/) do
-  pending # Write code here that turns the phrase above into concrete actions
-end

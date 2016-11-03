@@ -14,6 +14,7 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'haml'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'jquery-turbolinks'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -60,4 +61,5 @@ group :test do
   gem 'factory_girl_rails'
   gem 'metric_fu'        # collect code metrics
   gem 'codeclimate-test-reporter', require: nil
+  # gem 'capybara-webkit'
 end

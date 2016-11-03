@@ -11,5 +11,9 @@ Given(/^I have an account$/) do
   click_on(:id => 'logoutLink')
 end
 
+Then(/^I should be on the "Login" page$/) do 
+  expect(page.body).to have_content("Sign In to AlzAboutMe")
+end
+
 
 
