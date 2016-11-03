@@ -94,6 +94,7 @@ RSpec.configure do |config|
   config.order = :random
   config.before(:all) do
     FactoryGirl.reload
+    FactoryGirl.find_definitions
   end
   config.include FactoryGirl::Syntax::Methods
 
