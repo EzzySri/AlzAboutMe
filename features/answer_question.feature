@@ -5,8 +5,7 @@ Feature: Answering a question as a logged in user
 
     Scenario: Answer or edit a fill in the blank question
         Given I am logged in
-        Given I am on the menu page
-        And I click on the menu button
+        And I click on "Menu"
         And I click on "Personal"
         And I click on a fill in memory card
         And I fill in "memory field" with "my memory here"
@@ -17,7 +16,7 @@ Feature: Answering a question as a logged in user
     Scenario: Answer or edit a multiple choice question
         Given I am logged in
         Given I am on the menu page
-        And I click on the menu button
+        And I click on "Menu"
         And I click on "Personal"
         And I click on a multiple choice memory card
         And I click on "Answer A"
@@ -27,8 +26,7 @@ Feature: Answering a question as a logged in user
     
     Scenario: Answer or edit a fill in the blank question
         Given I am logged in
-        Given I am on the menu page
-        And I click on the menu button
+        And I click on "Menu"
         And I click on "Personal"
         And I click on a fill in memory card
         And I fill in "memory field" with "my memory here"
@@ -38,8 +36,7 @@ Feature: Answering a question as a logged in user
 
     Scenario: Answer or edit a multiple choice question
         Given I am logged in
-        Given I am on the menu page
-        And I click on the menu button
+        And I click on "Menu"
         And I click on "Personal"
         And I click on a multiple choice memory card
         And I click on "Answer A"

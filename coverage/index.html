@@ -14,14 +14,14 @@
       <img src="./assets/0.10.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2016-11-03T06:04:01+00:00">2016-11-03T06:04:01+00:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2016-11-03T06:45:24+00:00">2016-11-03T06:45:24+00:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="red">78.88%</span></span>
+    (<span class="covered_percent"><span class="red">77.69%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
@@ -33,8 +33,8 @@
   <div>
     <b>33</b> files in total.
     <b>251</b> relevant lines. 
-    <span class="green"><b>198</b> lines covered</span> and
-    <span class="red"><b>53</b> lines missed </span>
+    <span class="green"><b>195</b> lines covered</span> and
+    <span class="red"><b>56</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -57,7 +57,7 @@
         <td>10</td>
         <td>9</td>
         <td>1</td>
-        <td>8.2</td>
+        <td>10.2</td>
       </tr>
       
       <tr>
@@ -67,7 +67,7 @@
         <td>22</td>
         <td>10</td>
         <td>12</td>
-        <td>0.5</td>
+        <td>1.2</td>
       </tr>
       
       <tr>
@@ -82,12 +82,12 @@
       
       <tr>
         <td class="strong"><a href="#3a9caf025cec332e98fb2c82e2f76560e2bea29a" class="src_link" title="app/controllers/users_controller.rb">app/controllers/users_controller.rb</a></td>
-        <td class="red strong">67.21 %</td>
+        <td class="red strong">60.66 %</td>
         <td>123</td>
         <td>61</td>
-        <td>41</td>
-        <td>20</td>
-        <td>6.7</td>
+        <td>37</td>
+        <td>24</td>
+        <td>6.2</td>
       </tr>
       
       <tr>
@@ -97,7 +97,7 @@
         <td>5</td>
         <td>5</td>
         <td>0</td>
-        <td>21.8</td>
+        <td>19.4</td>
       </tr>
       
       <tr>
@@ -157,7 +157,7 @@
         <td>3</td>
         <td>3</td>
         <td>0</td>
-        <td>5.3</td>
+        <td>6.0</td>
       </tr>
       
       <tr>
@@ -302,12 +302,12 @@
       
       <tr>
         <td class="strong"><a href="#c298ae7d9477b92d1529d6cbbdc11fcfd73aff40" class="src_link" title="features/step_definitions/answer_question_steps.rb">features/step_definitions/answer_question_steps.rb</a></td>
-        <td class="red strong">50.0 %</td>
+        <td class="red strong">70.0 %</td>
         <td>19</td>
         <td>10</td>
-        <td>5</td>
-        <td>5</td>
-        <td>0.5</td>
+        <td>7</td>
+        <td>3</td>
+        <td>0.9</td>
       </tr>
       
       <tr>
@@ -317,7 +317,7 @@
         <td>11</td>
         <td>11</td>
         <td>0</td>
-        <td>5.7</td>
+        <td>4.8</td>
       </tr>
       
       <tr>
@@ -342,12 +342,12 @@
       
       <tr>
         <td class="strong"><a href="#404cff9eb2d876ba4164fe28b16a82faf737656a" class="src_link" title="features/step_definitions/sign_up_steps.rb">features/step_definitions/sign_up_steps.rb</a></td>
-        <td class="green strong">91.3 %</td>
+        <td class="yellow strong">86.96 %</td>
         <td>48</td>
         <td>23</td>
-        <td>21</td>
-        <td>2</td>
-        <td>7.1</td>
+        <td>20</td>
+        <td>3</td>
+        <td>7.5</td>
       </tr>
       
       <tr>
@@ -446,8 +446,8 @@
           <code class="ruby">  def current_user</code>
         </li>
       
-        <li class="covered" data-hits="61" data-linenumber="7">
-          <span class="hits">61</span>
+        <li class="covered" data-hits="79" data-linenumber="7">
+          <span class="hits">79</span>
           
           <code class="ruby">    @current_user ||= User.find(session[:user_id]) if session[:user_id]</code>
         </li>
@@ -500,8 +500,8 @@
           <code class="ruby">  def categories</code>
         </li>
       
-        <li class="covered" data-hits="14" data-linenumber="16">
-          <span class="hits">14</span>
+        <li class="covered" data-hits="16" data-linenumber="16">
+          <span class="hits">16</span>
           
           <code class="ruby">    @categories = MemoryCard.all_categories</code>
         </li>
@@ -560,10 +560,10 @@
           <code class="ruby">  def index</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="3">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="5" data-linenumber="3">
+          <span class="hits">5</span>
           
-          <code class="ruby">    if (params[:category] == &quot;all&quot;)</code>
+          <code class="ruby">    if (params[:category] == &quot;All Categories&quot; || params[:category] == &quot;all&quot;)</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="4">
@@ -572,14 +572,14 @@
           <code class="ruby">      @memorycards = MemoryCard.all</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="5">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="5" data-linenumber="5">
+          <span class="hits">5</span>
           
           <code class="ruby">    elsif(params[:category])</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="6">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="5" data-linenumber="6">
+          <span class="hits">5</span>
           
           <code class="ruby">      @memorycards = MemoryCard.where(:category =&gt; params[:category])</code>
         </li>
@@ -602,8 +602,8 @@
           <code class="ruby">    end</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="10">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="5" data-linenumber="10">
+          <span class="hits">5</span>
           
           <code class="ruby">    @category = params[:category] || &quot;All Categories&quot;</code>
         </li>
@@ -993,11 +993,11 @@
         <div class="source_table" id="3a9caf025cec332e98fb2c82e2f76560e2bea29a">
   <div class="header">
     <h3>app/controllers/users_controller.rb</h3>
-    <h4><span class="red">67.21 %</span> covered</h4>
+    <h4><span class="red">60.66 %</span> covered</h4>
     <div>
       <b>61</b> relevant lines. 
-      <span class="green"><b>41</b> lines covered</span> and
-      <span class="red"><b>20</b> lines missed.</span>
+      <span class="green"><b>37</b> lines covered</span> and
+      <span class="red"><b>24</b> lines missed.</span>
     </div>
   </div>
   
@@ -1226,8 +1226,8 @@
           <code class="ruby">  def create</code>
         </li>
       
-        <li class="covered" data-hits="16" data-linenumber="38">
-          <span class="hits">16</span>
+        <li class="covered" data-hits="15" data-linenumber="38">
+          <span class="hits">15</span>
           
           <code class="ruby">    if (user_params[:first_name] == &quot;&quot; || user_params[:last_name] == &quot;&quot; ||</code>
         </li>
@@ -1262,20 +1262,20 @@
           <code class="ruby">    else</code>
         </li>
       
-        <li class="covered" data-hits="14" data-linenumber="44">
-          <span class="hits">14</span>
+        <li class="covered" data-hits="13" data-linenumber="44">
+          <span class="hits">13</span>
           
           <code class="ruby">      username_check = User.find_by_username(user_params[:username])</code>
         </li>
       
-        <li class="covered" data-hits="14" data-linenumber="45">
-          <span class="hits">14</span>
+        <li class="covered" data-hits="13" data-linenumber="45">
+          <span class="hits">13</span>
           
           <code class="ruby">      email_check = User.find_by_email(user_params[:email])</code>
         </li>
       
-        <li class="covered" data-hits="14" data-linenumber="46">
-          <span class="hits">14</span>
+        <li class="covered" data-hits="13" data-linenumber="46">
+          <span class="hits">13</span>
           
           <code class="ruby">      if (username_check)</code>
         </li>
@@ -1292,8 +1292,8 @@
           <code class="ruby">        redirect_to users_signup_path(:user =&gt; user_params)</code>
         </li>
       
-        <li class="covered" data-hits="13" data-linenumber="49">
-          <span class="hits">13</span>
+        <li class="covered" data-hits="12" data-linenumber="49">
+          <span class="hits">12</span>
           
           <code class="ruby">      elsif(email_check)</code>
         </li>
@@ -1310,8 +1310,8 @@
           <code class="ruby">        redirect_to users_signup_path(:user =&gt; user_params)</code>
         </li>
       
-        <li class="covered" data-hits="12" data-linenumber="52">
-          <span class="hits">12</span>
+        <li class="covered" data-hits="11" data-linenumber="52">
+          <span class="hits">11</span>
           
           <code class="ruby">      elsif (user_params[:password] != user_params[:password_confirmation])</code>
         </li>
@@ -1334,26 +1334,26 @@
           <code class="ruby">      else</code>
         </li>
       
-        <li class="covered" data-hits="11" data-linenumber="56">
-          <span class="hits">11</span>
+        <li class="covered" data-hits="10" data-linenumber="56">
+          <span class="hits">10</span>
           
           <code class="ruby">        @user = User.new(user_params)</code>
         </li>
       
-        <li class="covered" data-hits="11" data-linenumber="57">
-          <span class="hits">11</span>
+        <li class="covered" data-hits="10" data-linenumber="57">
+          <span class="hits">10</span>
           
           <code class="ruby">          if @user.save</code>
         </li>
       
-        <li class="covered" data-hits="11" data-linenumber="58">
-          <span class="hits">11</span>
+        <li class="covered" data-hits="10" data-linenumber="58">
+          <span class="hits">10</span>
           
           <code class="ruby">            session[:user_id] = @user.id</code>
         </li>
       
-        <li class="covered" data-hits="11" data-linenumber="59">
-          <span class="hits">11</span>
+        <li class="covered" data-hits="10" data-linenumber="59">
+          <span class="hits">10</span>
           
           <code class="ruby">            redirect_to &#39;/&#39;</code>
         </li>
@@ -1412,14 +1412,14 @@
           <code class="ruby">  def sign_up</code>
         </li>
       
-        <li class="covered" data-hits="39" data-linenumber="69">
-          <span class="hits">39</span>
+        <li class="covered" data-hits="37" data-linenumber="69">
+          <span class="hits">37</span>
           
           <code class="ruby">    if (params.key?(&quot;user&quot;))</code>
         </li>
       
-        <li class="covered" data-hits="22" data-linenumber="70">
-          <span class="hits">22</span>
+        <li class="covered" data-hits="21" data-linenumber="70">
+          <span class="hits">21</span>
           
           <code class="ruby">      @user_params = user_params</code>
         </li>
@@ -1430,8 +1430,8 @@
           <code class="ruby">    else</code>
         </li>
       
-        <li class="covered" data-hits="17" data-linenumber="72">
-          <span class="hits">17</span>
+        <li class="covered" data-hits="16" data-linenumber="72">
+          <span class="hits">16</span>
           
           <code class="ruby">      redirect_to users_signup_path(:user =&gt; {:first_name =&gt; &quot;&quot;, :last_name =&gt; &quot;&quot;, :username =&gt; &quot;&quot;, :email =&gt; &quot;&quot;, :password =&gt; &quot;&quot;, :password_confirmation =&gt; &quot;&quot;})</code>
         </li>
@@ -1610,20 +1610,20 @@
           <code class="ruby">  def homefeed</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="102">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="102">
+          
           
           <code class="ruby">    if params[&quot;user&quot;] != nil and params[&quot;user&quot;][&quot;memory&quot;] != nil</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="103">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="103">
+          
           
           <code class="ruby">      flash[:notice] = &quot;memory was successfully edited&quot;</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="104">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="104">
+          
           
           <code class="ruby">      session[:recorded_memory] = params[&quot;user&quot;][&quot;memory&quot;]</code>
         </li>
@@ -1634,8 +1634,8 @@
           <code class="ruby">    end</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="106">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="106">
+          
           
           <code class="ruby">    redirect_to &#39;/&#39;</code>
         </li>
@@ -1700,8 +1700,8 @@
           <code class="ruby">    def user_params</code>
         </li>
       
-        <li class="covered" data-hits="177" data-linenumber="117">
-          <span class="hits">177</span>
+        <li class="covered" data-hits="165" data-linenumber="117">
+          <span class="hits">165</span>
           
           <code class="ruby">      params.require(:user).permit(:first_name, :last_name, :username, :email, :password, :password_confirmation)</code>
         </li>
@@ -1796,8 +1796,8 @@
           <code class="ruby">  def current_user</code>
         </li>
       
-        <li class="covered" data-hits="105" data-linenumber="7">
-          <span class="hits">105</span>
+        <li class="covered" data-hits="93" data-linenumber="7">
+          <span class="hits">93</span>
           
           <code class="ruby">    @current_user ||= User.find(session[:user_id]) if session[:user_id]</code>
         </li>
@@ -2012,8 +2012,8 @@
           <code class="ruby">    def self.all_categories</code>
         </li>
       
-        <li class="covered" data-hits="14" data-linenumber="4">
-          <span class="hits">14</span>
+        <li class="covered" data-hits="16" data-linenumber="4">
+          <span class="hits">16</span>
           
           <code class="ruby">        return [&quot;All Categories&quot;, &quot;Personal&quot;, &quot;Historical&quot;, &quot;Favorites&quot;, &quot;Random&quot;]</code>
         </li>
@@ -3711,11 +3711,11 @@
         <div class="source_table" id="c298ae7d9477b92d1529d6cbbdc11fcfd73aff40">
   <div class="header">
     <h3>features/step_definitions/answer_question_steps.rb</h3>
-    <h4><span class="red">50.0 %</span> covered</h4>
+    <h4><span class="red">70.0 %</span> covered</h4>
     <div>
       <b>10</b> relevant lines. 
-      <span class="green"><b>5</b> lines covered</span> and
-      <span class="red"><b>5</b> lines missed.</span>
+      <span class="green"><b>7</b> lines covered</span> and
+      <span class="red"><b>3</b> lines missed.</span>
     </div>
   </div>
   
@@ -3728,8 +3728,8 @@
           <code class="ruby">Given(/^I click on a fill in memory card$/) do</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="2">
-          
+        <li class="covered" data-hits="2" data-linenumber="2">
+          <span class="hits">2</span>
           
           <code class="ruby">  pending # Write code here that turns the phrase above into concrete actions</code>
         </li>
@@ -3752,10 +3752,10 @@
           <code class="ruby">Given(/^I click on a multiple choice memory card$/) do</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="6">
+        <li class="covered" data-hits="2" data-linenumber="6">
+          <span class="hits">2</span>
           
-          
-          <code class="ruby">  pending # Write code here that turns the phrase above into concrete actions</code>
+          <code class="ruby">  click_on(:id=&gt; mc1)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="7">
@@ -3860,50 +3860,50 @@
           <code class="ruby">Given /I am logged in/ do </code>
         </li>
       
-        <li class="covered" data-hits="6" data-linenumber="2">
-          <span class="hits">6</span>
+        <li class="covered" data-hits="5" data-linenumber="2">
+          <span class="hits">5</span>
           
           <code class="ruby">  visit(&#39;/users/signup&#39;)</code>
         </li>
       
-        <li class="covered" data-hits="6" data-linenumber="3">
-          <span class="hits">6</span>
+        <li class="covered" data-hits="5" data-linenumber="3">
+          <span class="hits">5</span>
           
           <code class="ruby">  fill_in(:id =&gt; &quot;firstname&quot;, :with =&gt; &quot;first&quot;)</code>
         </li>
       
-        <li class="covered" data-hits="6" data-linenumber="4">
-          <span class="hits">6</span>
+        <li class="covered" data-hits="5" data-linenumber="4">
+          <span class="hits">5</span>
           
           <code class="ruby">  fill_in(:id =&gt; &quot;lastname&quot;, :with =&gt; &quot;last&quot;)</code>
         </li>
       
-        <li class="covered" data-hits="6" data-linenumber="5">
-          <span class="hits">6</span>
+        <li class="covered" data-hits="5" data-linenumber="5">
+          <span class="hits">5</span>
           
           <code class="ruby">  fill_in(:id =&gt; &quot;username&quot;, :with =&gt; &quot;username1&quot;)</code>
         </li>
       
-        <li class="covered" data-hits="6" data-linenumber="6">
-          <span class="hits">6</span>
+        <li class="covered" data-hits="5" data-linenumber="6">
+          <span class="hits">5</span>
           
           <code class="ruby">  fill_in(:id =&gt; &quot;email&quot;, :with =&gt; &quot;email@email.com&quot;)</code>
         </li>
       
-        <li class="covered" data-hits="6" data-linenumber="7">
-          <span class="hits">6</span>
+        <li class="covered" data-hits="5" data-linenumber="7">
+          <span class="hits">5</span>
           
           <code class="ruby">  fill_in(:id =&gt; &quot;password&quot;, :with =&gt; &quot;password1&quot;)</code>
         </li>
       
-        <li class="covered" data-hits="6" data-linenumber="8">
-          <span class="hits">6</span>
+        <li class="covered" data-hits="5" data-linenumber="8">
+          <span class="hits">5</span>
           
           <code class="ruby">  fill_in(:id =&gt; &quot;confirmpassword&quot;, :with =&gt; &quot;password1&quot;)</code>
         </li>
       
-        <li class="covered" data-hits="6" data-linenumber="9">
-          <span class="hits">6</span>
+        <li class="covered" data-hits="5" data-linenumber="9">
+          <span class="hits">5</span>
           
           <code class="ruby">  click_on(:id =&gt; &#39;signUpSubmitButton&#39;)</code>
         </li>
@@ -3932,8 +3932,8 @@
           <code class="ruby">Then /I should see &quot;(.*)&quot;/ do |arg1|</code>
         </li>
       
-        <li class="covered" data-hits="13" data-linenumber="14">
-          <span class="hits">13</span>
+        <li class="covered" data-hits="11" data-linenumber="14">
+          <span class="hits">11</span>
           
           <code class="ruby">    expect(page.html).to include(arg1)</code>
         </li>
@@ -4161,11 +4161,11 @@
         <div class="source_table" id="404cff9eb2d876ba4164fe28b16a82faf737656a">
   <div class="header">
     <h3>features/step_definitions/sign_up_steps.rb</h3>
-    <h4><span class="green">91.3 %</span> covered</h4>
+    <h4><span class="yellow">86.96 %</span> covered</h4>
     <div>
       <b>23</b> relevant lines. 
-      <span class="green"><b>21</b> lines covered</span> and
-      <span class="red"><b>2</b> lines missed.</span>
+      <span class="green"><b>20</b> lines covered</span> and
+      <span class="red"><b>3</b> lines missed.</span>
     </div>
   </div>
   
@@ -4184,8 +4184,8 @@
           <code class="ruby">Given(/^(?:I )am on (.+)$/) do |page_name|</code>
         </li>
       
-        <li class="covered" data-hits="15" data-linenumber="3">
-          <span class="hits">15</span>
+        <li class="covered" data-hits="12" data-linenumber="3">
+          <span class="hits">12</span>
           
           <code class="ruby">  case page_name</code>
         </li>
@@ -4262,8 +4262,8 @@
           <code class="ruby">When(/^I click on &quot;([^&quot;]*)&quot;$/) do |arg1|</code>
         </li>
       
-        <li class="covered" data-hits="17" data-linenumber="16">
-          <span class="hits">17</span>
+        <li class="covered" data-hits="24" data-linenumber="16">
+          <span class="hits">24</span>
           
           <code class="ruby">  case arg1</code>
         </li>
@@ -4322,8 +4322,8 @@
           <code class="ruby">    when /^Update Memory$/ </code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="26">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="26">
+          
           
           <code class="ruby">      click_on(:id =&gt; &quot;updateMemoryButton&quot;)</code>
         </li>
@@ -4334,8 +4334,8 @@
           <code class="ruby">    when /^Personal$/</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="28">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="5" data-linenumber="28">
+          <span class="hits">5</span>
           
           <code class="ruby">      click_on(:id=&gt; &quot;personal&quot;)</code>
         </li>
@@ -4346,8 +4346,8 @@
           <code class="ruby">    when/^Menu$/</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="30">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="5" data-linenumber="30">
+          <span class="hits">5</span>
           
           <code class="ruby">      click_on(:id=&gt; &quot;menubutton&quot;)</code>
         </li>
@@ -4412,20 +4412,20 @@
           <code class="ruby">  # This should also be the naming convention for the id of all input text fields</code>
         </li>
       
-        <li class="covered" data-hits="32" data-linenumber="41">
-          <span class="hits">32</span>
+        <li class="covered" data-hits="31" data-linenumber="41">
+          <span class="hits">31</span>
           
           <code class="ruby">  field = field.delete(&quot; &quot;)</code>
         </li>
       
-        <li class="covered" data-hits="32" data-linenumber="42">
-          <span class="hits">32</span>
+        <li class="covered" data-hits="31" data-linenumber="42">
+          <span class="hits">31</span>
           
           <code class="ruby">  field.downcase!</code>
         </li>
       
-        <li class="covered" data-hits="32" data-linenumber="43">
-          <span class="hits">32</span>
+        <li class="covered" data-hits="31" data-linenumber="43">
+          <span class="hits">31</span>
           
           <code class="ruby">  fill_in(:id =&gt; field, :with =&gt; input)</code>
         </li>

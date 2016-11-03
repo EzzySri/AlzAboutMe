@@ -1,6 +1,6 @@
 class MemoryCardsController < ApplicationController
   def index
-    if (params[:category] == "all")
+    if (params[:category] == "All Categories" || params[:category] == "all")
       @memorycards = MemoryCard.all
     elsif(params[:category])
       @memorycards = MemoryCard.where(:category => params[:category])

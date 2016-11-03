@@ -3,7 +3,7 @@ Given(/^I click on a fill in memory card$/) do
 end
 
 Given(/^I click on a multiple choice memory card$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  click_on(:id=> mc1)
 end
 
 Then(/^A should be checked$/) do

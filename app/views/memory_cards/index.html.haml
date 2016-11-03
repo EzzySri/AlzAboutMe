@@ -3,6 +3,7 @@
 
 %h2= "Welcome #{current_user.first_name} #{current_user.last_name}"
 %h2= @category
+
 - @memorycards.each do |memcard|
   -if memcard.editing == false
     = link_to (edit_memory_card_path(:id => memcard.id)) do
