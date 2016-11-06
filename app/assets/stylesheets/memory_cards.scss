@@ -3,13 +3,21 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .frontCard {
+    position: relative;
     height: 200px;
     width: 500px;
     background-color: silver;
 }
 
 .backCard{
+    position: relative;
     height: 200px;
     width: 500px;
     background-color: rgb(217, 217, 217);
+}
+
+.button{
+    position: absolute;
+    right: 450px;
+    top: 150px;
 }

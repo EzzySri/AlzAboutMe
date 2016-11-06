@@ -9,7 +9,11 @@
                     %b= memcard.answer 
                 -else 
                     = choice 
-                %br 
+                %br
+        %br 
+        = button_to "Edit", "/memory_cards/"+ memcard.id.to_s
+            
+            
             
 -if memcard.editing == true
     .backCard
