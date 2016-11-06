@@ -5,6 +5,7 @@
         -if memcard.answer.nil? == false
             - memcard.multiple_choice_entries.each do |choice|
                 -if choice == memcard.answer
+                    You Chose: 
                     %b= memcard.answer 
                 -else 
                     = choice 
