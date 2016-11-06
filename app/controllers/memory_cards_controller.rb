@@ -25,14 +25,6 @@ class MemoryCardsController < ApplicationController
   end
   
   def show
-    MemoryCard.all.each do |memcard|
-      @memcard = memcard
-      if memcard.question_type == "text"
-        render 'short'
-      else 
-        render 'multiple'
-      end 
-    end 
   end 
 
   def save
