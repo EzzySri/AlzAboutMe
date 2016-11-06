@@ -1,13 +1,8 @@
 class MemoryCardsController < ApplicationController
+  helper_method :show
+  
   def index
-    if (params[:category] == "All Categories" || params[:category] == "all")
-      @memorycards = MemoryCard.all
-    elsif(params[:category])
-      @memorycards = MemoryCard.where(:category => params[:category])
-    else
-      @memorycards = MemoryCard.all
-    end
-    @category = params[:category] || "All Categories"
+    @memorycards = MemoryCard.all
   end
   
   def edit
@@ -19,9 +14,7 @@ class MemoryCardsController < ApplicationController
   end
   
   def update
-    flash[:message] = "Memory Saved"
-    puts params, "QQQQ"
-    # puts params["user"]["memory"], "FFFFFFFF"
+    # puts params, "QQQQ"
     @memcard = MemoryCard.find(params[:id])
     @memcard.editing = false
     if params["user"].nil? == false
@@ -30,6 +23,17 @@ class MemoryCardsController < ApplicationController
     @memcard.save
     redirect_to memory_cards_path
   end
+  
+  def show
+    MemoryCard.all.each do |memcard|
+      @memcard = memcard
+      if memcard.question_type == "text"
+        render 'short'
+      else 
+        render 'multiple'
+      end 
+    end 
+  end 
 
   def save
   end

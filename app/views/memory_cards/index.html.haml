@@ -2,51 +2,8 @@
 %link{:rel => :stylesheet, :href => "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css", :integrity => "sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u", :crossorigin => "anonymous"}
 
 %h1= "Welcome #{current_user.first_name} #{current_user.last_name}"
-%h2= @category
-
-- counter = 0
-- if flash[:message]
-  = flash[:message]
+ 
 - @memorycards.each do |memcard|
-  - counter += 1
-  -if memcard.editing == false
-    = link_to edit_memory_card_path(:id => memcard.id), :id => "memLink" + counter.to_s do
-      -if memcard.question_type == "text"
-        .frontCard{:id => "short_answer_card"}
-          // = button_to "Edit Memory", edit_memory_card_path(:id => memcard.id)
-          %h1= memcard.question
-          -if memcard.answer.nil? == false
-            %h3= memcard.answer
-      -if memcard.question_type == "multiple_choice"
-        .frontCard{:id => "mult_answer_card"}
-          // = button_to "Edit Memory", edit_memory_card_path(:id => memcard.id)
-          %h1= memcard.question
-          -if memcard.answer.nil? == false
-            %h3= memcard.answer
-          // - memcard.multiple_choice_entries.each do |entry|
-          //   %h1= entry 
-  -if memcard.editing == true
-    .backCard
-      %h1= memcard.question
-      -if memcard.question_type == "text"
-        = form_tag "/memory_cards/"+ memcard.id.to_s , :method => :put do
-          .form-group
-          = label :memory, :field, 'Answer: '
-          - if memcard.answer.nil? == false
-            = text_field :user, 'memory', :value => memcard.answer, :type => "text", :class => "form-control", :id => "memoryfield", :placeholder => "Answer here"
-          -else
-            = text_field :user, 'memory', :value => memcard.answer, :type => "text", :class => "form-control", :id => "memoryfield", :placeholder => "Answer here"
-          = submit_tag 'Update Memory', {:id => "updateMemoryButton"}
-        = button_to "Cancel", "/memory_cards/"+ memcard.id.to_s
-      
-      -if memcard.question_type == "multiple_choice"
-        = form_tag "/memory_cards/"+ memcard.id.to_s , :method => :put do
-          .form-group
-          = label :memory, :field, 'Answer: '
-          = memcard.multiple_choice_entries.each do |choice|
-            = radio_button :user, "memory", choice
-            = label "user_memory", choice
-          = submit_tag 'Update Memory', {:id => "updateMemoryButton"}
-        = button_to "Cancel", "/memory_cards/"+ memcard.id.to_s
-  %br
+    = memcard.show
+    %br
       
