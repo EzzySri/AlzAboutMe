@@ -1,0 +1,17 @@
+-if memcard.editing == false
+    .frontCard{:id => "mult_answer_card"}
+        %h1= memcard.question
+        -if memcard.answer.nil? == false
+            %h3= memcard.answer
+            
+-if memcard.editing == true
+    .backCard
+        = form_tag "/memory_cards/"+ memcard.id.to_s , :method => :put do
+            .form-group
+                = label :memory, :field, 'Answer: '
+                = memcard.multiple_choice_entries.each do |choice|
+                = radio_button :user, "memory", choice
+                = label "user_memory", choice
+            = submit_tag 'Update Memory', {:id => "updateMemoryButton"}
+        = button_to "Cancel", "/memory_cards/"+ memcard.id.to_s
+        

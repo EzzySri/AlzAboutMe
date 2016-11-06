@@ -4,6 +4,9 @@
 %h1= "Welcome #{current_user.first_name} #{current_user.last_name}"
  
 - @memorycards.each do |memcard|
-    = memcard.show
+    - if memcard.question_type == 'text'
+        = render 'short', :memcard => memcard
+    - else 
+        = render 'multiple', :memcard => memcard
     %br
       

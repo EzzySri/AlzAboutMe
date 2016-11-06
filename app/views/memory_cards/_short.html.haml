@@ -1,0 +1,19 @@
+-if memcard.editing == false
+    = link_to (edit_memory_card_path(:id => memcard.id)) do
+        .frontCard{:id => "short_answer_card"}
+            %h1= memcard.question
+            -if memcard.answer.nil? == false
+                %h3= memcard.answer
+            
+-if memcard.editing == true
+    .backCard
+        %h1= memcard.question
+        = form_tag "/memory_cards/"+ memcard.id.to_s , :method => :put do
+            .form-group
+                = label :memory, :field, 'Answer: '
+                - if memcard.answer.nil? == false
+                    = text_field :user, 'memory', :value => memcard.answer, :type => "text", :class => "form-control", :id => "memoryfield", :placeholder => "Answer here"
+                -else
+                    = text_field :user, 'memory', :value => memcard.answer, :type => "text", :class => "form-control", :id => "memoryfield", :placeholder => "Answer here"
+            = submit_tag 'Update Memory', {:id => "updateMemoryButton"}
+        = button_to "Cancel", "/memory_cards/"+ memcard.id.to_s
