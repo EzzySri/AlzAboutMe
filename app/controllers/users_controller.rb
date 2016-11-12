@@ -54,6 +54,8 @@ class UsersController < ApplicationController
         redirect_to users_signup_path(:user => user_params)
       else
         @user = User.new(user_params)
+         puts "reached"
+         @user.getInitialCards
           if @user.save
             session[:user_id] = @user.id
             redirect_to '/'

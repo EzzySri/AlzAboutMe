@@ -2,8 +2,21 @@ class MemoryCardsController < ApplicationController
   helper_method :show
   
   def index
-    @memorycards = MemoryCard.all
-  end
+   if (params[:category] == "All Categories" || params[:category] == "all")
+     @memorycards = MemoryCard.all
+   elsif(params[:category])
+     @memorycards = MemoryCard.where(:user_id => session[:user_id], :category => params[:category])
+   else
+     @memorycards = MemoryCard.all
+   end
+   @category = params[:category] || "All Categories"
+ end
+  
+  # def index
+  #   puts params, "JAJAJAJA"
+  #   puts session[:user_id]
+  #   @memorycards = MemoryCard.where(:user_id => session[:user_id] )
+  # end
   
   def edit
     # puts params
