@@ -1,10 +1,10 @@
 -if memcard.editing == false
-    .frontCard{:id => "short_answer_card"}
-        = link_to (edit_memory_card_path(:id => memcard.id)) do
+    = link_to (edit_memory_card_path(:id => memcard.id)) do
+        .frontCard{:id => "short_answer_card"}
             %h1= memcard.question
-        -if memcard.answer.nil? == false
-            %h3= memcard.answer
-        = button_to "Edit", "/memory_cards/"+ memcard.id.to_s
+            -if memcard.answer.nil? == false
+                %h3= memcard.answer
+        // = button_to "Edit", "/memory_cards/"+ memcard.id.to_s
             
 -if memcard.editing == true
     .backCard
