@@ -12,11 +12,7 @@ class MemoryCardsController < ApplicationController
    @category = params[:category] || "All Categories"
  end
   
-  # def index
-  #   puts params, "JAJAJAJA"
-  #   puts session[:user_id]
-  #   @memorycards = MemoryCard.where(:user_id => session[:user_id] )
-  # end
+
   
   def edit
     # puts params
