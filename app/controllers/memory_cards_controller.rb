@@ -2,13 +2,15 @@ class MemoryCardsController < ApplicationController
   helper_method :show
   
   def index
-   if (params[:category] == "All Categories" || params[:category] == "all")
-     @memorycards = MemoryCard.all
-   elsif(params[:category])
-     @memorycards = MemoryCard.where(:user_id => session[:user_id], :category => params[:category])
-   else
-     @memorycards = MemoryCard.all
-   end
+    if params[:category].nil?
+      @memorycards = MemoryCard.where(:user_id => session[:user_id], :category => session[:category])
+    else
+      session[:category] = params[:category]
+        @memorycards = MemoryCard.where(:user_id => session[:user_id], :category => params[:category])
+      end
+    if session[:category] == "All Categories"
+       @memorycards = MemoryCard.where(:user_id => session[:user_id]) 
+    end
    @category = params[:category] || "All Categories"
  end
   
@@ -33,6 +35,23 @@ class MemoryCardsController < ApplicationController
     redirect_to memory_cards_path
   end
   
+  def share
+    puts params, "JAJAAJ"
+    @user_to_share_with_name = params["user"]["share"]
+    @user_to_share_with = User.where(:username => @user_to_share_with_name)[0]
+    puts @user_to_share_with.id, "IDIDIDIDIDID"
+    @memcard = MemoryCard.where(:id => params[:id])[0]
+    @copy = @memcard.dup
+    @copy.category = "Shared"
+    @copy.save
+    # @sharedcard = SharedCard.create(:question => @memcard.question, :answer => @memcard.answer, )
+    @user_to_share_with.memory_cards << @copy
+    flash[:notice] = 'Memory successfully shared with #{@user_to_share_with_name}'
+    redirect_to memory_cards_path
+    
+    
+  end
+    
   def show
   end 
 

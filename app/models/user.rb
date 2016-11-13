@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
     has_many :memory_cards
+    has_many :shared_cards
 	has_secure_password
 	
 	def getInitialCards
