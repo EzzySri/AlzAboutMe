@@ -5,6 +5,6 @@ class MemoryCard < ActiveRecord::Base
 	end
     
     def self.all_categories
-        return ["All Categories", "Personal", "Historical", "Favorites", "Random"]
+        return ["All Categories", "Personal", "Historical", "Favorites", "Random", "Shared"]
     end
 end
