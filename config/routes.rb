@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
-  
+  get 'users/settings' => 'users#settings'
   get 'users/new'
 
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)

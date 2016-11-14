@@ -1,0 +1,26 @@
+%link{:rel => :stylesheet, :href => "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css", :integrity => "sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u", :crossorigin => "anonymous"}
+
+.container-fluid
+    %h2#settingsHeader= "#{current_user.username}".upcase! + "'s settings"
+    
+    - flash.each do |type, msg|
+        - if type == "notice"
+            .alert.alert-success{:role => "alert"}= msg
+        - if type == "alert"
+            .alert.alert-warning{:role => "alert"}= msg
+        - if type == "message"
+            .alert.alert-info{:role => "alert"}= msg
+    
+    = form_tag user_path(current_user), :method => :put  do
+        .form-group
+            = label :user, :first_name, 'First Name: '
+            = text_field :user, 'first_name', {:type => "text", :class => "form-control", :id => "firstname", :placeholder => "First", :value => current_user.first_name}
+        .form-group
+            = label :user, :last_name, 'Last Name: '
+            = text_field :user, 'last_name', {:type => "text", :class => "form-control", :id => "lastname", :placeholder => "Last", :value => current_user.last_name }
+        .form-group
+            = label :user, :email, 'Email: '
+            = text_field :user, 'email', {:type => "email", :class => "form-control", :id => "email", :placeholder => "Email", :value => current_user.email}
+        .btn 
+            = submit_tag 'Save', {:id => "signUpSubmitButton"}
+    

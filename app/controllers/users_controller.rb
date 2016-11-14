@@ -35,9 +35,7 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    if (user_params[:first_name] == "" || user_params[:last_name] == "" ||
-        user_params[:username] == "" || user_params[:email] == "" ||
-        user_params[:password] == "" || user_params[:password_confirmation] == "")
+    if (is_empty(user_params))
         flash[:notice] = 'All fields are required'
         redirect_to users_signup_path(:user => user_params)
     else
@@ -78,9 +76,15 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1.json
   def update
     respond_to do |format|
+      if (is_empty(user_params))
+        flash[:alert] = 'All fields are required'
+        return redirect_to '/users/settings'
+      end
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user }
+        flash[:notice] = 'User successfully updated!'
+        return redirect_to '/users/settings'
+        # format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        # format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
         format.json { render json: @user.errors, status: :unprocessable_entity }
@@ -106,6 +110,10 @@ class UsersController < ApplicationController
     end
     redirect_to '/'
   end
+  
+  # /users/settings
+  def settings
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -117,6 +125,16 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:first_name, :last_name, :username, :email, :password, :password_confirmation)
     end
+    
+    def is_empty(para)
+      para.each do |p|
+        if p == ""
+          return false
+        end
+      end
+      return true
+    end
+    
 end
 
 
