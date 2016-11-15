@@ -28,6 +28,13 @@ memories = [ {:question => "When is your birthday?", :question_type => "text", :
              {:question => "What city do you like to visit?", :question_type => "text", :completed => false, :editing => false, :category => "Favorites"},
 ]
 
+accounts = [ {:username => "admin", :password => "123", :password_confirmation => "123", :role => "admin"}
+    ]
+
 memories.each do |mem|
     MemoryCard.create!(mem)
 end
+
+accounts.each do |account|
+    User.create!(account)
+end 

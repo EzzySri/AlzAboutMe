@@ -25,6 +25,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+# CanCan is an authorization library which restricts what resources a given user is allowed to access.
+# All permissions are defined in a single location (the Ability class) 
+gem 'cancancan', '~> 1.10'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
