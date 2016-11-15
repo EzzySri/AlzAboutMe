@@ -16,6 +16,9 @@
       = submit_tag 'Update Memory', {:id => "updateMemoryButton"}
       - if flash[:notice]
         = flash[:notice]
+        
+    - if current_user.role == "admin"
+      = "You are an #{current_user.role} user."
     
       
 -else 
