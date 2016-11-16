@@ -11,9 +11,8 @@
     - else 
         = render 'multiple', :memcard => memcard
     %br
-
-	%div{:id => "memory-card-" + memcard.id.to_s}	
-		= render 'memory_card', :memcard => memcard
-		%br
+    %div{:id => "memory-card-" + memcard.id.to_s}	
+        = render 'memory_card', :memcard => memcard
+        %br
 
       
