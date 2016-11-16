@@ -7,7 +7,7 @@ The project is for Digital Caregiver Solutions | Mission: To provide dementia an
 <br />
 Stage deployment:<br />
 <a href="https://alzaboutme.herokuapp.com/">AlzAboutMe on Heroku</a>
-<br /><br />
+<br /><br /><br />
 Pivotal Tracker:<br />
 <a href="https://www.pivotaltracker.com/n/projects/1884943">AlzAboutMe Pivotal Tracker</a>
 
