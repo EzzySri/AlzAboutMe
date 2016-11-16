@@ -12,7 +12,8 @@
             -if current_user
                 .pull-right
                     = "Signed in as #{current_user.username} |" 
-                    = link_to("Logout", '/logout', id: "logoutLink")
+                    = link_to("Logout", '/logout', id: "logoutLink") + " | "
+                    = link_to('Settings', users_settings_path, id: "settingsLink")
                 .pull-left
                     %a#menubutton{:href => "javascript:void(0)"} Menu
             -else

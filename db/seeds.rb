@@ -22,7 +22,7 @@ memories = [ {:question => "When is your birthday?", :question_type => "text", :
              {:question => "When is yor father's birthday?", :question_type => "text", :completed => false, :editing => false, :category => "Historical"},
              {:question => "Where does your father come from?", :question_type => "text", :completed => false, :editing => false, :category => "Historical"},
              {:question => "What color do you like to wear?", :question_type => "text", :completed => false, :editing => false, :category => "Favorites"},
-             {:question => "What's your favorite color?", :question_type => "multiple_choice", :question_choices => "Red|Blue|Yellow|Green", :completed => false, :editing => false, :category => "Favorites"},
+             {:question => "What's your favorite color?", :question_type => "multiple_choice", :question_choices => "Red|Orange|Yellow|Green|Blue|Purple", :completed => false, :editing => false, :category => "Favorites"},
              {:question => "What color do you like to wear?", :question_type => "text", :completed => false, :editing => false, :category => "Favorites"},
              {:question => "What pet would you like to own?", :question_type => "text", :completed => false, :editing => false, :category => "Favorites"},
              {:question => "What city do you like to visit?", :question_type => "text", :completed => false, :editing => false, :category => "Favorites"},

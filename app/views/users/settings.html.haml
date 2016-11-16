@@ -1,0 +1,29 @@
+-# in app/views/users/sign_up.html.haml
+
+%link{:rel => :stylesheet, :href => "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css", :integrity => "sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u", :crossorigin => "anonymous"}
+
+.container-fluid
+%h2 User Settings
+
+
+%h3 User Information
+-if current_user
+  .col-xs-6
+    %p="Name: #{current_user.first_name} #{current_user.last_name}"
+    %p="Username: #{current_user.username}"
+    %p="Email: #{current_user.email}"
+    %p="Password: *******"
+  .col-xs-6
+    %p=link_to('Change name', users_settings_path, id: "changeNameLink")
+    %p=link_to('Change username', users_settings_path, id: "changeUsernameLink")
+    %p=link_to('Change email', users_settings_path, id: "changeEmailLink")
+    %p=link_to('Change Password', users_settings_path, id: "changePasswordLink")
+%h3 Framework of Questions
+="Current famework:"
+
+#flash-display
+  - flash.each do |type, msg|
+    %div{:class => "alert alert-#{type == :notice ? "success" : type} fadeout", "data-dismiss" => "alert"}
+      %button.close &times;
+      = msg if msg.is_a?(String)
+
