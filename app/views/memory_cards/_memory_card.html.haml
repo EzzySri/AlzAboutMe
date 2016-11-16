@@ -1,9 +1,3 @@
-- if memcard.question_type == 'text'
-    = render 'short', :memcard => memcard
-- else 
-    = render 'multiple', :memcard => memcard
-    
-    
 -if memcard.category == 'Shared'
     = render 'shared', :memcard => memcard
 - elsif memcard.question_type == 'text'
