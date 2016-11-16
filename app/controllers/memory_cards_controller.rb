@@ -6,22 +6,26 @@ class MemoryCardsController < ApplicationController
   end
   
   def edit
-    # puts params
     @memcard = MemoryCard.find(params[:id])
     @memcard.editing = true
     @memcard.save
-    redirect_to memory_cards_path
+    
+    respond_to do |format|
+      format.js
+    end
   end
   
   def update
-    # puts params, "QQQQ"
     @memcard = MemoryCard.find(params[:id])
     @memcard.editing = false
     if params["user"].nil? == false
       @memcard.answer = params["user"]["memory"]
     end
     @memcard.save
-    redirect_to memory_cards_path
+
+    respond_to do |format|
+      format.js
+    end
   end
   
   def show
@@ -31,5 +35,12 @@ class MemoryCardsController < ApplicationController
   end
 
   def exit
+    @memcard = MemoryCard.find(params[:id])
+    @memcard.editing = false
+    @memcard.save
+    
+    respond_to do |format|
+      format.js
+    end
   end
 end
