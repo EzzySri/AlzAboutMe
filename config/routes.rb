@@ -1,12 +1,10 @@
 Rails.application.routes.draw do
   
-  # get 'memory_cards/update'
 
-  # get 'memory_cards/save'
 
   post 'memory_cards/:id/edit' => 'memory_cards#edit'
   post 'memory_cards/:id' => 'memory_cards#update' #for the 'cancel button on memory cards'
-
+  put 'memory_cards/:id/share' => 'memory_cards#share'
   # these routes are for showing users a login form, logging them in, and logging them out.
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
@@ -38,6 +36,7 @@ Rails.application.routes.draw do
   resources :memory_cards
   get '/memory_cards/:category', :to => 'memory_cards#index'
   get '/memory_cards', :to => 'memory_cards#index'
+  
   
    
   

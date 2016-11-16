@@ -4,14 +4,14 @@
 
 .frontCard {
     position: relative;
-    height: 200px;
+    height: 300px;
     width: 500px;
     background-color: silver;
 }
 
 .backCard{
     position: relative;
-    height: 200px;
+    height: 300px;
     width: 500px;
     background-color: rgb(217, 217, 217);
 }
@@ -20,4 +20,12 @@
     position: absolute;
     right: 450px;
     top: 150px;
+}
+
+#sharefield{
+    z-index: 5;
+}
+
+#shareButton{
+    z-index: 5;
 }
