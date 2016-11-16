@@ -18,14 +18,14 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def homefeed
-    puts "flash recorded"
-    if params["user"] != nil and params["user"]["memory"] != nil
-      flash[:notice] = "memory was successfully created."
-      session[:recorded_memory] = params["user"]["memory"]
-      puts flash
-    end
-  end
+  # def homefeed
+  #   puts "flash recorded"
+  #   if params["user"] != nil and params["user"]["memory"] != nil
+  #     flash[:notice] = "memory was successfully created."
+  #     session[:recorded_memory] = params["user"]["memory"]
+  #     puts flash
+  #   end
+  # end
 
 
   # GET /users/1/edit
@@ -99,13 +99,13 @@ class UsersController < ApplicationController
     end
   end
   
-  def homefeed
-    if params["user"] != nil and params["user"]["memory"] != nil
-      flash[:notice] = "memory was successfully edited"
-      session[:recorded_memory] = params["user"]["memory"]
-    end
-    redirect_to '/'
-  end
+  # def homefeed
+  #   if params["user"] != nil and params["user"]["memory"] != nil
+  #     flash[:notice] = "memory was successfully edited"
+  #     session[:recorded_memory] = params["user"]["memory"]
+  #   end
+  #   redirect_to '/'
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.
