@@ -3,6 +3,7 @@
 
 %h1= "Welcome #{current_user.first_name} #{current_user.last_name}"
 - @memorycards.each do |memcard|
+
     -if memcard.category == 'Shared'
         = render 'shared', :memcard => memcard
     - elsif memcard.question_type == 'text'
@@ -10,4 +11,9 @@
     - else 
         = render 'multiple', :memcard => memcard
     %br
+
+	%div{:id => "memory-card-" + memcard.id.to_s}	
+		= render 'memory_card', :memcard => memcard
+		%br
+
       

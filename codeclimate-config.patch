@@ -43,7 +43,7 @@ index e69de29..d2ca424 100644
 +- coverage/
 +- config/
 +- db/
-+- features/
++- features/**
 +- script/
 +- spec/
 +- vendor/

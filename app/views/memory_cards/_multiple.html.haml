@@ -1,6 +1,6 @@
 -if memcard.editing == false
     .frontCard{:id => "mult_answer_card"}
-        = link_to (edit_memory_card_path(:id => memcard.id)) do
+        = link_to "/memory_cards/" + memcard.id.to_s + "/edit", {:remote => true, :method => :put} do
             %h1= memcard.question
         -if memcard.answer.nil? == false
             - memcard.multiple_choice_entries.each do |choice|
@@ -11,14 +11,14 @@
                     = choice 
                 %br
         %br 
-        = button_to "Edit", "/memory_cards/"+ memcard.id.to_s
+        = button_to "Edit", "/memory_cards/" + memcard.id.to_s + "/edit", {:remote => true, :method => :put} 
             
             
             
 -if memcard.editing == true
     .backCard
         %h1= memcard.question
-        = form_tag "/memory_cards/"+ memcard.id.to_s , :method => :put do
+        = form_tag "/memory_cards/"+ memcard.id.to_s , {:method => :put, :remote => true} do
             .form-group
             = label :memory, :field, 'Answer: '
             - memcard.multiple_choice_entries.each do |choice|
@@ -27,5 +27,6 @@
                 = label "user_memory", choice
             %br
             = submit_tag 'Update Memory', {:id => "updateMemoryButton"}
-        = button_to "Cancel", "/memory_cards/"+ memcard.id.to_s
+        = button_to "Cancel", "/memory_cards/" + memcard.id.to_s + "/exit", {:remote => true, :method => :put} 
+        
         

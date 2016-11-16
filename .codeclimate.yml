@@ -38,7 +38,7 @@ exclude_paths:
 - coverage/
 - config/
 - db/
-- features/
+- features/**
 - script/
 - spec/
 - vendor/
