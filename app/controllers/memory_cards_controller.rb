@@ -14,6 +14,24 @@ class MemoryCardsController < ApplicationController
     @category = params[:category] || "All Categories"
     @donating_username = session[:donating_username] 
  end
+ 
+  def create
+    memcard_params[:user_id] = current_user.id
+    puts memcard_params, "HELLOHELLOHELLOHELLOHELLOHELLOHELLOHELLO"
+    if (memcard_params[:question] == "" || memcard_params[:category] == "")
+      flash[:notice] = 'All fields required!'
+       redirect_to '/' and return 
+    end 
+    @memcard = MemoryCard.new(memcard_params)
+    if @memcard.save
+      flash[:notice] = 'New Question Saved Successfully !'
+      @memorycards = MemoryCard.all
+      redirect_to '/'
+    else 
+      flash[:notice] = 'Error saving card'
+      redirect_to '/'
+    end 
+  end 
   
   def edit
     @memcard = MemoryCard.find(params[:id])
@@ -61,6 +79,10 @@ class MemoryCardsController < ApplicationController
   def save
   end
 
+   def memcard_params
+      params.require(:memcard).permit(:question, :category, :user_id, :question_type, :question_choices, :completed, :created_at, :updated_at).merge(:user_id => current_user.id, :editing => false)
+  end
+  
   def exit
     @memcard = MemoryCard.find(params[:id])
     @memcard.editing = false

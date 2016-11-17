@@ -29,5 +29,13 @@ memories = [ {:question => "When is your birthday?", :question_type => "text", :
 ]
 
 memories.each do |mem|
-    MemoryCard.create!(mem)
+    MemoryCard.create!(mem.merge(:user_id => "1"))
 end
+
+
+accounts = [ {:username => "admin", :password => "123", :password_confirmation => "123", :role => "admin"}
+    ]
+
+accounts.each do |account|
+    User.create!(account)
+end 
