@@ -71,7 +71,7 @@ class MemoryCardsController < ApplicationController
   #   @user_to_share_with.memory_cards << @copy
   #   flash[:notice] = 'Memory successfully shared with #{@user_to_share_with_name}'
   #   redirect_to memory_cards_path
-  # end
+  # end 
     
   def show
   end 
