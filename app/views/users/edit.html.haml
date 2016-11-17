@@ -15,25 +15,25 @@
   -when 'name'
     .form-group
       = label :user, :first_name, 'First Name: '
-      = text_field :user, 'first_name', {:type => "text", :class => "form-control", :id => "firstname_edit", :value => current_user.first_name}
+      = text_field :user, 'first_name', {:type => "text", :class => "form-control", :id => "firstname", :value => current_user.first_name}
     .form-group
       = label :user, :last_name, 'Last Name: '
-      = text_field :user, 'last_name', {:type => "text", :class => "form-control", :id => "lastname_edit", :value => current_user.last_name }
+      = text_field :user, 'last_name', {:type => "text", :class => "form-control", :id => "lastname", :value => current_user.last_name }
   -when 'email'
     .form-group
       = label :user, :email, 'Email: '
-      = text_field :user, 'email', {:type => "email", :class => "form-control", :id => "email_edit",:value => current_user.email}
+      = text_field :user, 'email', {:type => "email", :class => "form-control", :id => "email",:value => current_user.email}
   -when 'username'
     .form-group
       = label :user, :username, 'Username: '
-      = text_field :user, 'username', {:type => "text", :class => "form-control", :id => "username_edit", :value => current_user.username}
+      = text_field :user, 'username', {:type => "text", :class => "form-control", :id => "username", :value => current_user.username}
   -when 'password'
     .form-group
       = label :user, :new_password, 'New Password: '
-      = text_field :user, 'password', {:type => "password", :class => "form-control", :id => "password_edit", :placeholder => "New Password"}
+      = text_field :user, 'password', {:type => "password", :class => "form-control", :id => "newpassword", :placeholder => "New Password"}
     .form-group
       = label :user, :password_confirmation, 'Confirm New Password: '
-      = text_field :user, 'password_confirmation', {:type => "password", :class => "form-control", :id => "confirm_password_edit", :placeholder => "New Password"}
+      = text_field :user, 'password_confirmation', {:type => "password", :class => "form-control", :id => "confirmnewpassword", :placeholder => "New Password"}
   // .form-group
   //   -if @change == 'password'
   //     = label :user, :password, 'Old Password: '

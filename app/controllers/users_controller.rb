@@ -84,10 +84,12 @@ class UsersController < ApplicationController
           return redirect_to edit_user_path(current_user, 'email')
         end
       end
-      if (!user_params[:new_password].nil?)
-        if (params[:new_password] != params[:confirm_new_password])
-          flash[:Notice] = "New Password Not Confirmed"
+      if (!user_params[:password].nil?)
+        if (user_params[:password] != user_params[:password_confirmation])
+          flash[:alert] = "New Password Not Confirmed"
           return redirect_to edit_user_path(current_user, 'password')
+        else
+          @user.password = params[:password]
         end
       end
       if @user.update(user_params)
