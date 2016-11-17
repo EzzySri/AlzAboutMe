@@ -106,22 +106,15 @@ class UsersController < ApplicationController
 
   # DELETE /users/1
   # DELETE /users/1.json
-  def destroy
-    @user.destroy
-    respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
-      format.json { head :no_content }
+  # def destroy
+  #   @user.destroy
+  #   respond_to do |format|
+  #     format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+  #     format.json { head :no_content }
 
-    end
-  end
-  
-  def homefeed
-    if params["user"] != nil and params["user"]["memory"] != nil
-      flash[:notice] = "memory was successfully edited"
-      session[:recorded_memory] = params["user"]["memory"]
-    end
-    redirect_to '/'
-  end
+  #   end
+  # end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
