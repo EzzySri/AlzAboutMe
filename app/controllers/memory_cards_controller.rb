@@ -5,6 +5,23 @@ class MemoryCardsController < ApplicationController
     @memorycards = MemoryCard.all
   end
   
+  def create
+    puts memcard_params
+    if (memcard_params[:question] == "" || memcard_params[:category] == "")
+      flash[:notice] = 'All fields required!'
+       redirect_to '/' and return 
+    end 
+    @memcard = MemoryCard.new(memcard_params)
+    if @memcard.save
+      flash[:notice] = 'New Question Saved Successfully !'
+      @memorycards = MemoryCard.all
+      redirect_to '/'
+    else 
+      flash[:notice] = 'Error saving card'
+      redirect_to '/'
+    end 
+  end 
+  
   def edit
     # puts params
     @memcard = MemoryCard.find(params[:id])
@@ -28,6 +45,10 @@ class MemoryCardsController < ApplicationController
   end 
 
   def save
+  end
+  
+  def memcard_params
+      params.require(:memcard).permit(:question, :category)
   end
 
   def exit

@@ -5,23 +5,26 @@
 -if current_user
   %div.center-block
     %h3= "Welcome #{current_user.first_name} #{current_user.last_name}"
-    = form_tag users_homefeed_path, :method => :get do
-      .form-group
-      = label :memory, :field, 'Answer: '
-      - if session[:recorded_memory] != nil
-        = text_field :user, 'memory', :value => session[:recorded_memory], :type => "text", :class => "form-control", :id => "memoryfield", :placeholder => "Answer here"
-      -else
-        = text_field :user, 'memory', :type => "text", :class => "form-control", :id => "memoryfield", :placeholder => "Answer here"
-  
-      = submit_tag 'Update Memory', {:id => "updateMemoryButton"}
-      - if flash[:notice]
-        = flash[:notice]
+    - if can? :create, MemoryCard
+      = "You can create memory cards"
+      = form_tag memory_cards_path do
+        .form-group
+        = label :memcard, :question, 'Question: '
+        = text_field :memcard, 'question', {:type => "text", :class => "form-control", :id => "question", :placeholder => "Write a new question"}
+        .form-group
+          = label :memcard, :category, 'Category: '
+          - categories.each do |choice|
+            %br
+            = radio_button :memcard, "category", choice
+            = label "category", choice
+            %br
+            
+        = submit_tag 'Create New MemoryCard', {:id => "createMemoryCardButton"}
+        - if flash[:notice]
+          = flash[:notice]
         
-    - if current_user.role == "admin"
-      = "You are an #{current_user.role} user."
-    
-      
--else 
+
+- else 
   %div
     %h1#welcome_header Welcome to AlzAboutMe
      
