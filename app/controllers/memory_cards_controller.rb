@@ -38,24 +38,22 @@ class MemoryCardsController < ApplicationController
     end
   end
   
-  def share
-    puts params, "JAJAAJ"
-    @user_to_share_with_name = params["user"]["share"]
-    @user_to_share_with = User.where(:username => @user_to_share_with_name)[0]
-    puts @user_to_share_with.id, "IDIDIDIDIDID"
-    @memcard = MemoryCard.where(:id => params[:id])[0]
-    @donating_username = User.where(:id => @memcard.user_id)[0].username
-    session[:donating_username] = @donating_username #store in session so that #index can grab it
-    @copy = @memcard.dup
-    @copy.category = "Shared"
-    @copy.user_id = @user_to_share_with.id
-    @copy.save
-    @user_to_share_with.memory_cards << @copy
-    flash[:notice] = 'Memory successfully shared with #{@user_to_share_with_name}'
-    redirect_to memory_cards_path
-    
-    
-  end
+  # def share
+  #   puts params, "JAJAAJ"
+  #   @user_to_share_with_name = params["user"]["share"]
+  #   @user_to_share_with = User.where(:username => @user_to_share_with_name)[0]
+  #   puts @user_to_share_with.id, "IDIDIDIDIDID"
+  #   @memcard = MemoryCard.where(:id => params[:id])[0]
+  #   @donating_username = User.where(:id => @memcard.user_id)[0].username
+  #   session[:donating_username] = @donating_username #store in session so that #index can grab it
+  #   @copy = @memcard.dup
+  #   @copy.category = "Shared"
+  #   @copy.user_id = @user_to_share_with.id
+  #   @copy.save
+  #   @user_to_share_with.memory_cards << @copy
+  #   flash[:notice] = 'Memory successfully shared with #{@user_to_share_with_name}'
+  #   redirect_to memory_cards_path
+  # end
     
   def show
   end 
