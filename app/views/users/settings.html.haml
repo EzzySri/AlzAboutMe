@@ -5,6 +5,15 @@
 .container-fluid
 %h2 User Settings
 
+- flash.each do |type, msg|
+  - if type == "notice"
+    .alert.alert-success{:role => "alert"}= msg
+  - if type == "alert"
+    .alert.alert-warning{:role => "alert"}= msg
+  - if type == "message"
+    .alert.alert-info{:role => "alert"}= msg
+  - if type == "danger"
+    .alert.alert-danger{:role => "danger"}= msg
 
 %h3 User Information
 -if current_user
@@ -21,9 +30,4 @@
 %h3 Framework of Questions
 ="Current famework:"
 
-#flash-display
-  - flash.each do |type, msg|
-    %div{:class => "alert alert-#{type == :notice ? "success" : type} fadeout", "data-dismiss" => "alert"}
-      %button.close &times;
-      = msg if msg.is_a?(String)
 

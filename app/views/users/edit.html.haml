@@ -1,4 +1,15 @@
 %h1= "Editing User " + @change
+- flash.each do |type, msg|
+  - if type == "notice"
+    .alert.alert-success{:role => "alert"}= msg
+  - if type == "alert"
+    .alert.alert-warning{:role => "alert"}= msg
+  - if type == "message"
+    .alert.alert-info{:role => "alert"}= msg
+  - if type == "danger"
+    .alert.alert-danger{:role => "danger"}= msg
+    
+
 = form_tag user_path, :method => 'put' do
   -case @change
   -when 'name'
@@ -11,7 +22,7 @@
   -when 'email'
     .form-group
       = label :user, :email, 'Email: '
-      = text_field :user, 'email', {:type => "text", :class => "form-control", :id => "email_edit",:value => current_user.email}
+      = text_field :user, 'email', {:type => "email", :class => "form-control", :id => "email_edit",:value => current_user.email}
   -when 'username'
     .form-group
       = label :user, :username, 'Username: '
@@ -19,16 +30,16 @@
   -when 'password'
     .form-group
       = label :user, :new_password, 'New Password: '
-      = text_field :user, 'password', {:type => "text", :class => "form-control", :id => "password_edit", :placeholder => "New Password"}
+      = text_field :user, 'password', {:type => "password", :class => "form-control", :id => "password_edit", :placeholder => "New Password"}
     .form-group
       = label :user, :password_confirmation, 'Confirm New Password: '
-      = text_field :user, 'password_confirmation', {:type => "text", :class => "form-control", :id => "confirm_password_edit", :placeholder => "New Password"}
-  .form-group
-    -if @change == 'password'
-      = label :user, :password, 'Old Password: '
-    -else
-      = label :user, :password, 'Password: '
-    = text_field :user, 'password', {:type => "text", :class => "form-control", :id => "password", :placeholder => "Password"}
+      = text_field :user, 'password_confirmation', {:type => "password", :class => "form-control", :id => "confirm_password_edit", :placeholder => "New Password"}
+  // .form-group
+  //   -if @change == 'password'
+  //     = label :user, :password, 'Old Password: '
+  //   -else
+  //     = label :user, :password, 'Password: '
+  //   = text_field :user, 'password', {:type => "password", :class => "form-control", :id => "password", :placeholder => "Password"}
   .btn 
     = submit_tag 'Submit', {:id => "signUpSubmitButton"}
 

@@ -78,15 +78,17 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1.json
   def update
     respond_to do |format|
-      puts "QQQQQQ"
-      puts user_params
       if (!user_params[:email].nil?)
-        puts "check if being used"
-        puts user_params
+        if (current_user.email_already_used(user_params[:email]))
+          flash[:alert] = "Email Already In Use"
+          return redirect_to edit_user_path(current_user, 'email')
+        end
       end
       if (!user_params[:new_password].nil?)
-        puts "password"
-        puts user_params
+        if (params[:new_password] != params[:confirm_new_password])
+          flash[:Notice] = "New Password Not Confirmed"
+          return redirect_to edit_user_path(current_user, 'password')
+        end
       end
       if @user.update(user_params)
         flash[:notice] = 'User was successfully updated.'
