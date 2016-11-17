@@ -3,10 +3,10 @@ class UsersController < ApplicationController
 
   # GET /users
   # GET /users.json
-  def index
-    @users = User.all
-    @memorycards = MemoryCard.all
-  end
+  # def index
+  #   @users = User.all
+  #   @memorycards = MemoryCard.all
+  # end
 
   # GET /users/1
   # GET /users/1.json
@@ -18,14 +18,14 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def homefeed
-    puts "flash recorded"
-    if params["user"] != nil and params["user"]["memory"] != nil
-      flash[:notice] = "memory was successfully created."
-      session[:recorded_memory] = params["user"]["memory"]
-      puts flash
-    end
-  end
+  # def homefeed
+  #   puts "flash recorded"
+  #   if params["user"] != nil and params["user"]["memory"] != nil
+  #     flash[:notice] = "memory was successfully created."
+  #     session[:recorded_memory] = params["user"]["memory"]
+  #     puts flash
+  #   end
+  # end
 
 
   # GET /users/1/edit
@@ -57,6 +57,7 @@ class UsersController < ApplicationController
         @user = User.new(user_params)
           if @user.save
             session[:user_id] = @user.id
+            @user.getInitialCards
             redirect_to '/'
           else 
             redirect_to users_path
@@ -101,6 +102,7 @@ class UsersController < ApplicationController
       end
     end
   end
+
 
   # DELETE /users/1
   # DELETE /users/1.json

@@ -4,7 +4,7 @@
             %h1= memcard.question
             -if memcard.answer.nil? == false
                 %h3= memcard.answer
-            
+
 -if memcard.editing == true
     .backCard
         %h1= memcard.question
@@ -16,4 +16,11 @@
                 -else
                     = text_field :user, 'memory', :value => memcard.answer, :type => "text", :class => "form-control", :id => "memoryfield", :placeholder => "Answer here"
             = submit_tag 'Update Memory', {:id => "updateMemoryButton"}
-        = button_to "Cancel", "/memory_cards/" + memcard.id.to_s + "/exit", {:remote => true, :method => :put} 
+        // = button_to "Cancel", "/memory_cards/"+ memcard.id.to_s
+        = button_to "Cancel", "/memory_cards/" + memcard.id.to_s + "/exit", {:remote => true, :method => :put } 
+        = form_tag "/memory_cards/"+ memcard.id.to_s + "/share", :method => :put do
+            .form-group
+                = text_field :user, 'share', :type => "text", :class => "form-control", :id => "sharefield", :placeholder => "Share with: "
+            = submit_tag 'Share', {:id => "shareButton"}
+            
+
