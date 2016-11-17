@@ -3,10 +3,10 @@ class UsersController < ApplicationController
 
   # GET /users
   # GET /users.json
-  def index
-    @users = User.all
-    @memorycards = MemoryCard.all
-  end
+  # def index
+  #   @users = User.all
+  #   @memorycards = MemoryCard.all
+  # end
 
   # GET /users/1
   # GET /users/1.json
@@ -14,18 +14,18 @@ class UsersController < ApplicationController
   end
 
   # GET /users/new
-  def new
-    @user = User.new
-  end
+  # def new
+  #   @user = User.new
+  # end
 
-  def homefeed
-    puts "flash recorded"
-    if params["user"] != nil and params["user"]["memory"] != nil
-      flash[:notice] = "memory was successfully created."
-      session[:recorded_memory] = params["user"]["memory"]
-      puts flash
-    end
-  end
+  # def homefeed
+  #   puts "flash recorded"
+  #   if params["user"] != nil and params["user"]["memory"] != nil
+  #     flash[:notice] = "memory was successfully created."
+  #     session[:recorded_memory] = params["user"]["memory"]
+  #     puts flash
+  #   end
+  # end
 
 
   # GET /users/1/edit
@@ -56,6 +56,7 @@ class UsersController < ApplicationController
         @user = User.new(user_params)
           if @user.save
             session[:user_id] = @user.id
+            @user.getInitialCards
             redirect_to '/'
           else 
             redirect_to users_path
@@ -75,36 +76,36 @@ class UsersController < ApplicationController
   
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
-  def update
-    respond_to do |format|
-      if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user }
-      else
-        format.html { render :edit }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  # def update
+  #   respond_to do |format|
+  #     if @user.update(user_params)
+  #       format.html { redirect_to @user, notice: 'User was successfully updated.' }
+  #       format.json { render :show, status: :ok, location: @user }
+  #     else
+  #       format.html { render :edit }
+  #       format.json { render json: @user.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
   # DELETE /users/1
   # DELETE /users/1.json
-  def destroy
-    @user.destroy
-    respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
-      format.json { head :no_content }
+  # def destroy
+  #   @user.destroy
+  #   respond_to do |format|
+  #     format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+  #     format.json { head :no_content }
 
-    end
-  end
+  #   end
+  # end
   
-  def homefeed
-    if params["user"] != nil and params["user"]["memory"] != nil
-      flash[:notice] = "memory was successfully edited"
-      session[:recorded_memory] = params["user"]["memory"]
-    end
-    redirect_to '/'
-  end
+  # def homefeed
+  #   if params["user"] != nil and params["user"]["memory"] != nil
+  #     flash[:notice] = "memory was successfully edited"
+  #     session[:recorded_memory] = params["user"]["memory"]
+  #   end
+  #   redirect_to '/'
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.
