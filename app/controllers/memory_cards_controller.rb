@@ -44,8 +44,8 @@ class MemoryCardsController < ApplicationController
     @user_to_share_with = User.where(:username => @user_to_share_with_name)[0]
     puts @user_to_share_with != nil ? @user_to_share_with.id : nil, "IDIDIDIDIDID"
     @memcard = MemoryCard.where(:id => params[:id])[0]
-    donatingUser = User.where(:id => @memcard.user_id)[0]
-    @donating_username = donatingUser != nil ? donatingUser.username : nil
+    @donatingUser = User.where(:id => @memcard.user_id)[0]
+    @donating_username = @donatingUser != nil ? @donatingUser.username : nil
     session[:donating_username] = @donating_username #store in session so that #index can grab it
     @copy = @memcard.dup
     @copy.category = "Shared"
