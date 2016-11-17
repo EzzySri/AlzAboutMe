@@ -30,6 +30,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    @change = params[:format]
   end
 
   # POST /users

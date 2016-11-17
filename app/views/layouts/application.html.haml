@@ -8,27 +8,41 @@
         %link{:rel => :stylesheet, :href => "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css", :integrity => "sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u", :crossorigin => "anonymous"}
         %script{:src => "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js", :integrity => "sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa", :crossorigin => "anonymous"}
     %body
-        .container-fluid
-            -if current_user
-                .pull-right
-                    = "Signed in as #{current_user.username} |" 
-                    = link_to("Logout", '/logout', id: "logoutLink") + " | "
-                    = link_to('Settings', users_settings_path, id: "settingsLink")
-                .pull-left
-                    %a#menubutton{:href => "javascript:void(0)"} Menu
-            -else
-                .pull-right
-                    = link_to( 'Login', login_path, id: "loginLink") 
-                    = link_to('Signup', users_signup_path, id: "signUpButton")
-        .col-xs-4
-            -if current_user
-                .list-group.pull-left#menu
-                    - cats = categories
-                    - cats.each do |cat|
-                        // removing all spaces and making all characters lowercase for id
-                        - id = cat.downcase.delete(" ")
-                        = link_to cat, memory_cards_path(:category => cat.to_s), :class => "list-group-item", :id => id.to_s
-        .col-xs-4
+        %nav.navbar.navbar-default.navbar-fixed-top
+            .navbar-header
+                %a.navbar-brand{:href => "/"} AlzAboutMe
+            .container
+                -if current_user
+                    %ul.nav.navbar-nav
+                        %li
+                            %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+                                = "Menu"
+                                %span.caret
+                            %ul.dropdown-menu
+                                %li
+                                    - cats = categories
+                                    - cats.each do |cat|
+                                        // removing all spaces and making all characters lowercase for id
+                                        - id = cat.downcase.delete(" ")
+                                        = link_to cat, memory_cards_path(:category => cat.to_s), :class => "list-group-item", :id => id.to_s
+                    %ul.nav.navbar-nav.navbar-right
+                        %li.dropdown
+                            %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+                                = "Signed in as #{current_user.username}"
+                                %span.caret
+                            %ul.dropdown-menu
+                                %li
+                                    = link_to("Settings", 'users/settings', id: "settingsLink")
+                                    = link_to("Logout", '/logout', id: "logoutLink")
+                                    
+                -else
+                    %ul.nav.navbar-nav.navbar-right
+                        %li
+                            = link_to( 'Login', login_path, id: "loginLink")
+                        %li
+                            = link_to('Signup', users_signup_path, id: "signUpButton")
+        .col-xs-3
+        .col-xs-6
             =yield
-        .col-xs-4
+        .col-xs-3
 

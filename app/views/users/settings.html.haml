@@ -14,10 +14,10 @@
     %p="Email: #{current_user.email}"
     %p="Password: *******"
   .col-xs-6
-    %p=link_to('Change name', users_settings_path, id: "changeNameLink")
-    %p=link_to('Change username', users_settings_path, id: "changeUsernameLink")
-    %p=link_to('Change email', users_settings_path, id: "changeEmailLink")
-    %p=link_to('Change Password', users_settings_path, id: "changePasswordLink")
+    %p=link_to('Change name', edit_user_path(current_user, 'name'), id: "changeNameLink")
+    %p=link_to('Change username', edit_user_path(current_user, 'username'), id: "changeUsernameLink")
+    %p=link_to('Change email', edit_user_path(current_user, 'email'), id: "changeEmailLink")
+    %p=link_to('Change Password', edit_user_path(current_user, 'password'), id: "changePasswordLink")
 %h3 Framework of Questions
 ="Current famework:"
 

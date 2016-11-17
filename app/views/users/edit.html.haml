@@ -1,0 +1,11 @@
+%h1= "Editing User " + @change
+-case @change
+-when 'name'
+  %p= "Current " + @change + ": #{current_user.first_name} #{current_user.last_name} "
+-when 'email'
+-when 'password'
+
+
+-if @change == 'password'
+  =f
+
