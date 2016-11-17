@@ -2,21 +2,12 @@ class MemoryCardsController < ApplicationController
   helper_method :show
   
   def index
-    if params[:category].nil?
-      @memorycards = MemoryCard.where(:user_id => session[:user_id], :category => session[:category])
-    else
-      session[:category] = params[:category]
-        @memorycards = MemoryCard.where(:user_id => session[:user_id], :category => params[:category])
-      end
-    if session[:category] == "All Categories"
-       @memorycards = MemoryCard.where(:user_id => session[:user_id]) 
-    end
-    @category = params[:category] || "All Categories"
-    @donating_username = session[:donating_username] 
- end
+    @memorycards = MemoryCard.all
+  end
   
   def create
-    puts memcard_params
+    memcard_params[:user_id] = current_user.id
+    puts memcard_params, "HELLOHELLOHELLOHELLOHELLOHELLOHELLOHELLO"
     if (memcard_params[:question] == "" || memcard_params[:category] == "")
       flash[:notice] = 'All fields required!'
        redirect_to '/' and return 
@@ -32,6 +23,16 @@ class MemoryCardsController < ApplicationController
     end 
   end 
   
+  def edit
+    @memcard = MemoryCard.find(params[:id])
+    @memcard.editing = true
+    @memcard.save
+    
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def edit
     @memcard = MemoryCard.find(params[:id])
     @memcard.editing = true
@@ -79,7 +80,7 @@ class MemoryCardsController < ApplicationController
   end
   
   def memcard_params
-      params.require(:memcard).permit(:question, :category)
+      params.require(:memcard).permit(:question, :category, :user_id, :question_type, :question_choices, :completed, :created_at, :updated_at).merge(:user_id => current_user.id)
   end
 
   def exit

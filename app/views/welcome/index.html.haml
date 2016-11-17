@@ -18,7 +18,6 @@
             = radio_button :memcard, "category", choice
             = label "category", choice
             %br
-            
         = submit_tag 'Create New MemoryCard', {:id => "createMemoryCardButton"}
         - if flash[:notice]
           = flash[:notice]

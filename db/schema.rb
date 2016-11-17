@@ -11,6 +11,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+ActiveRecord::Schema.define(version: 20161115225412) do
+
   create_table "memory_cards", force: :cascade do |t|
     t.string   "question"
     t.string   "answer"
