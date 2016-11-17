@@ -78,9 +78,19 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1.json
   def update
     respond_to do |format|
+      puts "QQQQQQ"
+      puts user_params
+      if (!user_params[:email].nil?)
+        puts "check if being used"
+        puts user_params
+      end
+      if (!user_params[:new_password].nil?)
+        puts "password"
+        puts user_params
+      end
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user }
+        flash[:notice] = 'User was successfully updated.'
+        return redirect_to users_settings_path
       else
         format.html { render :edit }
         format.json { render json: @user.errors, status: :unprocessable_entity }

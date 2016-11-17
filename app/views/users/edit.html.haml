@@ -1,11 +1,34 @@
 %h1= "Editing User " + @change
--case @change
--when 'name'
-  %p= "Current " + @change + ": #{current_user.first_name} #{current_user.last_name} "
--when 'email'
--when 'password'
-
-
--if @change == 'password'
-  =f
+= form_tag user_path, :method => 'put' do
+  -case @change
+  -when 'name'
+    .form-group
+      = label :user, :first_name, 'First Name: '
+      = text_field :user, 'first_name', {:type => "text", :class => "form-control", :id => "firstname_edit", :value => current_user.first_name}
+    .form-group
+      = label :user, :last_name, 'Last Name: '
+      = text_field :user, 'last_name', {:type => "text", :class => "form-control", :id => "lastname_edit", :value => current_user.last_name }
+  -when 'email'
+    .form-group
+      = label :user, :email, 'Email: '
+      = text_field :user, 'email', {:type => "text", :class => "form-control", :id => "email_edit",:value => current_user.email}
+  -when 'username'
+    .form-group
+      = label :user, :username, 'Username: '
+      = text_field :user, 'username', {:type => "text", :class => "form-control", :id => "username_edit", :value => current_user.username}
+  -when 'password'
+    .form-group
+      = label :user, :new_password, 'New Password: '
+      = text_field :user, 'password', {:type => "text", :class => "form-control", :id => "password_edit", :placeholder => "New Password"}
+    .form-group
+      = label :user, :password_confirmation, 'Confirm New Password: '
+      = text_field :user, 'password_confirmation', {:type => "text", :class => "form-control", :id => "confirm_password_edit", :placeholder => "New Password"}
+  .form-group
+    -if @change == 'password'
+      = label :user, :password, 'Old Password: '
+    -else
+      = label :user, :password, 'Password: '
+    = text_field :user, 'password', {:type => "text", :class => "form-control", :id => "password", :placeholder => "Password"}
+  .btn 
+    = submit_tag 'Submit', {:id => "signUpSubmitButton"}
 
