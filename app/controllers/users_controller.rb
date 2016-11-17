@@ -76,6 +76,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1.json
   def update
     respond_to do |format|
+      puts user_params
       if (is_empty(user_params))
         flash[:alert] = 'All fields are required'
         return redirect_to '/users/settings'
@@ -127,12 +128,12 @@ class UsersController < ApplicationController
     end
     
     def is_empty(para)
-      para.each do |p|
-        if p == ""
-          return false
+      para.each do |key, value|
+        if value == ""
+          return true
         end
       end
-      return true
+      return false
     end
     
 end

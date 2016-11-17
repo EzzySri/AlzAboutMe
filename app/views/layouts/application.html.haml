@@ -15,7 +15,16 @@
                 -if current_user
                     %ul.nav.navbar-nav
                         %li
-                            %a.navbar-brand#menubutton{:href => "javascript:void(0)"} Menu
+                            %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+                                = "Menu"
+                                %span.caret
+                            %ul.dropdown-menu
+                                %li
+                                    - cats = categories
+                                    - cats.each do |cat|
+                                        // removing all spaces and making all characters lowercase for id
+                                        - id = cat.downcase.delete(" ")
+                                        = link_to cat, memory_cards_path(:category => cat.to_s), :class => "list-group-item", :id => id.to_s
                     %ul.nav.navbar-nav.navbar-right
                         %li.dropdown
                             %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
@@ -32,15 +41,8 @@
                             = link_to( 'Login', login_path, id: "loginLink")
                         %li
                             = link_to('Signup', users_signup_path, id: "signUpButton")
-        .col-xs-4
-            -if current_user
-                .list-group.pull-left#menu
-                    - cats = categories
-                    - cats.each do |cat|
-                        // removing all spaces and making all characters lowercase for id
-                        - id = cat.downcase.delete(" ")
-                        = link_to cat, memory_cards_path(:category => cat.to_s), :class => "list-group-item", :id => id.to_s
-        .col-xs-4
+        .col-xs-3
+        .col-xs-6
             =yield
-        .col-xs-4
+        .col-xs-3
 
