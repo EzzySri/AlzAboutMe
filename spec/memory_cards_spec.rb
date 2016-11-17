@@ -13,6 +13,23 @@ RSpec.describe MemoryCardsController, type: :controller do
         #     # get :edit
         #     # expect(response).to render_template 'index'
         # end
+        
+        it 'edits correctly' do
+            @memCard = MemoryCard.create(:id => 1, :user_id => 123, :question => "What is your name?", :answer => "Zack", :editing => false)
+            xhr :get, 'edit', :id => @memCard
+            expect(@memCard.editing).to eql(false)
+        end
+        
+        it 'updates correctly' do
+            @memCard = MemoryCard.create(:id => 1, :user_id => 123, :question => "What is your name?", :answer => "Zack", :editing => false)
+            xhr :put, 'update', :id => @memCard
+            expect(@memCard.editing).to eql(false)
+        end
+        
+        it 'exits correctly' do @memCard = MemoryCard.create(:id => 1, :user_id => 123, :question => "What is your name?", :answer => "Zack", :editing => false)
+            xhr :put, 'exit', :id => @memCard
+            expect(@memCard.editing).to eql(false)
+        end
     end
     
 end
