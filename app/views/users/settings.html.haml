@@ -1,0 +1,33 @@
+-# in app/views/users/sign_up.html.haml
+
+%link{:rel => :stylesheet, :href => "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css", :integrity => "sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u", :crossorigin => "anonymous"}
+
+.container-fluid
+%h2 User Settings
+
+- flash.each do |type, msg|
+  - if type == "notice"
+    .alert.alert-success{:role => "alert"}= msg
+  - if type == "alert"
+    .alert.alert-warning{:role => "alert"}= msg
+  - if type == "message"
+    .alert.alert-info{:role => "alert"}= msg
+  - if type == "danger"
+    .alert.alert-danger{:role => "danger"}= msg
+
+%h3 User Information
+-if current_user
+  .col-xs-6
+    %p="Name: #{current_user.first_name} #{current_user.last_name}"
+    %p="Username: #{current_user.username}"
+    %p="Email: #{current_user.email}"
+    %p="Password: *******"
+  .col-xs-6
+    %p=link_to('Change name', edit_user_path(current_user, 'name'), id: "changename")
+    %p=link_to('Change username', edit_user_path(current_user, 'username'), id: "changeusername")
+    %p=link_to('Change email', edit_user_path(current_user, 'email'), id: "changeemail")
+    %p=link_to('Change Password', edit_user_path(current_user, 'password'), id: "changepassword")
+%h3 Framework of Questions
+="Current famework:"
+
+

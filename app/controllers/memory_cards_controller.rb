@@ -14,12 +14,38 @@ class MemoryCardsController < ApplicationController
     @category = params[:category] || "All Categories"
     @donating_username = session[:donating_username] 
  end
+ 
+  def add_card_for_all_users
+    users.each do |usr|
+      memcard_params[:user_id] = usr.id
+      @card = MemoryCard.new(memcard_params)
+      usr.memory_cards << @card
+      if !@card.save || !usr.save
+        return false
+      end 
+    end 
+    return true
+  end 
+ 
+  def create
+    if (memcard_params[:question] == "" || memcard_params[:category] == "")
+      flash[:notice] = 'All fields required!'
+       redirect_to '/' and return 
+    end 
+    
+    if add_card_for_all_users
+      flash[:notice] = 'New Question Saved Successfully !'
+      redirect_to '/'
+    else 
+      flash[:notice] = 'Error saving card'
+      redirect_to '/' and return 
+    end 
+  end 
   
   def edit
     @memcard = MemoryCard.find(params[:id])
     @memcard.editing = true
     @memcard.save
-    
     respond_to do |format|
       format.js
     end
@@ -32,7 +58,6 @@ class MemoryCardsController < ApplicationController
       @memcard.answer = params["user"]["memory"]
     end
     @memcard.save
-
     respond_to do |format|
       format.js
     end
@@ -53,7 +78,7 @@ class MemoryCardsController < ApplicationController
   #   @user_to_share_with.memory_cards << @copy
   #   flash[:notice] = 'Memory successfully shared with #{@user_to_share_with_name}'
   #   redirect_to memory_cards_path
-  # end
+  # end 
     
   def show
   end 
@@ -61,6 +86,10 @@ class MemoryCardsController < ApplicationController
   def save
   end
 
+  def memcard_params
+    params.require(:memcard).permit(:question, :category, :user_id, :question_type, :question_choices, :completed, :created_at, :updated_at).merge(:user_id => current_user.id, :editing => false)
+  end
+  
   def exit
     @memcard = MemoryCard.find(params[:id])
     @memcard.editing = false
@@ -70,4 +99,4 @@ class MemoryCardsController < ApplicationController
       format.js
     end
   end
-end
+end 

@@ -14,9 +14,9 @@ class UsersController < ApplicationController
   end
 
   # GET /users/new
-  # def new
-  #   @user = User.new
-  # end
+  def new
+    @user = User.new
+  end
 
   # def homefeed
   #   puts "flash recorded"
@@ -30,6 +30,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    @change = params[:format]
   end
 
   # POST /users
@@ -76,17 +77,32 @@ class UsersController < ApplicationController
   
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
-  # def update
-  #   respond_to do |format|
-  #     if @user.update(user_params)
-  #       format.html { redirect_to @user, notice: 'User was successfully updated.' }
-  #       format.json { render :show, status: :ok, location: @user }
-  #     else
-  #       format.html { render :edit }
-  #       format.json { render json: @user.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
+  def update
+    respond_to do |format|
+      if (!user_params[:email].nil?)
+        if (current_user.email_already_used(user_params[:email]))
+          flash[:alert] = "Email Already In Use"
+          return redirect_to edit_user_path(current_user, 'email')
+        end
+      end
+      if (!user_params[:password].nil?)
+        if (user_params[:password] != user_params[:password_confirmation])
+          flash[:alert] = "New Password Not Confirmed"
+          return redirect_to edit_user_path(current_user, 'password')
+        else
+          @user.password = params[:password]
+        end
+      end
+      if @user.update(user_params)
+        flash[:notice] = 'User was successfully updated.'
+        return redirect_to users_settings_path
+      else
+        format.html { render :edit }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
 
   # DELETE /users/1
   # DELETE /users/1.json
@@ -97,14 +113,6 @@ class UsersController < ApplicationController
   #     format.json { head :no_content }
 
   #   end
-  # end
-  
-  # def homefeed
-  #   if params["user"] != nil and params["user"]["memory"] != nil
-  #     flash[:notice] = "memory was successfully edited"
-  #     session[:recorded_memory] = params["user"]["memory"]
-  #   end
-  #   redirect_to '/'
   # end
 
   private
@@ -117,6 +125,8 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:first_name, :last_name, :username, :email, :password, :password_confirmation)
     end
+    
+
 end
 
 

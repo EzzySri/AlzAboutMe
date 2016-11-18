@@ -34,6 +34,8 @@ Rails.application.routes.draw do
   # match '/users/homefeed', :controller => 'users', :action => 'homefeed'
   get '/users/homefeed', :to => 'users#homefeed'
   get '/users/signup', :to => 'users#sign_up'
+  get '/users/settings', :to => 'users#settings'
+  # get '/users/:id/edit/:changeid', :to => 'users#edit'
   resources :users
   resources :memory_cards
   get '/memory_cards/:category', :to => 'memory_cards#index'

@@ -61,13 +61,17 @@ Given(/^(?:I )am on (.+)$/) do |page_name|
       visit()
     when /^the memory card page$/
       visit('/memory_cards')
+    when /^the users page$/
+         visit('users/settings')
   end
 end
 
 
 
- When (/^(?:|I )click "([^"]*)"$/) do |linkText|
-   click(linkText)
+ When (/^(?:|I )click "([^"]*)"$/) do |field|
+    field = field.delete(" ")
+    field.downcase!
+    click_on(field)
  end 
 
  When (/^(?:|I )press "([^"]*)"$/) do |button|

@@ -28,6 +28,12 @@ gem 'bcrypt', '~> 3.1.7'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
+
+# CanCan is an authorization library which restricts what resources a given user is allowed to access.
+# All permissions are defined in a single location (the Ability class) 
+gem 'cancancan', '~> 1.10'
+
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
