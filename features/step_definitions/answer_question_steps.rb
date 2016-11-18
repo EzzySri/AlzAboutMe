@@ -9,6 +9,7 @@ end
 Given(/^a (.+) MemoryCard exists$/) do |type|
   case type 
     when /^short answer$/
+      # Need to add the factory girl questions to all the users to get this to work
       FactoryGirl.create(:short_answer_card)
     when /^multiple choice$/
       FactoryGirl.create(:multiple_choice_card)

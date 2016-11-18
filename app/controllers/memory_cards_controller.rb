@@ -32,7 +32,6 @@ class MemoryCardsController < ApplicationController
       flash[:notice] = 'All fields required!'
        redirect_to '/' and return 
     end 
-    
     if add_card_for_all_users
       flash[:notice] = 'New Question Saved Successfully!'
       redirect_to '/'
@@ -88,7 +87,7 @@ class MemoryCardsController < ApplicationController
   
   
   def memcard_params
-    params.require(:memcard).permit(:question, :category, :user_id, :question_type, :question_choices, :completed, :created_at, :updated_at).merge(:user_id => current_user.id, :editing => false)
+    params.require(:memcard).permit(:question, :category, :user_id, :question_type, :question_choices, :completed, :created_at, :updated_at).merge(:answer => "", :user_id => current_user.id, :editing => false)
   end
   
   def exit
