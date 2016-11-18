@@ -24,12 +24,12 @@
 # require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "paths"))
 # require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "selectors"))
 
-# module WithinHelpers
-#   def with_scope(locator)
-#     locator ? within(*selector_for(locator)) { yield } : yield
-#   end
-# end
-# World(WithinHelpers)
+module WithinHelpers
+  def with_scope(locator)
+    locator ? within(*selector_for(locator)) { yield } : yield
+  end
+end
+World(WithinHelpers)
 
 # # Single-line step scoper
 # When /^(.*) within (.*[^:])$/ do |step, parent|
@@ -116,21 +116,17 @@ end
 #   select(value, :from => field)
 # end
 
-# When /^(?:|I )check "([^"]*)"$/ do |field|
-#   check(field)
-# end
+When /^(?:|I )check "([^"]*)"$/ do |field|
+  check(field)
+end
 
-# When /^(?:|I )uncheck "([^"]*)"$/ do |field|
-#   uncheck(field)
-# end
+When /^(?:|I )uncheck "([^"]*)"$/ do |field|
+  uncheck(field)
+end
 
  When /^(?:|I )choose "([^"]*)"$/ do |field|
    choose(field)
  end
-
-# When /^(?:|I )attach the file "([^"]*)" to "([^"]*)"$/ do |path, field|
-#   attach_file(field, File.expand_path(path))
-# end
 
  Then (/^(?:|I )should see "([^"]*)"$/) do |text|
     expect(page).to have_content(text)
@@ -255,17 +251,15 @@ end
  
   Then (/^the "([^"]*)" radio button should be selected$/) do |label|
      field_checked = find_field(label)['checked']
-     if field_checked.respond_to? :should
-       field_checked.should be_true
-     else
-       assert field_checked
-     end
+     expect(field_checked).to_not be_nil
  end
 
  Then (/^the "([^"]*)" radio button(?: within (.*))? should not be selected$/) do |label, parent|
    with_scope(parent) do
      field_checked = find_field(label)['checked']
-     if field_checked.respond_to? :should
+     if field_checked == nil
+       expect(field_checked).to be_nil
+     elsif field_checked.respond_to? :should
        field_checked.should be_false
      else
        assert !field_checked

@@ -27,7 +27,16 @@
     %p=link_to('Change username', edit_user_path(current_user, 'username'), id: "changeusername")
     %p=link_to('Change email', edit_user_path(current_user, 'email'), id: "changeemail")
     %p=link_to('Change Password', edit_user_path(current_user, 'password'), id: "changepassword")
-%h3 Framework of Questions
-="Current famework:"
-
-
+%div{:id => "frameworkContainer"}
+  %h3 Framework of Questions
+  = form_tag user_path(current_user), :method => :put do
+    = radio_button :user, "framework", "1", {:checked => current_user.framework == "1"}
+    = label "user", "framework_1", "Framework 1"
+    %br
+    = radio_button :user, "framework", "2", {:checked => current_user.framework == "2"}
+    = label "user", "framework_2", "Framework 2"
+    %br
+    = radio_button :user, "framework", "3", {:checked => current_user.framework == "3"}
+    = label "user", "framework_3", "Framework 3"
+    %br
+    = submit_tag "Update Selected Framework", {:id => "update-framework-button"}
