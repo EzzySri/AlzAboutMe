@@ -19,6 +19,11 @@ class ApplicationController < ActionController::Base
   end
   helper_method :categories
   
+  def question_types
+    @question_types = MemoryCard.all_question_types
+  end
+  helper_method :question_types
+  
   def users
     @users = User.all
   end 
