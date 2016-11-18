@@ -7,4 +7,8 @@ class MemoryCard < ActiveRecord::Base
     def self.all_categories
         return ["All Categories", "Personal", "Historical", "Favorites", "Random", "Shared"]
     end
+    
+    def self.all_question_types
+        return ["text", "multiple_choice"]
+    end
 end

@@ -34,7 +34,7 @@ class MemoryCardsController < ApplicationController
     end 
     
     if add_card_for_all_users
-      flash[:notice] = 'New Question Saved Successfully !'
+      flash[:notice] = 'New Question Saved Successfully!'
       redirect_to '/'
     else 
       flash[:notice] = 'Error saving card'
@@ -85,7 +85,8 @@ class MemoryCardsController < ApplicationController
 
   def save
   end
-
+  
+  
   def memcard_params
     params.require(:memcard).permit(:question, :category, :user_id, :question_type, :question_choices, :completed, :created_at, :updated_at).merge(:user_id => current_user.id, :editing => false)
   end
