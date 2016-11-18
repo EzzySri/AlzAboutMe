@@ -85,9 +85,9 @@ class MemoryCardsController < ApplicationController
   def save
   end
   
-  
+  # Forcing question_type => text for now
   def memcard_params
-    params.require(:memcard).permit(:question, :category, :user_id, :question_type, :question_choices, :completed, :created_at, :updated_at).merge(:answer => "", :user_id => current_user.id, :editing => false)
+    params.require(:memcard).permit(:question, :category, :user_id, :question_type, :question_choices, :completed, :created_at, :updated_at).merge(:question_type => "text", :answer => "", :user_id => current_user.id, :editing => false)
   end
   
   def exit
