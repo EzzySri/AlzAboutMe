@@ -28,6 +28,7 @@ gem 'bcrypt', '~> 3.1.7'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
+gem 'factory_girl_rails'
 
 # CanCan is an authorization library which restricts what resources a given user is allowed to access.
 # All permissions are defined in a single location (the Ability class) 
