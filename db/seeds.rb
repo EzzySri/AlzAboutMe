@@ -5,7 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-memories = [ {:question => "When is your birthday?", :question_type => "text", :completed => false, :editing => false, :category => "Personal"},
+memories = [
              {:question => "Where were you born?", :question_type => "text", :completed => false, :editing => false, :category => "Personal"},
              {:question => "What is your astrological sign?", :question_type => "text", :completed => false, :editing => false, :category => "Personal"},
              {:question => "What is your blood type?", :question_type => "text", :completed => false, :editing => false, :category => "Personal"},
