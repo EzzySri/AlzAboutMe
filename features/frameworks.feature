@@ -1,16 +1,18 @@
 
-# Feature: frameworks 
+Feature: frameworks 
 
-# Scenario: pick framework
-#     Given I sign up 
-#     Then I should see "Please pick a framework"
-#     And I click on "Framework 1"
-#     Then I should see "Current Framework: Framework 1"
+Scenario: No Selected Framework
+	Given I am logged in
+	And I am on the users page
+	Then the "user_framework_1" radio button within "div#frameworkContainer" should not be selected
+	Then the "user_framework_2" radio button within "div#frameworkContainer" should not be selected
+	Then the "user_framework_3" radio button within "div#frameworkContainer" should not be selected
 
-# Scenario: change framework
-#     Given I am on the users page
-#     And I click edit information 
-#     And I fill in framework_type with "Framework 2"
-#     And I click on Submit 
-#     Then I should see "Using Framework 2"
-
+Scenario: Update Selected Framework
+	Given I am logged in
+	And I am on the users page
+	And I choose "Framework 1"
+	And I click "update-framework-button"
+	Then the "user_framework_1" radio button should be selected
+	Then the "user_framework_2" radio button within "div#frameworkContainer" should not be selected
+	Then the "user_framework_3" radio button within "div#frameworkContainer" should not be selected
