@@ -17,5 +17,10 @@ class ApplicationController < ActionController::Base
     @categories = MemoryCard.all_categories
   end
   helper_method :categories
+  
+  def users
+    @users = User.all
+  end 
+  helper_method :users
 
 end
