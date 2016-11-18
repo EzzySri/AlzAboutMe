@@ -57,6 +57,7 @@ group :development do
   gem 'web-console', '~> 2.3.0'
 end
 
+
 group :test do
   gem 'rspec-rails'
   gem 'simplecov', :require => false
@@ -64,7 +65,7 @@ group :test do
   gem 'cucumber-rails-training-wheels' # basic imperative step defs
   gem 'database_cleaner' # required by Cucumber
   gem 'autotest-rails'
-  gem 'factory_girl_rails'
+  gem 'factory_girl_rails', :require => false
   gem 'metric_fu'        # collect code metrics
   gem 'codeclimate-test-reporter', require: nil
   # gem 'capybara-webkit'

@@ -1,4 +1,5 @@
 require "simplecov"
+require 'factory_girl_rails'
 SimpleCov.start do
   add_filter "/features/"
 end
