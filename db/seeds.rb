@@ -29,7 +29,7 @@ memories = [
 ]
 
 memories.each do |mem|
-    MemoryCard.create!(mem.merge(:user_id => "1"))
+    MemoryCard.create!(mem)
 end
 
 

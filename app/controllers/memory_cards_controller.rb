@@ -3,13 +3,13 @@ class MemoryCardsController < ApplicationController
   
   def index
     if params[:category].nil?
-      @memorycards = MemoryCard.where(:user_id => session[:user_id], :category => session[:category])
+      @memorycards = MemoryCard.where(:category => session[:category])
     else
       session[:category] = params[:category]
-        @memorycards = MemoryCard.where(:user_id => session[:user_id], :category => params[:category])
+        @memorycards = MemoryCard.where(:category => params[:category])
       end
     if session[:category] == "All Categories"
-       @memorycards = MemoryCard.where(:user_id => session[:user_id]) 
+       @memorycards = MemoryCard.all
     end
     @category = params[:category] || "All Categories"
     @donating_username = session[:donating_username] 
@@ -62,6 +62,18 @@ class MemoryCardsController < ApplicationController
       format.js
     end
   end
+  
+  def current_user_answer
+    usr = current_user
+    @answer = answers.find_by(:user_id => usr, :memory_card_id => self)
+    if (!@answer)
+      @answer = Answer.create(:user_id => usr, :memory_card_id => self, :answer => "")
+      usr.answers << @answer
+      self.answers << @answer
+    end
+    return @answer
+  end
+  helper_method :current_user_answer
   
   # def share
   #   puts params, "JAJAAJ"

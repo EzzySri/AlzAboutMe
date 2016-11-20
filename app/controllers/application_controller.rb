@@ -23,5 +23,9 @@ class ApplicationController < ActionController::Base
     @users = User.all
   end 
   helper_method :users
-
+  
+  def answers
+    @answers = Answer.all
+  end
+  helper_method :answers
 end

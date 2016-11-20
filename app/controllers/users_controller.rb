@@ -57,7 +57,7 @@ class UsersController < ApplicationController
         @user = User.new(user_params)
           if @user.save
             session[:user_id] = @user.id
-            @user.getInitialCards
+            # @user.getInitialCards
             redirect_to '/'
           else 
             redirect_to users_path
