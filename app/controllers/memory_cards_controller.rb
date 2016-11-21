@@ -52,22 +52,31 @@ class MemoryCardsController < ApplicationController
   end
   
   def update
+    puts "CALLED"
     @memcard = MemoryCard.find(params[:id])
     @memcard.editing = false
-    if params["user"].nil? == false
-      @memcard.answer = params["user"]["memory"]
-    end
     @memcard.save
+    # puts current_user_answer
+    redirect_to url_for(:controller => :answers, :action => :update, :id => current_user_answer) and return
+    puts "UUUUU"
+    # redirect_to memory_card_answer_path
+    # redirect_to '/memory_cards/' + params[:id].to_s + '/answers/' + current_user_answer.id.to_s
+    # if params["user"].nil? == false
+    #   @memcard.answer = params["user"]["memory"]
+    # end
+    # @memcard.save
     respond_to do |format|
       format.js
     end
   end
   
-  def current_user_answer
+  def current_user_answer(id)
     usr = current_user
-    @answer = answers.find_by(:user_id => usr, :memory_card_id => self)
+    mem = MemoryCard.find(id)
+    @answer = answers.find_by(:user_id => usr.id, :memory_card_id => mem.id)
+    puts "ANSWER"
     if (!@answer)
-      @answer = Answer.create(:user_id => usr, :memory_card_id => self, :answer => "")
+      @answer = Answer.create!(:user_id => usr.id, :memory_card_id => mem.id, :answer => "")
       usr.answers << @answer
       self.answers << @answer
     end

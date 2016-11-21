@@ -38,6 +38,7 @@ Rails.application.routes.draw do
   # get '/users/:id/edit/:changeid', :to => 'users#edit'
   resources :users
   resources :memory_cards
+  resources :answers
   get '/memory_cards/:category', :to => 'memory_cards#index'
   get '/memory_cards', :to => 'memory_cards#index'
   

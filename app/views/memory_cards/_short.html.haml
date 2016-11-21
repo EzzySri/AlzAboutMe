@@ -3,18 +3,20 @@
         .frontCard{:id => "short_answer_card"}
             %h1= memcard.question
             // -if current_user_answer.nil? == false
-            %h3= current_user_answer
+            %h3= current_user_answer(memcard).answer
 
 -if memcard.editing == true
     .backCard
         %h1= memcard.question
-        = form_tag "/memory_cards/"+ memcard.id.to_s , {:method => :put, :remote => true} do
+        @ans = current_user_answer(memcard)
+        %h1= current_user_answer(memcard).id.to_s
+        = form_tag "/answers/" + current_user_answer(memcard).id.to_s , {:method => :put, :remote => true} do
             .form-group
                 = label :memory, :field, 'Answer: '
-                - if current_user_answer.nil? == false
-                    = text_field :user, 'memory', :value => current_user_answer, :type => "text", :class => "form-control", :id => "memoryfield", :placeholder => "Answer here"
+                - if current_user_answer(memcard).nil? == false
+                    = text_field :user, 'memory', :value => current_user_answer(memcard).answer, :type => "text", :class => "form-control", :id => "memoryfield", :placeholder => "Answer here"
                 -else
-                    = text_field :user, 'memory', :value => current_user_answer, :type => "text", :class => "form-control", :id => "memoryfield", :placeholder => "Answer here"
+                    = text_field :user, 'memory', :value => current_user_answer(memcard).answer, :type => "text", :class => "form-control", :id => "memoryfield", :placeholder => "Answer here"
             = submit_tag 'Update Memory', {:id => "updateMemoryButton"}
         // = button_to "Cancel", "/memory_cards/"+ memcard.id.to_s
         = button_to "Cancel", "/memory_cards/" + memcard.id.to_s + "/exit", {:remote => true, :method => :put } 
