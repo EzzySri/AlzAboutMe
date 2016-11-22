@@ -118,4 +118,22 @@ class MemoryCardsController < ApplicationController
       format.js
     end
   end
+  
+  def viewPrevious
+    @memcard = MemoryCard.find(params[:id])
+    # @prevs = true 
+    session[:prevView] = true
+    respond_to do |format|
+      format.js
+    end
+  end
+  
+  def hidePrevious
+    @memcard = MemoryCard.find(params[:id])
+    # @prevs = false
+    session[:prevView] = false
+    respond_to do |format|
+      format.js
+    end
+  end
 end 

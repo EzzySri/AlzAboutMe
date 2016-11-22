@@ -21,12 +21,14 @@
             .form-group
                 = text_field :user, 'share', :type => "text", :class => "form-control", :id => "sharefield", :placeholder => "Share with: "
             = submit_tag 'Share', {:id => "shareButton"}
-    .previousAnswers
-        %h1= memcard.question
-        %h1= memcard.previous_answers
-        // -answers = memcard.previous_answers.split("||")
-        // -answers.each do |answer|
-        //     %h1= answer
+        = button_to "View Previous Answers", "/memory_cards/" + memcard.id.to_s + "/viewPrevious", {:remote => true, :method => :put, :id => "prevAnswersButton"}
+        -if session[:prevView] == true
+            .previousAnswers
+                // %h1= memcard.previous_answers
+                -answers = memcard.previous_answers.split("||")
+                -answers.each do |answer|
+                    %li= answer
+                = button_to "hide", "/memory_cards/" + memcard.id.to_s + "/hidePrevious", {:remote => true, :method => :put } 
                 
             
             
