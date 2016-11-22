@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161117224433) do
+ActiveRecord::Schema.define(version: 20161122033640) do
 
   create_table "memory_cards", force: :cascade do |t|
     t.string   "question"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20161117224433) do
     t.string   "question_choices"
     t.string   "category"
     t.integer  "user_id"
+    t.string   "previous_answers"
   end
 
   add_index "memory_cards", ["user_id"], name: "index_memory_cards_on_user_id"
