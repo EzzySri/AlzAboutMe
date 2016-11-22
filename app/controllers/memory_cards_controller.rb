@@ -13,8 +13,6 @@ class MemoryCardsController < ApplicationController
     end
     @category = params[:category] || "All Categories"
     @donating_username = session[:donating_username] 
-    # allAns = getAllAnswers(@memorycards)
-    # @memorycards = allAns
  end
  
   def add_card_for_all_users
@@ -59,27 +57,12 @@ class MemoryCardsController < ApplicationController
     if params["user"].nil? == false
       @memcard.answer = params["user"]["memory"]
     end
-    @memcard.previous_answers += params["user"]["memory"] + "||"
+    @memcard.previous_answers = params["user"]["memory"] + "||" + @memcard.previous_answers
     @memcard.save
     respond_to do |format|
       format.js
     end
   end
-  
-  def getAllAnswers(memory_cards)
-    pairs = {}
-    memory_cards.each do |memcard|
-
-      if memcard.previous_answers.nil?
-        prevAnswerList = [""]
-      else
-        prevAnsList = memcard.previous_answers.split("||")
-      end
-      pairs[memcard] = prevAnsList
-    end
-    return pairs
-  end
-    
   
   # def share
   #   puts params, "JAJAAJ"
