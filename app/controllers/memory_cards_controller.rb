@@ -121,6 +121,7 @@ class MemoryCardsController < ApplicationController
   end
   
   def viewShareOptions
+    puts ShareTable.all[0].receiver, "ZZZZZZ"
     session[:viewShare] = true
     @memcard = MemoryCard.find(params[:id])
     puts Group.all.length, "AAAA"
@@ -142,8 +143,13 @@ class MemoryCardsController < ApplicationController
   def shareGroup
     @memcard = MemoryCard.find(params[:id])
     puts params, "AAAAAAAAAAAAAA"
+    puts current_user.id
     @groups_to_share_with = params[:sharedGr].keys
     @groups_to_share_with.each do |shareGroup|
+      @people_to_share_with = Group.where(:group_name => shareGroup, :creator => current_user.id)[0].people.split(",")
+      @people_to_share_with.each do |person|
+        ShareTable.create!({:donator => current_user.id, :receiver => person, :memcard_id => @memcard.id})
+      end
     end
     
     respond_to do |format|
