@@ -5,8 +5,15 @@ Feature: Providing a video as a memory answer via mobile browser (iPhone and And
 
 Scenario: Uploading video answer
 	Given I am logged in
-	And a video answer MemoryCard exists
-	And the "Upload Video" button is clicked
-	And the "Submit" button is clicked
-	Then a video should be exist for the given MemoryCard
+	And I add video answer to existing MemoryCard
+	And I click "Upload Video" 
+	And I click "Submit"
+	Then I should see a video
+
+Scenario: Viewing a previously uploaded video answer
+	Given I am logged in
+	And I view a MemoryCard with an existing video answer
+	Then I should see a video
+
+
 
