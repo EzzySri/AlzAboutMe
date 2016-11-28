@@ -19,8 +19,7 @@
         = form_tag "/memory_cards/"+ memcard.id.to_s + "/share", :method => :put do
             .form-group
                 = text_field :user, 'share', :type => "text", :class => "form-control", :id => "sharefield", :placeholder => "Share with: "
-            = submit_tag 'Update Memory', {:id => "updateMemoryButton"}
-        = button_to "Share", "/memory_cards/" + memcard.id.to_s + "/viewShareOptions", {:remote => true, :method => :put, :id => "shareButton"}
+        = button_to "Share", "/memory_cards/" + memcard.id.to_s + "/viewShareOptions", {:remote => true, :method => :put, :id => "shareButton", :class => "btn"}
         -if session[:viewShare] == true
             .shareOptions
                 -if @groups.nil? == false
@@ -30,9 +29,9 @@
                             = check_box(:sharedGr, "#{group.group_name}")
                             =group.group_name
                         = submit_tag 'Share with Groups', {:id => "shareGroupButton"}
-                    = button_to "hide", "/memory_cards/" + memcard.id.to_s + "/hideShareOptions", {:remote => true, :method => :put } 
+                    = button_to "hide", "/memory_cards/" + memcard.id.to_s + "/hideShareOptions", {:remote => true, :method => :put, :class => "btn" } 
                     
-        = button_to "View Previous Answers", "/memory_cards/" + memcard.id.to_s + "/viewPrevious", {:remote => true, :method => :put, :id => "prevAnswersButton"}
+        = button_to "View Previous Answers", "/memory_cards/" + memcard.id.to_s + "/viewPrevious", {:remote => true, :method => :put, :id => "prevAnswersButton", :class => "btn"}
         -if session[:prevView] == true
             -carousel_id = "previousAnswers-" + memcard.id.to_s
             .carousel{:id=>carousel_id, "data-interval" => "false" }
@@ -53,7 +52,7 @@
                         %a.right.carousel-control{:href => "#" + carousel_id, :data => {:slide => "next"}}
                             %span.glyphicon.glyphicon-chevron-right
             
-                = button_to "hide", "/memory_cards/" + memcard.id.to_s + "/hidePrevious", {:remote => true, :method => :put, :class => "btn" } 
+                = button_to "Hide", "/memory_cards/" + memcard.id.to_s + "/hidePrevious", {:remote => true, :method => :put, :class => "btn" } 
         = button_to "Cancel", "/memory_cards/" + memcard.id.to_s + "/exit", {:remote => true, :method => :put, :class => "btn" } 
             
             

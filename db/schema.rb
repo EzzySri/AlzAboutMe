@@ -13,20 +13,20 @@
 
 ActiveRecord::Schema.define(version: 20161128035650) do
 
-  create_table "groups", force: :cascade do |t|
-    t.integer  "creator"
-    t.string   "group_name"
-    t.string   "people"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "answers", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "memory_card_id"
     t.string   "answer"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+  end
+
+  create_table "groups", force: :cascade do |t|
+    t.integer  "creator"
+    t.string   "group_name"
+    t.string   "people"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "memory_cards", force: :cascade do |t|
