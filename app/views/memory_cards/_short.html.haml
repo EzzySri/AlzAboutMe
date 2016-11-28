@@ -19,8 +19,20 @@
         = form_tag "/memory_cards/"+ memcard.id.to_s + "/share", :method => :put do
             .form-group
                 = text_field :user, 'share', :type => "text", :class => "form-control", :id => "sharefield", :placeholder => "Share with: "
-            = submit_tag 'Share', {:id => "shareButton", :class => "btn"}
-        = button_to "View Previous Answers", "/memory_cards/" + memcard.id.to_s + "/viewPrevious", {:remote => true, :method => :put, :id => "prevAnswersButton", :class => "btn"}
+            = submit_tag 'Update Memory', {:id => "updateMemoryButton"}
+        = button_to "Share", "/memory_cards/" + memcard.id.to_s + "/viewShareOptions", {:remote => true, :method => :put, :id => "shareButton"}
+        -if session[:viewShare] == true
+            .shareOptions
+                -if @groups.nil? == false
+                    = form_tag "/memory_cards/"+ memcard.id.to_s + "/shareGroup" , {:method => :put, :remote => true} do
+                        -@groups.each do |group|
+                            // %input{:type=>"checkbox", :name=>"#{group.group_name}", :value=>1, :checked=>1}
+                            = check_box(:sharedGr, "#{group.group_name}")
+                            =group.group_name
+                        = submit_tag 'Share with Groups', {:id => "shareGroupButton"}
+                    = button_to "hide", "/memory_cards/" + memcard.id.to_s + "/hideShareOptions", {:remote => true, :method => :put } 
+                    
+        = button_to "View Previous Answers", "/memory_cards/" + memcard.id.to_s + "/viewPrevious", {:remote => true, :method => :put, :id => "prevAnswersButton"}
         -if session[:prevView] == true
             -carousel_id = "previousAnswers-" + memcard.id.to_s
             .carousel{:id=>carousel_id, "data-interval" => "false" }
@@ -45,4 +57,5 @@
         = button_to "Cancel", "/memory_cards/" + memcard.id.to_s + "/exit", {:remote => true, :method => :put, :class => "btn" } 
             
             
+
 

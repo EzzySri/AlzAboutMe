@@ -1,4 +1,4 @@
--if memcard.category == 'Shared'
+-if session[:viewing_shared] == true
     = render 'shared', :memcard => memcard
 - elsif memcard.question_type == 'text'
     = render 'short', :memcard => memcard

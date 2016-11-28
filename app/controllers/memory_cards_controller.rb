@@ -2,6 +2,17 @@ class MemoryCardsController < ApplicationController
   helper_method :show
   
   def index
+    if params[:category] == "Shared"
+      # session[:viewing_shared] = true
+      @shareRows = ShareTable.where(:receiver => current_user.id)
+      @memcard_ids = []
+      @shareRows.each do |row|
+        @memcard_ids << row.memcard_id
+      end
+      @memorycards = MemoryCard.where(id: @memcard_ids)
+      return
+    end
+    
     if params[:category].nil?
       @memorycards = MemoryCard.where(:user_id => session[:user_id], :category => session[:category])
     else
@@ -119,4 +130,44 @@ class MemoryCardsController < ApplicationController
       format.js
     end
   end
+  
+  def viewShareOptions
+    puts ShareTable.all[0].receiver, "ZZZZZZ"
+    session[:viewShare] = true
+    @memcard = MemoryCard.find(params[:id])
+    puts Group.all.length, "AAAA"
+    @groups = Group.where(:creator => current_user.id)
+    puts @groups.length
+     respond_to do |format|
+      format.js
+    end
+  end
+  
+  def hideShareOptions
+    @memcard = MemoryCard.find(params[:id])
+    session[:viewShare] = false
+    respond_to do |format|
+      format.js
+    end
+  end
+  
+  def shareGroup
+    @memcard = MemoryCard.find(params[:id])
+    puts params, "AAAAAAAAAAAAAA"
+    puts current_user.id
+    @groups_to_share_with = params[:sharedGr].keys
+    @groups_to_share_with.each do |shareGroup|
+      @people_to_share_with = Group.where(:group_name => shareGroup, :creator => current_user.id)[0].people.split(",")
+      @people_to_share_with.each do |person|
+        ShareTable.create!({:donator => current_user.id, :receiver => person, :memcard_id => @memcard.id})
+      end
+    end
+    
+    respond_to do |format|
+      format.js
+    end
+  end
+    
+    
+    
 end 
