@@ -4,7 +4,7 @@
 %h1= "Welcome #{current_user.first_name} #{current_user.last_name}"
 - @memorycards.each do |memcard|
     %br
-    %div{:id => "memory-card-" + memcard.id.to_s}	
+    %div.card{:id => "memory-card-" + memcard.id.to_s}	
         = render 'memory_card', :memcard => memcard
         %br
 %br

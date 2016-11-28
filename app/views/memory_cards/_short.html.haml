@@ -1,34 +1,48 @@
 -if memcard.editing == false
     = link_to "/memory_cards/" + memcard.id.to_s + "/edit", {:remote => true, :method => :put} do
         .frontCard{:id => "short_answer_card"}
-            %h1= memcard.question
+            %h1.question= memcard.question
             -if memcard.answer.nil? == false
-                %h3= memcard.answer
+                %h3.answer= memcard.answer
 
 -if memcard.editing == true
     .backCard
         %h1= memcard.question
         = form_tag "/memory_cards/"+ memcard.id.to_s , {:method => :put, :remote => true} do
             .form-group
-                = label :memory, :field, 'Answer: '
+                - label :memory, :field
                 - if memcard.answer.nil? == false
-                    = text_field :user, 'memory', :value => memcard.answer, :type => "text", :class => "form-control", :id => "memoryfield", :placeholder => "Answer here"
+                    = text_field :user, 'memory', :type => "text", :class => "form-control", :id => "memoryfield", :placeholder => "Answer:"
                 -else
-                    = text_field :user, 'memory', :value => memcard.answer, :type => "text", :class => "form-control", :id => "memoryfield", :placeholder => "Answer here"
-            = submit_tag 'Update Memory', {:id => "updateMemoryButton"}
+                    = text_field :user, 'memory', :type => "text", :class => "form-control", :id => "memoryfield", :placeholder => "Answer:"
+            = submit_tag 'Update Memory', {:id => "updateMemoryButton", :class => "btn"}
         = form_tag "/memory_cards/"+ memcard.id.to_s + "/share", :method => :put do
             .form-group
                 = text_field :user, 'share', :type => "text", :class => "form-control", :id => "sharefield", :placeholder => "Share with: "
-            = submit_tag 'Share', {:id => "shareButton"}
-        = button_to "View Previous Answers", "/memory_cards/" + memcard.id.to_s + "/viewPrevious", {:remote => true, :method => :put, :id => "prevAnswersButton"}
+            = submit_tag 'Share', {:id => "shareButton", :class => "btn"}
+        = button_to "View Previous Answers", "/memory_cards/" + memcard.id.to_s + "/viewPrevious", {:remote => true, :method => :put, :id => "prevAnswersButton", :class => "btn"}
         -if session[:prevView] == true
-            .previousAnswers
-                // %h1= memcard.previous_answers
-                -answers = memcard.previous_answers.split("||")
-                -answers.each do |answer|
-                    %li= answer
-                = button_to "hide", "/memory_cards/" + memcard.id.to_s + "/hidePrevious", {:remote => true, :method => :put } 
-        = button_to "Cancel", "/memory_cards/" + memcard.id.to_s + "/exit", {:remote => true, :method => :put } 
+            -carousel_id = "previousAnswers-" + memcard.id.to_s
+            .carousel{:id=>carousel_id, "data-interval" => "false" }
+                .carousel-inner
+                    -answers = memcard.previous_answers.split("||")
+                    -first = true
+                    -answers.each do |answer|
+                        -if first
+                            -first = false
+                            .item.active
+                                =answer
+                        -else
+                            .item
+                                =answer
+                    -if answers.length > 1
+                        %a.left.carousel-control{:href => "#" + carousel_id, :data => {:slide => "prev"}}
+                            %span.glyphicon.glyphicon-chevron-left
+                        %a.right.carousel-control{:href => "#" + carousel_id, :data => {:slide => "next"}}
+                            %span.glyphicon.glyphicon-chevron-right
+            
+                = button_to "hide", "/memory_cards/" + memcard.id.to_s + "/hidePrevious", {:remote => true, :method => :put, :class => "btn" } 
+        = button_to "Cancel", "/memory_cards/" + memcard.id.to_s + "/exit", {:remote => true, :method => :put, :class => "btn" } 
             
             
 
