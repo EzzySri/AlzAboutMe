@@ -119,4 +119,38 @@ class MemoryCardsController < ApplicationController
       format.js
     end
   end
+  
+  def viewShareOptions
+    session[:viewShare] = true
+    @memcard = MemoryCard.find(params[:id])
+    puts Group.all.length, "AAAA"
+    @groups = Group.where(:creator => current_user.id)
+    puts @groups.length
+     respond_to do |format|
+      format.js
+    end
+  end
+  
+  def hideShareOptions
+    @memcard = MemoryCard.find(params[:id])
+    session[:viewShare] = false
+    respond_to do |format|
+      format.js
+    end
+  end
+  
+  def shareGroup
+    @memcard = MemoryCard.find(params[:id])
+    puts params, "AAAAAAAAAAAAAA"
+    @groups_to_share_with = params[:sharedGr].keys
+    @groups_to_share_with.each do |shareGroup|
+    end
+    
+    respond_to do |format|
+      format.js
+    end
+  end
+    
+    
+    
 end 

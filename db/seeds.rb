@@ -30,9 +30,23 @@ memories.each do |mem|
 end
 
 
-accounts = [ {:username => "admin", :password => "123", :password_confirmation => "123", :role => "admin"}
+accounts = [ {:username => "admin", :password => "123", :password_confirmation => "123", :role => "admin"},
+            {:username => "d1", :password => "p", :password_confirmation => "p"},
+            {:username => "d2", :password => "p", :password_confirmation => "p"},
+            {:username => "d3", :password => "p", :password_confirmation => "p"}
     ]
 
 accounts.each do |account|
     User.create!(account)
 end 
+
+
+
+
+groups = [ {:creator => 3, :group_name => "friends", :people => "8"},
+ {:creator => 3, :group_name => "bingoClub", :people => "8"}
+    ]
+    
+groups.each do |group|
+    Group.create!(group)
+end
