@@ -44,7 +44,11 @@ end
 
 
 groups = [ {:creator => 3, :group_name => "friends", :people => "8"},
- {:creator => 3, :group_name => "bingoClub", :people => "8"}
+ {:creator => 3, :group_name => "bingoClub", :people => "8"},
+ {:creator => 8, :group_name => "family", :people => "3"},
+ {:creator => 8, :group_name => "coworkers", :people => "3, 25"}
+ 
+ 
     ]
     
 groups.each do |group|

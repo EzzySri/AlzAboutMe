@@ -2,6 +2,18 @@ class MemoryCardsController < ApplicationController
   helper_method :show
   
   def index
+    puts params, "ZZZZZZZZZ"
+    if params[:category] == "Shared"
+      puts "shared reached"
+      @shareRows = ShareTable.where(:receiver => current_user.id)
+      @memcard_ids = []
+      @shareRows.each do |row|
+        @memcard_ids << row.memcard_id
+      end
+      @memorycards = MemoryCard.where(id: @memcard_ids)
+      return
+    end
+    
     if params[:category].nil?
       @memorycards = MemoryCard.where(:user_id => session[:user_id], :category => session[:category])
     else
