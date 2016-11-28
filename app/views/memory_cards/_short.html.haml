@@ -1,5 +1,4 @@
 -if memcard.editing == false
-    = current_user.id
     = link_to "/memory_cards/" + memcard.id.to_s + "/edit", {:remote => true, :method => :put} do
         .frontCard{:id => "short_answer_card"}
             %h1= memcard.question

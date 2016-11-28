@@ -2,9 +2,8 @@ class MemoryCardsController < ApplicationController
   helper_method :show
   
   def index
-    puts params, "ZZZZZZZZZ"
     if params[:category] == "Shared"
-      puts "shared reached"
+      # session[:viewing_shared] = true
       @shareRows = ShareTable.where(:receiver => current_user.id)
       @memcard_ids = []
       @shareRows.each do |row|
