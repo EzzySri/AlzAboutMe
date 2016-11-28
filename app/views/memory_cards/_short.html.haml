@@ -30,8 +30,6 @@
                             =group.group_name
                         = submit_tag 'Share with Groups', {:id => "shareGroupButton"}
                     = button_to "hide", "/memory_cards/" + memcard.id.to_s + "/hideShareOptions", {:remote => true, :method => :put, :class => "btn" } 
-                    
-        = button_to "View Previous Answers", "/memory_cards/" + memcard.id.to_s + "/viewPrevious", {:remote => true, :method => :put, :id => "prevAnswersButton", :class => "btn"}
         -if session[:prevView] == true
             -carousel_id = "previousAnswers-" + memcard.id.to_s
             .carousel{:id=>carousel_id, "data-interval" => "false" }
@@ -53,6 +51,8 @@
                             %span.glyphicon.glyphicon-chevron-right
             
                 = button_to "Hide", "/memory_cards/" + memcard.id.to_s + "/hidePrevious", {:remote => true, :method => :put, :class => "btn" } 
+        -else
+            = button_to "View Previous Answers", "/memory_cards/" + memcard.id.to_s + "/viewPrevious", {:remote => true, :method => :put, :id => "prevAnswersButton", :class => "btn"}
         = button_to "Cancel", "/memory_cards/" + memcard.id.to_s + "/exit", {:remote => true, :method => :put, :class => "btn" } 
             
             
