@@ -1,5 +1,9 @@
 class MemoryCardsController < ApplicationController
   helper_method :show
+
+  def newMediaRecording
+
+  end
   
   def index
     if params[:category].nil?
