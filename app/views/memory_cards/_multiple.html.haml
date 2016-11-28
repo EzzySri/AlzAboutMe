@@ -5,13 +5,11 @@
         -if memcard.answer.nil? == false
             - memcard.multiple_choice_entries.each do |choice|
                 -if choice == memcard.answer
-                    You Chose: 
                     %b= memcard.answer 
-                -else 
-                    = choice 
-                %br
+                    %br
+
         %br 
-        = button_to "Edit", "/memory_cards/" + memcard.id.to_s + "/edit", {:remote => true, :method => :put} 
+        = button_to "Edit", "/memory_cards/" + memcard.id.to_s + "/edit", {:remote => true, :method => :put, :class => "btn"} 
             
             
             
@@ -19,14 +17,14 @@
     .backCard
         %h1= memcard.question
         = form_tag "/memory_cards/"+ memcard.id.to_s , {:method => :put, :remote => true} do
-            .form-group
-            = label :memory, :field, 'Answer: '
-            - memcard.multiple_choice_entries.each do |choice|
+            .form-group.mc
+                - label :memory, :field
+                - memcard.multiple_choice_entries.each do |choice|
+                    %br
+                    = radio_button :user, "memory", choice
+                    = label "user_memory", choice
                 %br
-                = radio_button :user, "memory", choice
-                = label "user_memory", choice
-            %br
-            = submit_tag 'Update Memory', {:id => "updateMemoryButton"}
-        = button_to "Cancel", "/memory_cards/" + memcard.id.to_s + "/exit", {:remote => true, :method => :put} 
+                = submit_tag 'Update Memory', {:id => "updateMemoryButton", :class => "btn"}
+        = button_to "Cancel", "/memory_cards/" + memcard.id.to_s + "/exit", {:remote => true, :method => :put, :class => "btn"} 
         
         
