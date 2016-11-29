@@ -1,6 +1,6 @@
 class WelcomeController < ApplicationController
   def index
-    # reset_session
+  # reset_session
   end
   
   def current_user

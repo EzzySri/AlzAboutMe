@@ -1,0 +1,120 @@
+/* line 5, /home/ubuntu/workspace/AlzAboutMe/app/assets/stylesheets/memory_cards.scss */
+.card {
+  position: relative;
+  padding: 15px;
+  min-width: 350px;
+  max-width: 60%;
+  background: linear-gradient(to right, #00cc99, #00ccff);
+  border-radius: 25px;
+  margin: auto;
+}
+
+/* line 15, /home/ubuntu/workspace/AlzAboutMe/app/assets/stylesheets/memory_cards.scss */
+.backCard {
+  text-align: center;
+}
+
+/* line 19, /home/ubuntu/workspace/AlzAboutMe/app/assets/stylesheets/memory_cards.scss */
+.button {
+  position: absolute;
+  right: 450px;
+  top: 150px;
+}
+
+/* line 25, /home/ubuntu/workspace/AlzAboutMe/app/assets/stylesheets/memory_cards.scss */
+#sharefield {
+  z-index: 5;
+}
+
+/* line 29, /home/ubuntu/workspace/AlzAboutMe/app/assets/stylesheets/memory_cards.scss */
+#shareButton {
+  z-index: 5;
+}
+
+/* line 33, /home/ubuntu/workspace/AlzAboutMe/app/assets/stylesheets/memory_cards.scss */
+h1, h2, h3 {
+  color: white !important;
+}
+
+/* line 37, /home/ubuntu/workspace/AlzAboutMe/app/assets/stylesheets/memory_cards.scss */
+h1 {
+  font-size: 200% !important;
+  font-weight: 300 !important;
+}
+
+/* line 42, /home/ubuntu/workspace/AlzAboutMe/app/assets/stylesheets/memory_cards.scss */
+h3 {
+  font-size: 100% !important;
+  font-weight: 200 !important;
+}
+
+/* line 47, /home/ubuntu/workspace/AlzAboutMe/app/assets/stylesheets/memory_cards.scss */
+a:-webkit-any-link {
+  text-decoration: none !important;
+}
+
+/* line 51, /home/ubuntu/workspace/AlzAboutMe/app/assets/stylesheets/memory_cards.scss */
+.btn {
+  color: white;
+  background: none;
+  font-weight: bold !important;
+  border: 2px solid white !important;
+}
+
+/* line 58, /home/ubuntu/workspace/AlzAboutMe/app/assets/stylesheets/memory_cards.scss */
+.btn:hover {
+  background: rgba(225, 225, 225, 0.8);
+  color: white !important;
+}
+
+/* line 63, /home/ubuntu/workspace/AlzAboutMe/app/assets/stylesheets/memory_cards.scss */
+.carousel-inner {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100px;
+  width: 80%;
+  overflow: auto;
+}
+
+/* line 73, /home/ubuntu/workspace/AlzAboutMe/app/assets/stylesheets/memory_cards.scss */
+.item {
+  padding: 10px 50px 10px 50px;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* line 80, /home/ubuntu/workspace/AlzAboutMe/app/assets/stylesheets/memory_cards.scss */
+.carousel-control {
+  background-image: none !important;
+}
+/* line 7, /home/ubuntu/workspace/AlzAboutMe/app/assets/stylesheets/welcome.scss */
+#welcome_header {
+  text-align: center;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+
+
+ */
+
+body {
+    padding: 10px;
+    padding-top: 70px;
+}
+
+.content {
+    text-align: center;
+}

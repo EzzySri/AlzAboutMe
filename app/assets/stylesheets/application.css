@@ -14,5 +14,10 @@
  *= require_self
  */
 body {
+    padding: 10px;
     padding-top: 70px;
+}
+
+.content {
+    text-align: center;
 }

@@ -1,10 +1,9 @@
 
 %link{:rel => :stylesheet, :href => "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css", :integrity => "sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u", :crossorigin => "anonymous"}
-
 %h1= "Welcome #{current_user.first_name} #{current_user.last_name}"
 - @memorycards.each do |memcard|
     %br
-    %div{:id => "memory-card-" + memcard.id.to_s}	
+    %div.card{:id => "memory-card-" + memcard.id.to_s}	
         = render 'memory_card', :memcard => memcard
         %br
 %br

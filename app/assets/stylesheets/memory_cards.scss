@@ -2,18 +2,24 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.frontCard {
+.card {
     position: relative;
-    height: 300px;
-    width: 500px;
-    background-color: silver;
+    padding: 15px;
+    min-width: 350px;
+    max-width: 60%;
+    background: linear-gradient(to right, #00cc99, #00ccff);
+    border-radius: 25px;
+    margin: auto;
+    color: white;
+}
+
+.mc {
+    text-align: left;
+    margin-left: 10%;
 }
 
 .backCard{
-    position: relative;
-    height: 300px;
-    width: 500px;
-    background-color: rgb(217, 217, 217);
+    text-align: center;
 }
 
 .button{
@@ -28,4 +34,55 @@
 
 #shareButton{
     z-index: 5;
+}
+
+h1, h2, h3 {
+    color: white !important;
+}
+
+h1 {
+    font-size: 200% !important;
+    font-weight: 300 !important;
+}
+
+h3 {
+    font-size: 100% !important;
+    font-weight: 200 !important;
+}
+
+a:-webkit-any-link {
+    text-decoration: none !important;
+}
+
+.btn {
+    color: white;
+    background: none;
+    font-weight: bold !important;
+    border: 2px solid white !important;
+}
+
+.btn:hover {
+    background: rgba(225,225,225, .8);
+    color: white !important;
+}
+
+.carousel-inner{
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100px;
+  width: 80%;
+  overflow: auto;
+}
+
+.item {
+    padding: 10px 50px 10px 50px;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+
+.carousel-control {
+    background-image: none !important;
 }

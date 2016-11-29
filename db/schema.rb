@@ -11,7 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161117224433) do
+ActiveRecord::Schema.define(version: 20161128035650) do
+
+  create_table "answers", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "memory_card_id"
+    t.string   "answer"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  create_table "groups", force: :cascade do |t|
+    t.integer  "creator"
+    t.string   "group_name"
+    t.string   "people"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "memory_cards", force: :cascade do |t|
     t.string   "question"
@@ -24,9 +40,19 @@ ActiveRecord::Schema.define(version: 20161117224433) do
     t.string   "question_choices"
     t.string   "category"
     t.integer  "user_id"
+    t.string   "previous_answers"
   end
 
   add_index "memory_cards", ["user_id"], name: "index_memory_cards_on_user_id"
+
+  create_table "share_tables", force: :cascade do |t|
+    t.integer  "donator"
+    t.integer  "receiver"
+    t.integer  "group_id"
+    t.integer  "memcard_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "username"

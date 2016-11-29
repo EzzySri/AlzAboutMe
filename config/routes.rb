@@ -6,7 +6,12 @@ Rails.application.routes.draw do
   post 'memory_cards/:id' => 'memory_cards#update' #for the 'cancel button on memory cards'
   put 'memory_cards/:id/share' => 'memory_cards#share'
   put 'memory_cards/:id/exit' => 'memory_cards#exit'
-
+  put 'memory_cards/:id/viewPrevious' => 'memory_cards#viewPrevious'
+  put 'memory_cards/:id/hidePrevious' => 'memory_cards#hidePrevious'
+  put 'memory_cards/:id/viewShareOptions' => 'memory_cards#viewShareOptions'
+  put 'memory_cards/:id/hideShareOptions' => 'memory_cards#hideShareOptions'
+  put 'memory_cards/:id/shareGroup' => 'memory_cards#shareGroup'
+  
   # these routes are for showing users a login form, logging them in, and logging them out.
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'

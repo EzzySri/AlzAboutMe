@@ -6,6 +6,17 @@ class MemoryCardsController < ApplicationController
   end
   
   def index
+    if params[:category] == "Shared"
+      # session[:viewing_shared] = true
+      @shareRows = ShareTable.where(:receiver => current_user.id)
+      @memcard_ids = []
+      @shareRows.each do |row|
+        @memcard_ids << row.memcard_id
+      end
+      @memorycards = MemoryCard.where(id: @memcard_ids)
+      return
+    end
+    
     if params[:category].nil?
       @memorycards = MemoryCard.where(:user_id => session[:user_id], :category => session[:category])
     else
@@ -23,6 +34,7 @@ class MemoryCardsController < ApplicationController
     users.each do |usr|
       memcard_params[:user_id] = usr.id
       @card = MemoryCard.new(memcard_params)
+     
       usr.memory_cards << @card
       if !@card.save || !usr.save
         return false
@@ -60,6 +72,7 @@ class MemoryCardsController < ApplicationController
     if params["user"].nil? == false
       @memcard.answer = params["user"]["memory"]
     end
+    @memcard.previous_answers = params["user"]["memory"] + "||" + @memcard.previous_answers
     @memcard.save
     respond_to do |format|
       format.js
@@ -91,7 +104,7 @@ class MemoryCardsController < ApplicationController
   
   # Forcing question_type => text for now
   def memcard_params
-    params.require(:memcard).permit(:question, :category, :user_id, :question_type, :question_choices, :completed, :created_at, :updated_at).merge(:question_type => "text", :answer => "", :user_id => current_user.id, :editing => false)
+    params.require(:memcard).permit(:question, :category, :user_id, :question_type, :question_choices, :completed, :created_at, :updated_at, :previous_answers).merge(:question_type => "text", :answer => "", :user_id => current_user.id, :editing => false)
   end
   
   def exit
@@ -103,4 +116,62 @@ class MemoryCardsController < ApplicationController
       format.js
     end
   end
+  
+  def viewPrevious
+    @memcard = MemoryCard.find(params[:id])
+    # @prevs = true 
+    session[:prevView] = true
+    respond_to do |format|
+      format.js
+    end
+  end
+  
+  def hidePrevious
+    @memcard = MemoryCard.find(params[:id])
+    # @prevs = false
+    session[:prevView] = false
+    respond_to do |format|
+      format.js
+    end
+  end
+  
+  def viewShareOptions
+    puts ShareTable.all[0].receiver, "ZZZZZZ"
+    session[:viewShare] = true
+    @memcard = MemoryCard.find(params[:id])
+    puts Group.all.length, "AAAA"
+    @groups = Group.where(:creator => current_user.id)
+    puts @groups.length
+     respond_to do |format|
+      format.js
+    end
+  end
+  
+  def hideShareOptions
+    @memcard = MemoryCard.find(params[:id])
+    session[:viewShare] = false
+    respond_to do |format|
+      format.js
+    end
+  end
+  
+  def shareGroup
+    @memcard = MemoryCard.find(params[:id])
+    puts params, "AAAAAAAAAAAAAA"
+    puts current_user.id
+    @groups_to_share_with = params[:sharedGr].keys
+    @groups_to_share_with.each do |shareGroup|
+      @people_to_share_with = Group.where(:group_name => shareGroup, :creator => current_user.id)[0].people.split(",")
+      @people_to_share_with.each do |person|
+        ShareTable.create!({:donator => current_user.id, :receiver => person, :memcard_id => @memcard.id})
+      end
+    end
+    
+    respond_to do |format|
+      format.js
+    end
+  end
+    
+    
+    
 end 
