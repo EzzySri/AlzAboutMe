@@ -47,6 +47,7 @@ Rails.application.routes.draw do
   get '/memory_cards', :to => 'memory_cards#index'
 
   get '/media', :to => 'memory_cards#newMediaRecording'
+  post '/video_memory', :to => 'memory_cards#upload_video'
   
   
    

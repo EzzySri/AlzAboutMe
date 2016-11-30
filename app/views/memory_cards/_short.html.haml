@@ -4,17 +4,20 @@
             %h1.question= memcard.question
             -if memcard.answer.nil? == false
                 %h3.answer= memcard.answer
+            -if memcard.try(:video_memory)
+                = video_tag memcard.video_memory.url(:medium), controls: true, style: "max-width: 100%;"
 
 -if memcard.editing == true
     .backCard
         %h1= memcard.question
-        = form_tag "/memory_cards/"+ memcard.id.to_s , {:method => :put, :remote => true} do
+        = form_tag "/memory_cards/"+ memcard.id.to_s , {:html => {:multipart => true}, :method => :put, :remote => true, :authenticity_token => true, :data => { :type => :json }} do
             .form-group
                 - label :memory, :field
                 - if memcard.answer.nil? == false
                     = text_field :user, 'memory', :type => "text", :class => "form-control", :id => "memoryfield", :placeholder => "Answer:"
                 -else
                     = text_field :user, 'memory', :type => "text", :class => "form-control", :id => "memoryfield", :placeholder => "Answer:"
+                = file_field :video_memory, :accept => "video/*;capture=camcorder" 
             = submit_tag 'Update Memory', {:id => "updateMemoryButton", :class => "btn"}
         = form_tag "/memory_cards/"+ memcard.id.to_s + "/share", :method => :put do
             .form-group
@@ -30,7 +33,7 @@
                             =group.group_name
                         = submit_tag 'Share with Groups', {:id => "shareGroupButton"}
                     = button_to "hide", "/memory_cards/" + memcard.id.to_s + "/hideShareOptions", {:remote => true, :method => :put, :class => "btn" } 
-        -answers = memcard.previous_answers.split("||")
+        -answers =  memcard.previous_answers.present? ? memcard.previous_answers.split("||") : ""
         -if session[:prevView] == true
             -carousel_id = "previousAnswers-" + memcard.id.to_s
             .carousel{:id=>carousel_id, "data-interval" => "false" }

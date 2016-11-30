@@ -34,6 +34,11 @@ gem 'factory_girl_rails'
 # All permissions are defined in a single location (the Ability class) 
 gem 'cancancan', '~> 1.10'
 
+gem "paperclip", "~> 5.0.0"
+gem 'paperclip-av-transcoder'
+gem 'remotipart', '~> 1.2'
+
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

@@ -2,7 +2,7 @@ class MemoryCardsController < ApplicationController
   helper_method :show
 
   def newMediaRecording
-
+    @memory_card = MemoryCard.new
   end
   
   def index
@@ -66,17 +66,26 @@ class MemoryCardsController < ApplicationController
     end
   end
   
-  def update
+   def update
     @memcard = MemoryCard.find(params[:id])
     @memcard.editing = false
     if params["user"].nil? == false
       @memcard.answer = params["user"]["memory"]
     end
-    @memcard.previous_answers = params["user"]["memory"] + "||" + @memcard.previous_answers
+    if params.key? :video_memory
+      @memcard.update_attributes(video_memory: video_memory_params)
+    end
+    @memcard.previous_answers = params["user"]["memory"] + "||" + (@memcard.previous_answers || "")
     @memcard.save
     respond_to do |format|
       format.js
     end
+  end
+
+  def upload_video
+    byebug
+    @memcard = MemoryCard.new(video_memory_params)
+    @memcard.save
   end
   
   # def share
@@ -172,6 +181,11 @@ class MemoryCardsController < ApplicationController
     end
   end
     
-    
+  private  
+
+  def video_memory_params
+    params.require(:video_memory)[:"{:accept=>%22video/*"]
+  end
+      
     
 end 
