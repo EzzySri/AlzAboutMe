@@ -98,7 +98,7 @@ RSpec.describe MemoryCardsController, type: :controller do
             @memCard = MemoryCard.create(:id => 1, :user_id => 123, :question => "What is your name?", :answer => "Daniel", :editing => false)
             @row = ShareTable.create(:id => 1, :donator => 1, :receiver => 2, :group_id => 1, :memcard_id => @memCard.id)
             @group = Group.create(:creator => 3, :group_name => "friends", :people => "8")
-            # stub_const("current_user", 5)
+            ApplicationController.any_instance.stub(:current_user).and_return( User.create(:username => "bob", :first_name => "bob", :id => 1))
             xhr :put, 'viewShareOptions', :id => @memCard.id, :current_user => 1
             expect(response).to render_template 'viewShareOptions'
         end
@@ -114,14 +114,18 @@ RSpec.describe MemoryCardsController, type: :controller do
         it 'calls shareGroup' do
             @memCard = MemoryCard.create(:id => 1, :user_id => 123, :question => "What is your name?", :answer => "Daniel", :editing => false)
             @row = ShareTable.create(:id => 1, :donator => 1, :receiver => 2, :group_id => 1, :memcard_id => @memCard.id)
-            @group = Group.create(:creator => 3, :group_name => "friends", :people => "8")
-            xhr :put, 'shareGroup', :id => @memCard.id, :current_user => 1
+            @user = User.create(:username => "bob", :first_name => "bob", :id => 1)
+            @group = Group.create(:creator => @user.id, :group_name => "friends", :people => "8")
+            User.create(:username => "bob", :first_name => "bob", :id => 234)
+            ApplicationController.any_instance.stub(:current_user).and_return(@user)
+            xhr :put, 'shareGroup', :id => @memCard.id, :sharedGr => {:friends => 1}
             expect(response).to render_template 'shareGroup'
         end
         
         it 'renders index of share' do
+            ApplicationController.any_instance.stub(:current_user).and_return( User.create(:username => "bob", :first_name => "bob", :id => 1))
             xhr :get, 'index', :category => "Shared"
-            expect(response).to render_template 'sharingPage'
+            expect(response).to render_template 'sharingPage.html.haml'
         end
             
     end

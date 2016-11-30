@@ -133,9 +133,6 @@ class MemoryCardsController < ApplicationController
   end
   
   def viewShareOptions
-    if current_user.nil?
-      return
-    end
     session[:viewShare] = true
     @memcard = MemoryCard.find(params[:id])
     @groups = Group.where(:creator => current_user.id)
@@ -153,9 +150,6 @@ class MemoryCardsController < ApplicationController
   end
   
   def shareGroup
-    if current_user.nil?
-      return
-    end
     @memcard = MemoryCard.find(params[:id])
     @groups_to_share_with = params[:sharedGr].keys
     @groups_to_share_with.each do |shareGroup|
