@@ -1,0 +1,9 @@
+- if @groups
+
+    -@groups.each do |group|
+        .group
+            %h1.groupname= group.group_name.to_s
+- else
+    %span You don't have any groups yet, would you like to make one?
+    <br>
+    %a.groupbutton{:href => "groups/edit"} Create Group
