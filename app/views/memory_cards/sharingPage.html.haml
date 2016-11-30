@@ -1,0 +1,10 @@
+%h1= "Welcome #{current_user.first_name} #{current_user.last_name}"
+- @memorycards.each do |memcard|
+    %br
+    %div.card{:id => "memory-card-" + memcard.id.to_s}
+        %h1= "shared from: " + User.where(:id => memcard.user_id)[0].username
+        %h1.question= memcard.question
+        -if memcard.answer.nil? == false
+            %h3.answer= memcard.answer
+        %br
+%br

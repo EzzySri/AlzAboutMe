@@ -10,6 +10,9 @@ class MemoryCardsController < ApplicationController
         @memcard_ids << row.memcard_id
       end
       @memorycards = MemoryCard.where(id: @memcard_ids)
+      # redirect_to "memory_cards/sharingPage"
+      render "sharingPage.html.haml"
+      # redirect_to action: sharingPage
       return
     end
     
@@ -25,6 +28,11 @@ class MemoryCardsController < ApplicationController
     @category = params[:category] || "All Categories"
     @donating_username = session[:donating_username] 
  end
+ 
+  def sharingPage
+    puts "reached AAAA"
+    render "sharingPage.html.haml"
+  end
  
   def add_card_for_all_users
     users.each do |usr|
