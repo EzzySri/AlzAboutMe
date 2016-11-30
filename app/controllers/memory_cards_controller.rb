@@ -66,10 +66,13 @@ class MemoryCardsController < ApplicationController
   def update
     @memcard = MemoryCard.find(params[:id])
     @memcard.editing = false
-    if params["user"].nil? == false
+    if params["user"].nil? == false and params["user"]["memory"] != "" 
       @memcard.answer = params["user"]["memory"]
-    end
-    @memcard.previous_answers = params["user"]["memory"] + "||" + @memcard.previous_answers
+      if @memcard.previous_answers.nil? == false
+        @memcard.previous_answers = params["user"]["memory"] + "||" + @memcard.previous_answers
+      end
+      
+  end
     @memcard.save
     respond_to do |format|
       format.js
@@ -133,10 +136,8 @@ class MemoryCardsController < ApplicationController
   end
   
   def viewShareOptions
-    puts ShareTable.all[0].receiver, "ZZZZZZ"
     session[:viewShare] = true
     @memcard = MemoryCard.find(params[:id])
-    puts Group.all.length, "AAAA"
     @groups = Group.where(:creator => current_user.id)
     puts @groups.length
      respond_to do |format|

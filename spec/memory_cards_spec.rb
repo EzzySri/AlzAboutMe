@@ -77,4 +77,30 @@ RSpec.describe MemoryCardsController, type: :controller do
         end
     end
     
+    describe 'PUT viewPrevious' do 
+        it 'calls viewPrevious' do
+            @memCard = MemoryCard.create(:id => 1, :user_id => 123, :question => "What is your name?", :answer => "Daniel", :editing => false)
+            @row = ShareTable.create(:id => 1, :donator => 1, :receiver => 2, :group_id => 1, :memcard_id => @memCard.id)
+            @group = Group.create(:creator => 3, :group_name => "friends", :people => "8")
+            xhr :put, 'viewPrevious', :id => @memCard.id
+            expect(response).to render_template 'viewPrevious'
+        end
+        
+        it 'calls hidePrevious' do
+            @memCard = MemoryCard.create(:id => 1, :user_id => 123, :question => "What is your name?", :answer => "Daniel", :editing => false)
+            @row = ShareTable.create(:id => 1, :donator => 1, :receiver => 2, :group_id => 1, :memcard_id => @memCard.id)
+            @group = Group.create(:creator => 3, :group_name => "friends", :people => "8")
+            xhr :put, 'hidePrevious', :id => @memCard.id
+            expect(response).to render_template 'hidePrevious'
+        end
+        
+        # it 'calls viewShareOptions' do
+        #     @memCard = MemoryCard.create(:id => 1, :user_id => 123, :question => "What is your name?", :answer => "Daniel", :editing => false)
+        #     @row = ShareTable.create(:id => 1, :donator => 1, :receiver => 2, :group_id => 1, :memcard_id => @memCard.id)
+        #     @group = Group.create(:creator => 3, :group_name => "friends", :people => "8")
+        #     xhr :put, 'viewShareOptions', :id => @memCard.id, :current_user => 1
+        #     expect(response).to render_template 'viewShareOptions'
+        # end
+    end
+    
 end
