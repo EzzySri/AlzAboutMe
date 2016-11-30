@@ -12,7 +12,7 @@ Feature: Sharing among groups
     Given I signed in as an admin
     Given a short answer MemoryCard exists
     And I click on "All Categories"
-    Then I should see "Q"
+    Then I should see "Factory Question"
     Then I should see "Update Memory"
     
   

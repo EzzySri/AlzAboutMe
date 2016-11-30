@@ -30,7 +30,7 @@
                             =group.group_name
                         = submit_tag 'Share with Groups', {:id => "shareGroupButton", :class => "btn"}
                     = button_to "hide", "/memory_cards/" + memcard.id.to_s + "/hideShareOptions", {:remote => true, :method => :put, :class => "btn" } 
-        -answers = memcard.previous_answers.split("||")
+        -answers = memcard.previous_answers.split("||") if memcard.previous_answers.nil? == false
         -if session[:prevView] == true
             -carousel_id = "previousAnswers-" + memcard.id.to_s
             .carousel{:id=>carousel_id, "data-interval" => "false" }
