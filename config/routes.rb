@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   put 'memory_cards/:id/viewShareOptions' => 'memory_cards#viewShareOptions'
   put 'memory_cards/:id/hideShareOptions' => 'memory_cards#hideShareOptions'
   put 'memory_cards/:id/shareGroup' => 'memory_cards#shareGroup'
-  # get 'memory_cards/sharingPage' => 'memory_cards#sharingPage'
+ 
   
   # these routes are for showing users a login form, logging them in, and logging them out.
   get '/login' => 'sessions#new'
