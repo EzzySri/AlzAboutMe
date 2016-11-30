@@ -94,13 +94,36 @@ RSpec.describe MemoryCardsController, type: :controller do
             expect(response).to render_template 'hidePrevious'
         end
         
-        # it 'calls viewShareOptions' do
-        #     @memCard = MemoryCard.create(:id => 1, :user_id => 123, :question => "What is your name?", :answer => "Daniel", :editing => false)
-        #     @row = ShareTable.create(:id => 1, :donator => 1, :receiver => 2, :group_id => 1, :memcard_id => @memCard.id)
-        #     @group = Group.create(:creator => 3, :group_name => "friends", :people => "8")
-        #     xhr :put, 'viewShareOptions', :id => @memCard.id, :current_user => 1
-        #     expect(response).to render_template 'viewShareOptions'
-        # end
+        it 'calls viewShareOptions' do
+            @memCard = MemoryCard.create(:id => 1, :user_id => 123, :question => "What is your name?", :answer => "Daniel", :editing => false)
+            @row = ShareTable.create(:id => 1, :donator => 1, :receiver => 2, :group_id => 1, :memcard_id => @memCard.id)
+            @group = Group.create(:creator => 3, :group_name => "friends", :people => "8")
+            # stub_const("current_user", 5)
+            xhr :put, 'viewShareOptions', :id => @memCard.id, :current_user => 1
+            expect(response).to render_template 'viewShareOptions'
+        end
+        
+        it 'calls hideShareOptions' do
+            @memCard = MemoryCard.create(:id => 1, :user_id => 123, :question => "What is your name?", :answer => "Daniel", :editing => false)
+            @row = ShareTable.create(:id => 1, :donator => 1, :receiver => 2, :group_id => 1, :memcard_id => @memCard.id)
+            @group = Group.create(:creator => 3, :group_name => "friends", :people => "8")
+            xhr :put, 'hideShareOptions', :id => @memCard.id, :current_user => 1
+            expect(response).to render_template 'hideShareOptions'
+        end
+        
+        it 'calls shareGroup' do
+            @memCard = MemoryCard.create(:id => 1, :user_id => 123, :question => "What is your name?", :answer => "Daniel", :editing => false)
+            @row = ShareTable.create(:id => 1, :donator => 1, :receiver => 2, :group_id => 1, :memcard_id => @memCard.id)
+            @group = Group.create(:creator => 3, :group_name => "friends", :people => "8")
+            xhr :put, 'shareGroup', :id => @memCard.id, :current_user => 1
+            expect(response).to render_template 'shareGroup'
+        end
+        
+        it 'renders index of share' do
+            xhr :get, 'index', :category => "Shared"
+            expect(response).to render_template 'sharingPage'
+        end
+            
     end
     
 end

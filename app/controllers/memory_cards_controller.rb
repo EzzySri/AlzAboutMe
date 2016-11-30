@@ -111,7 +111,6 @@ class MemoryCardsController < ApplicationController
     @memcard = MemoryCard.find(params[:id])
     @memcard.editing = false
     @memcard.save
-    
     respond_to do |format|
       format.js
     end
@@ -119,7 +118,6 @@ class MemoryCardsController < ApplicationController
   
   def viewPrevious
     @memcard = MemoryCard.find(params[:id])
-    # @prevs = true 
     session[:prevView] = true
     respond_to do |format|
       format.js
@@ -128,7 +126,6 @@ class MemoryCardsController < ApplicationController
   
   def hidePrevious
     @memcard = MemoryCard.find(params[:id])
-    # @prevs = false
     session[:prevView] = false
     respond_to do |format|
       format.js
@@ -136,10 +133,12 @@ class MemoryCardsController < ApplicationController
   end
   
   def viewShareOptions
+    if current_user.nil?
+      return
+    end
     session[:viewShare] = true
     @memcard = MemoryCard.find(params[:id])
     @groups = Group.where(:creator => current_user.id)
-    puts @groups.length
      respond_to do |format|
       format.js
     end
@@ -154,9 +153,10 @@ class MemoryCardsController < ApplicationController
   end
   
   def shareGroup
+    if current_user.nil?
+      return
+    end
     @memcard = MemoryCard.find(params[:id])
-    puts params, "AAAAAAAAAAAAAA"
-    puts current_user.id
     @groups_to_share_with = params[:sharedGr].keys
     @groups_to_share_with.each do |shareGroup|
       @people_to_share_with = Group.where(:group_name => shareGroup, :creator => current_user.id)[0].people.split(",")
@@ -164,7 +164,6 @@ class MemoryCardsController < ApplicationController
         ShareTable.create!({:donator => current_user.id, :receiver => person, :memcard_id => @memcard.id})
       end
     end
-    
     respond_to do |format|
       format.js
     end
