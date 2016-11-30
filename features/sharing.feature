@@ -5,8 +5,15 @@ Feature: Sharing among groups
 
   
   Scenario: share with my groups
-    Given I am logged in
+    # Given I am logged in
+    # Given a short answer MemoryCard exists
+    # Given I am on the memory card page
+    Given an admin account exists 
+    Given I signed in as an admin
     Given a short answer MemoryCard exists
-    Given I am on the memory card page
+    And I click on "All Categories"
     Then I should see "Q"
+    Then I should see "Update Memory"
+    
+  
   

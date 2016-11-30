@@ -6,6 +6,7 @@
      editing true
      question_choices nil
      category nil 
+     user_id 1
    end 
   
    factory :multiple_choice_card, :class =>MemoryCard do
