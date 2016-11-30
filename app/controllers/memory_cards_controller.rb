@@ -133,7 +133,7 @@ class MemoryCardsController < ApplicationController
   end
   
   def viewShareOptions
-    puts ShareTable.all[0].receiver, "ZZZZZZ"
+    # puts ShareTable.all[0].receiver, "ZZZZZZ"
     session[:viewShare] = true
     @memcard = MemoryCard.find(params[:id])
     puts Group.all.length, "AAAA"

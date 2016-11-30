@@ -1,0 +1,19 @@
+.card
+  %h1 Group Name
+  .item= @group.group_name
+  - if @people
+    %h1 Members
+    -@people.each do |p|
+      -person = 
+      .item= p
+= form_tag '/groups/' + @group.id.to_s,  {:method => :put} do
+  .form-group
+    = label :group, :group_name, 'Group Name: '
+    = text_field :group, 'group_name', {:type => "text", :class => "form-control", :id => "groupname", :value => @group.group_name}
+  .form-group
+    = label :group, :people, 'New Member: '
+    = text_field :group, 'people', {:type => "text", :class => "form-control", :id => "newmember", :placeholder => "Username", :value => ""}
+  .btn 
+    = submit_tag 'Submit', {:id => "signUpSubmitButton"}
+%a.btn{:href => '/groups'} Cancel
+    

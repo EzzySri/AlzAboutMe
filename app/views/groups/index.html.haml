@@ -1,9 +1,13 @@
 - if @groups
 
     -@groups.each do |group|
-        .group
-            %h1.groupname= group.group_name.to_s
-- else
-    %span You don't have any groups yet, would you like to make one?
+        = link_to edit_group_path(group), {:method => :get} do
+            .card
+                %h1= group.group_name.to_s
     <br>
-    %a.groupbutton{:href => "groups/edit"} Create Group
+    <br>
+- else 
+    %h4.groups Oops! You don't have any groups yet.
+%h4.groups Do you want to create a group?
+<br>
+%a.btn{:href => "/groups/new"} Create Group
