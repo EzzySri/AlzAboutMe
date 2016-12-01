@@ -16,9 +16,6 @@ class GroupsController < ApplicationController
         if @group.save!
             flash[:success] = "Group successfully created"
             redirect_to '/groups'
-        else
-            flash[:warning] = "An error occured, please try again"
-            redirect_to '/groups/new'
         end
     end
     

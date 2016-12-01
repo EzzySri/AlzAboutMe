@@ -99,6 +99,7 @@ Feature: Groups
       And I fill in "Add New Member" with "username1"
       And I click "Add Member"
       Then I should see "User is already a member of this group"
+      
     Scenario: Remove a member
       Given I have an account
       And I am logged in
@@ -109,6 +110,16 @@ Feature: Groups
       And I fill in "Add New Member" with "username1"
       And I click "Add Member"
       And I click "Remove username1"
-
     
-  
+    Scenario: Group displays Members
+      Given I have an account
+      And I am logged in
+      And there exists a group named "Friends"
+      And I am on the Groups page
+      Then I click "Friends"
+      And I click "Edit"
+      And I fill in "Add New Member" with "username1"
+      And I click "Add Member"
+      And I am on the Groups page
+      And I click "Friends"
+      Then I should see "username1"
