@@ -1,0 +1,19 @@
+- flash.each do |key, value|
+    %div{:class => "alert alert-#{key}"}= value
+    
+.card
+    %h1 Group Name
+    .item= @group.group_name
+    - if @people
+        %h1 Members
+        -@people.each do |p|
+            .item= p
+<br>
+.col-xs-4
+.col-xs-4
+    .row
+        = link_to 'Go Back', groups_path, :method => :get, :class => "btn"
+        = link_to 'Edit', edit_group_path(@group), :method => :get, :class => "btn"
+        = link_to 'Delete Group', group_path(@group), data: {:confirm => 'Are you sure?'}, :method => :delete, :class => "btn"
+.col-xs-4
+      

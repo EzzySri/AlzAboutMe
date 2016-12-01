@@ -1,9 +1,14 @@
-- if @groups
 
+- flash.each do |key, value|
+    %div{:class => "alert alert-#{key}"}= value
+
+.groupsHeader Groups
+- if @groups
     -@groups.each do |group|
-        = link_to edit_group_path(group), {:method => :get} do
+        = link_to group_path(group), {:method => :get} do
             .card
                 %h1= group.group_name.to_s
+        <br>
     <br>
     <br>
 - else 

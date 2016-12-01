@@ -3,7 +3,6 @@ class GroupsController < ApplicationController
     def index
         @groups = Group.where(:creator => current_user.id)
         if @groups.empty?
-            puts "WORKS"
             @groups = nil
         end
     end
@@ -15,8 +14,13 @@ class GroupsController < ApplicationController
         @group = Group.new(group_params)
         @group.creator = current_user.id
         if @group.save!
+            puts flash.nil?
+            flash[:success] = "Group successfully created"
+            puts flash.nil?
+            puts "QQQQQ"
             redirect_to '/groups'
         else
+            flash[:warning] = "An error occured, please try again"
             redirect_to '/groups/new'
         end
     end
@@ -25,8 +29,6 @@ class GroupsController < ApplicationController
         @group = Group.find(params[:id])
         if !@group.people.nil?
             all_members = @group.people.split(",")
-            puts all_members
-            puts "QQQQ"
             @people = []
             all_members.each do |member|
                 user = User.find(member)
@@ -40,30 +42,97 @@ class GroupsController < ApplicationController
     def update
         @group = Group.find(params[:id])
         @group.group_name = params[:group][:group_name]
-        if (!params[:group][:people].nil?)
-            user = User.find_by_username(params[:group][:people])
-            if user
+        if @group.save!
+            flash[:success] = "Group Successfully Updated"
+        end
+        redirect_to group_path(@group)
+    end
+    
+    def destroy
+        group = Group.find(params[:id])
+        group.destroy
+        
+        flash[:success] = "Group sucessfully deleted"
+        redirect_to groups_path
+    end
+    
+    def show
+        @group = Group.find(params[:id])
+        if !@group.people.nil?
+            all_members = @group.people.split(",")
+            @people = []
+            all_members.each do |member|
+                user = User.find(member)
+                @people.push(user.username)
+            end
+        else
+            @people = nil
+        end
+    end
+    
+    def delete_member
+        group = Group.find(params[:id])
+        user = User.find_by_username(params[:member])
+        people = group.people.split(",")
+        people.each do |person|
+            account = User.find(person)
+            if account.id == user.id
+                puts "MATCH"
+                puts people
+                people.delete(person)
+                puts people
+                break
+            end
+        end
+        group.people = people.join(",")
+        group.save!
+        flash[:success] = "Member successfully removed"
+        redirect_to edit_group_path(group)
+    end
+    
+    def add_member
+        @group = Group.find(params[:id])
+        user = User.find_by_username(params[:group][:people])
+        if user
+            if (not_already_a_member(user, @group))
                 if !@group.people.nil?
-                    puts user
-                    puts "QQQQ"
-                    puts user.id
                     @group.people = @group.people + user.id.to_s + ","
                 else
                     @group.people = user.id.to_s + ","
                 end
             else
-                flash[:warning] = "Username does not exist, cannot add to member to group"
-                redirect_to groups_path_edit(@group)
+                flash[:warning] = "User is already a member of this group"
+                return redirect_to edit_group_path(@group)
             end
+        else
+            flash[:warning] = "Username does not exist, cannot add to member to group"
+            return redirect_to edit_group_path(@group)
         end
-        @group.save!
-        redirect_to '/groups'
+        if @group.save!
+            flash[:success] = "Member successfully added"
+        end
+        redirect_to edit_group_path(@group)
     end
     
-    def show
-    end
     private
         def group_params
             params.require(:group).permit(:creator, :group_name, :people)
+        end
+        
+        def not_already_a_member(usr, group)
+            puts "QQQQQ"
+            people = group.people.split(",")
+            puts "USR"
+            puts usr.id == people[0]
+            people.each do |person|
+                puts person.class
+                puts "USR"
+                puts usr.id.class
+                puts usr.id == person
+                if person == usr.id.to_s
+                    return false
+                end
+            end
+            return true
         end
 end

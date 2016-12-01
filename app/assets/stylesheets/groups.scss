@@ -16,3 +16,25 @@
   border-bottom: 1px solid #333333;
   border-left: 1px solid #CCCCCC;
 }
+
+.groupsHeader {
+  font : bold 200% Arial;
+  color : #00cc99;
+  padding-bottom: 10px;
+}
+
+table#groups {
+  margin: 10px;
+  width: 100%;
+}
+
+table#groups th {
+  border: 2px solid white;
+  font-weight: bold;
+}
+
+table#groups th, table#groups td {
+  padding: 4px;
+  text-align: center;
+  width: 50%;
+}
