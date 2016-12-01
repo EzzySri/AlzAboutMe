@@ -10,6 +10,7 @@ class MemoryCardsController < ApplicationController
         @memcard_ids << row.memcard_id
       end
       @memorycards = MemoryCard.where(id: @memcard_ids)
+      render "sharingPage.html.haml"
       return
     end
     
@@ -25,7 +26,7 @@ class MemoryCardsController < ApplicationController
     @category = params[:category] || "All Categories"
     @donating_username = session[:donating_username] 
  end
- 
+
   def add_card_for_all_users
     users.each do |usr|
       memcard_params[:user_id] = usr.id
@@ -65,7 +66,7 @@ class MemoryCardsController < ApplicationController
    def update
     @memcard = MemoryCard.find(params[:id])
     @memcard.editing = false
-    if params["user"].nil? == false
+    if params["user"].nil? == false and params["user"]["memory"] != "" 
       @memcard.answer = params["user"]["memory"]
       @memcard.previous_answers = params["user"]["memory"] + "||" + (@memcard.previous_answers || "")
     end
@@ -110,7 +111,6 @@ class MemoryCardsController < ApplicationController
     @memcard = MemoryCard.find(params[:id])
     @memcard.editing = false
     @memcard.save
-    
     respond_to do |format|
       format.js
     end
@@ -118,7 +118,6 @@ class MemoryCardsController < ApplicationController
   
   def viewPrevious
     @memcard = MemoryCard.find(params[:id])
-    # @prevs = true 
     session[:prevView] = true
     respond_to do |format|
       format.js
@@ -127,7 +126,6 @@ class MemoryCardsController < ApplicationController
   
   def hidePrevious
     @memcard = MemoryCard.find(params[:id])
-    # @prevs = false
     session[:prevView] = false
     respond_to do |format|
       format.js
@@ -135,12 +133,9 @@ class MemoryCardsController < ApplicationController
   end
   
   def viewShareOptions
-    puts ShareTable.all[0].receiver, "ZZZZZZ"
     session[:viewShare] = true
     @memcard = MemoryCard.find(params[:id])
-    puts Group.all.length, "AAAA"
     @groups = Group.where(:creator => current_user.id)
-    puts @groups.length
      respond_to do |format|
       format.js
     end
@@ -156,16 +151,19 @@ class MemoryCardsController < ApplicationController
   
   def shareGroup
     @memcard = MemoryCard.find(params[:id])
-    puts params, "AAAAAAAAAAAAAA"
-    puts current_user.id
-    @groups_to_share_with = params[:sharedGr].keys
+    @groups_to_share_with = []
+    @all_groups = params[:sharedGr].keys
+    @all_groups.each do |group|
+      if params[:sharedGr][group] == "1"
+        @groups_to_share_with << group
+      end
+    end
     @groups_to_share_with.each do |shareGroup|
       @people_to_share_with = Group.where(:group_name => shareGroup, :creator => current_user.id)[0].people.split(",")
       @people_to_share_with.each do |person|
         ShareTable.create!({:donator => current_user.id, :receiver => person, :memcard_id => @memcard.id})
       end
     end
-    
     respond_to do |format|
       format.js
     end

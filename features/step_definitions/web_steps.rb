@@ -62,7 +62,9 @@ Given(/^(?:I )am on (.+)$/) do |page_name|
     when /^the memory card page$/
       visit('/memory_cards')
     when /^the users page$/
-         visit('users/settings')
+         visit('/users/settings')
+    when /^the Groups page$/
+         visit(groups_path)
   end
 end
 
@@ -265,6 +267,12 @@ end
        assert !field_checked
      end
    end
+ end
+ 
+ And (/there exists a group named "([^"]*)"$/) do |group_name|
+     visit('/groups/new')
+     fill_in(:id => "groupname", :with => "Friends")
+     click_on(:id => "submit")
  end
  
 # Then /^(?:|I )should be on (.+)$/ do |page_name|

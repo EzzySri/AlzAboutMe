@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   put 'memory_cards/:id/viewShareOptions' => 'memory_cards#viewShareOptions'
   put 'memory_cards/:id/hideShareOptions' => 'memory_cards#hideShareOptions'
   put 'memory_cards/:id/shareGroup' => 'memory_cards#shareGroup'
+ 
   
   # these routes are for showing users a login form, logging them in, and logging them out.
   get '/login' => 'sessions#new'
@@ -41,8 +42,11 @@ Rails.application.routes.draw do
   # get '/users/:id/edit/:changeid', :to => 'users#edit'
   resources :users
   resources :memory_cards
+  resources :groups
   get '/memory_cards/:category', :to => 'memory_cards#index'
   get '/memory_cards', :to => 'memory_cards#index'
+  delete 'groups/:id/delete_member/:member', :to => 'groups#delete_member'
+  put 'groups/:id/add_member', :to => 'groups#add_member'
   
   # Example resource route with options:
   #   resources :products do

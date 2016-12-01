@@ -16,6 +16,15 @@ When(/^I click on "([^"]*)"$/) do |arg1|
       click_on(:id=> "personal")
     when/^Menu$/
       click_on(:id=> "menubutton")
+    when/^Groups$/
+      click_on(:id=> "groupsLink")
+    when/^All Categories$/
+      click_on(:id=> "allcategories")
+    when/^a memory card$/
+      # regexp = //memory_cards/\d/edit/
+      # find(:xpath, "//a[@href*='/memory_cards/1/edit']").click
+      # find("[href*=edit]").click
+      find(".card").click
   end
 end
 

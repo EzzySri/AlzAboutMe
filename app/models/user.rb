@@ -22,7 +22,6 @@ class User < ActiveRecord::Base
         memories.each do |mem|
         	mem_params = {:question => mem.question, :question_type => mem.question_type, :question_choices => mem.question_choices, :completed => false, :editing => false, :category => mem.category, :user_id => self.id, :answer => "", :previous_answers => ""}
             self.memory_cards << MemoryCard.new(mem_params)
-            puts self.memory_cards, "ASASASASAS"
             self.save!
         end
     end

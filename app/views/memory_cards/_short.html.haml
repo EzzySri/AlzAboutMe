@@ -19,11 +19,11 @@
                     = text_field :user, 'memory', :type => "text", :class => "form-control", :id => "memoryfield", :placeholder => "Answer:"
                 = file_field :video_memory, :accept => "video/*;capture=camcorder" 
             = submit_tag 'Update Memory', {:id => "updateMemoryButton", :class => "btn"}
-        = form_tag "/memory_cards/"+ memcard.id.to_s + "/share", :method => :put do
-            .form-group
-                = text_field :user, 'share', :type => "text", :class => "form-control", :id => "sharefield", :placeholder => "Share with: "
         = button_to "Share", "/memory_cards/" + memcard.id.to_s + "/viewShareOptions", {:remote => true, :method => :put, :id => "shareButton", :class => "btn"}
         -if session[:viewShare] == true
+            // = form_tag "/memory_cards/"+ memcard.id.to_s + "/share", :method => :put do
+            //     .form-group
+            //     = text_field :user, 'share', :type => "text", :class => "form-control", :id => "sharefield", :placeholder => "Share with an individual: "
             .shareOptions
                 -if @groups.nil? == false
                     = form_tag "/memory_cards/"+ memcard.id.to_s + "/shareGroup" , {:method => :put, :remote => true} do
@@ -31,7 +31,7 @@
                             // %input{:type=>"checkbox", :name=>"#{group.group_name}", :value=>1, :checked=>1}
                             = check_box(:sharedGr, "#{group.group_name}")
                             =group.group_name
-                        = submit_tag 'Share with Groups', {:id => "shareGroupButton"}
+                        = submit_tag 'Share with Groups', {:id => "shareGroupButton", :class => "btn"}
                     = button_to "hide", "/memory_cards/" + memcard.id.to_s + "/hideShareOptions", {:remote => true, :method => :put, :class => "btn" } 
         -answers =  memcard.previous_answers.present? ? memcard.previous_answers.split("||") : []
         -if session[:prevView] == true

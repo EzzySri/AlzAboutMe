@@ -1,0 +1,37 @@
+- flash.each do |key, value|
+    %div{:class => "alert alert-#{key}"}= value
+
+.groupsHeader Edit Group
+
+.card
+    %h1 Group Name
+    .item= @group.group_name
+    = form_tag group_path(@group), {:method => :put} do
+        .form_group
+            = label :group, :group_name, 'Group Name: '
+            = text_field :group, 'group_name', {:type => "text", :class => "form-control", :id => "groupname", :value => @group.group_name}
+            <br>
+            = submit_tag 'Change Name', {:id => "changename", :class => "btn"}
+    - if @people
+        %h1 Members
+        %table#groups
+            %tbody
+                -@people.each do |p|
+                    %tr.member
+                        %td
+                            .item= p
+                        %td
+                            = link_to 'Remove', '/groups/' + @group.id.to_s +  '/delete_member/' + p.to_s, :method => :delete, :class => "btn", :id => "remove" + p.downcase
+    = form_tag '/groups/'+@group.id.to_s+'/add_member/', {:method => :put} do
+        .form_group
+            = label :group, :people, 'Add New Member: '
+            = text_field :group, 'people', {:type => "text", :class => "form-control", :id => "addnewmember", :placeholder => "Username", :value => ""}
+            <br>
+            = submit_tag 'Add Member', {:id => "addmember", :class => "btn"}
+<br>
+.col-xs-4
+.col-xs-4
+    .row
+        = link_to 'Cancel', groups_path, :method => :get, :class => "groupbtn", :id => "cancel"
+.col-xs-4
+      

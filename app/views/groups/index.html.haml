@@ -1,0 +1,19 @@
+
+- flash.each do |key, value|
+    %div{:class => "alert alert-#{key}"}= value
+
+.groupsHeader Groups
+- if @groups
+    -@groups.each do |group|
+        -name = group.group_name.downcase
+        = link_to group_path(group), {:method => :get, :id => name} do
+            .card
+                %h1= group.group_name.to_s
+        <br>
+    <br>
+    <br>
+- else 
+    %h4.groups Oops! You don't have any groups yet.
+%h4.groups Do you want to create a group?
+<br>
+%a.groupbtn{:href => "/groups/new", :id => "creategroup"} Create Group

@@ -1,11 +1,13 @@
  FactoryGirl.define do
    factory :short_answer_card, :class =>MemoryCard do
-     question "Q"
+     question "Factory Question"
      answer  "A"
      question_type "text"
      editing true
      question_choices nil
-     category nil 
+     category "Personal"
+     previous_answers ""
+     user_id 1
    end 
   
    factory :multiple_choice_card, :class =>MemoryCard do
