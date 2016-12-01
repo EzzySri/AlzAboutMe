@@ -5,7 +5,8 @@
 .groupsHeader Groups
 - if @groups
     -@groups.each do |group|
-        = link_to group_path(group), {:method => :get} do
+        -name = group.group_name.downcase
+        = link_to group_path(group), {:method => :get, :id => name} do
             .card
                 %h1= group.group_name.to_s
         <br>
@@ -15,4 +16,4 @@
     %h4.groups Oops! You don't have any groups yet.
 %h4.groups Do you want to create a group?
 <br>
-%a.btn{:href => "/groups/new"} Create Group
+%a.btn{:href => "/groups/new", :id => "creategroup"} Create Group

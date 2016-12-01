@@ -12,8 +12,8 @@
 .col-xs-4
 .col-xs-4
     .row
-        = link_to 'Go Back', groups_path, :method => :get, :class => "btn"
-        = link_to 'Edit', edit_group_path(@group), :method => :get, :class => "btn"
-        = link_to 'Delete Group', group_path(@group), data: {:confirm => 'Are you sure?'}, :method => :delete, :class => "btn"
+        = link_to 'Go Back', groups_path, :method => :get, :class => "btn", :id => "goback"
+        = link_to 'Edit', edit_group_path(@group), :method => :get, :class => "btn", :id => "edit"
+        = link_to 'Delete Group', group_path(@group), data: {:confirm => 'Are you sure?'}, :method => :delete, :class => "btn", :id => "deletegroup"
 .col-xs-4
       

@@ -16,6 +16,8 @@ When(/^I click on "([^"]*)"$/) do |arg1|
       click_on(:id=> "personal")
     when/^Menu$/
       click_on(:id=> "menubutton")
+    when/^Groups$/
+      click_on(:id=> "groupsLink")
   end
 end
 

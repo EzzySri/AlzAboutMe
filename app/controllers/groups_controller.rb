@@ -14,10 +14,7 @@ class GroupsController < ApplicationController
         @group = Group.new(group_params)
         @group.creator = current_user.id
         if @group.save!
-            puts flash.nil?
             flash[:success] = "Group successfully created"
-            puts flash.nil?
-            puts "QQQQQ"
             redirect_to '/groups'
         else
             flash[:warning] = "An error occured, please try again"
@@ -43,7 +40,7 @@ class GroupsController < ApplicationController
         @group = Group.find(params[:id])
         @group.group_name = params[:group][:group_name]
         if @group.save!
-            flash[:success] = "Group Successfully Updated"
+            flash[:success] = "Name successfully changed"
         end
         redirect_to group_path(@group)
     end
@@ -52,7 +49,7 @@ class GroupsController < ApplicationController
         group = Group.find(params[:id])
         group.destroy
         
-        flash[:success] = "Group sucessfully deleted"
+        flash[:success] = "Group successfully deleted"
         redirect_to groups_path
     end
     
@@ -77,10 +74,7 @@ class GroupsController < ApplicationController
         people.each do |person|
             account = User.find(person)
             if account.id == user.id
-                puts "MATCH"
-                puts people
                 people.delete(person)
-                puts people
                 break
             end
         end
@@ -120,17 +114,12 @@ class GroupsController < ApplicationController
         end
         
         def not_already_a_member(usr, group)
-            puts "QQQQQ"
-            people = group.people.split(",")
-            puts "USR"
-            puts usr.id == people[0]
-            people.each do |person|
-                puts person.class
-                puts "USR"
-                puts usr.id.class
-                puts usr.id == person
-                if person == usr.id.to_s
-                    return false
+            if !group.people.nil?
+                people = group.people.split(",")
+                people.each do |person|
+                    if person == usr.id.to_s
+                        return false
+                    end
                 end
             end
             return true
