@@ -44,8 +44,11 @@ Rails.application.routes.draw do
   # get '/users/:id/edit/:changeid', :to => 'users#edit'
   resources :users
   resources :memory_cards
+  resources :groups
   get '/memory_cards/:category', :to => 'memory_cards#index'
   get '/memory_cards', :to => 'memory_cards#index'
+  delete 'groups/:id/delete_member/:member', :to => 'groups#delete_member'
+  put 'groups/:id/add_member', :to => 'groups#add_member'
   
   
    

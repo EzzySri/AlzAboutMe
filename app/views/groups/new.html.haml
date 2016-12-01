@@ -1,0 +1,7 @@
+= form_tag groups_path do
+  .form-group
+    = label :group, :group_name, 'Group Name: '
+    = text_field :group, 'group_name', {:type => "text", :class => "form-control", :id => "groupname", :placeholder => "Group"}
+  .row
+    %a.groupbtn{:href => '/groups'} Cancel
+    = submit_tag 'Submit', {:id => "submit", :class =>"groupbtn"}

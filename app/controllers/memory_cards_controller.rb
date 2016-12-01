@@ -151,7 +151,13 @@ class MemoryCardsController < ApplicationController
   
   def shareGroup
     @memcard = MemoryCard.find(params[:id])
-    @groups_to_share_with = params[:sharedGr].keys
+    @groups_to_share_with = []
+    @all_groups = params[:sharedGr].keys
+    @all_groups.each do |group|
+      if params[:sharedGr][group] == "1"
+        @groups_to_share_with << group
+      end
+    end
     @groups_to_share_with.each do |shareGroup|
       @people_to_share_with = Group.where(:group_name => shareGroup, :creator => current_user.id)[0].people.split(",")
       @people_to_share_with.each do |person|

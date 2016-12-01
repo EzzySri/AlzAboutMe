@@ -1,0 +1,40 @@
+// Place all the styles related to the groups controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.group{
+    background-color: black;
+}
+
+.groupbtn {
+    color: blue;
+    background: none;
+    font-weight: bold !important;
+    border: 2px solid white !important;
+}
+
+.groupbtn:hover {
+    background: rgba(225,225,225, .8);
+    color: blue !important;
+}
+
+.groupsHeader {
+  font : bold 200% Arial;
+  color : #00cc99;
+  padding-bottom: 10px;
+}
+
+table#groups {
+  margin: 10px;
+  width: 100%;
+}
+
+table#groups th {
+  border: 2px solid white;
+  font-weight: bold;
+}
+
+table#groups th, table#groups td {
+  padding: 4px;
+  text-align: center;
+  width: 50%;
+}
