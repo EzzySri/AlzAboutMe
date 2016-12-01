@@ -13,7 +13,7 @@ Feature: Sharing among groups
     Given a short answer MemoryCard exists
     And I click on "All Categories"
     Then I should see "Factory Question"
-    Then I should see "Update Memory"
+    Then I should see "Welcome"
     
   
   

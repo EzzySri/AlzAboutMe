@@ -63,22 +63,22 @@ class MemoryCardsController < ApplicationController
     end
   end
   
-  def update
+   def update
     @memcard = MemoryCard.find(params[:id])
     @memcard.editing = false
     if params["user"].nil? == false and params["user"]["memory"] != "" 
       @memcard.answer = params["user"]["memory"]
-      if @memcard.previous_answers.nil? == false
-        @memcard.previous_answers = params["user"]["memory"] + "||" + @memcard.previous_answers
-      end
-      
-  end
+      @memcard.previous_answers = params["user"]["memory"] + "||" + (@memcard.previous_answers || "")
+    end
+    if params.key? :video_memory
+      @memcard.update_attributes(video_memory: video_memory_params)
+    end
     @memcard.save
     respond_to do |format|
       format.js
     end
   end
-  
+
   # def share
   #   puts params, "JAJAAJ"
   #   @user_to_share_with_name = params["user"]["share"]
@@ -168,7 +168,13 @@ class MemoryCardsController < ApplicationController
       format.js
     end
   end
-    
-    
+
+  private  
+
+  def video_memory_params
+    video_memory_key = params[:video_memory].keys[0]
+    params.require(:video_memory)[video_memory_key]
+  end
+      
     
 end 

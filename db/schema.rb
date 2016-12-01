@@ -11,15 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161128035650) do
-
-  create_table "answers", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "memory_card_id"
-    t.string   "answer"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-  end
+ActiveRecord::Schema.define(version: 20161129205417) do
 
   create_table "groups", force: :cascade do |t|
     t.integer  "creator"
@@ -33,14 +25,19 @@ ActiveRecord::Schema.define(version: 20161128035650) do
     t.string   "question"
     t.string   "answer"
     t.boolean  "completed"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.boolean  "editing"
     t.string   "question_type"
     t.string   "question_choices"
     t.string   "category"
     t.integer  "user_id"
     t.string   "previous_answers"
+    t.string   "video_memory_meta"
+    t.string   "video_memory_file_name"
+    t.string   "video_memory_content_type"
+    t.integer  "video_memory_file_size"
+    t.datetime "video_memory_updated_at"
   end
 
   add_index "memory_cards", ["user_id"], name: "index_memory_cards_on_user_id"
