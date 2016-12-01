@@ -17,7 +17,9 @@
                     = text_field :user, 'memory', :value => memcard.answer, :type => "text", :class => "form-control", :id => "memoryfield", :placeholder => "Answer:"
                 -else
                     = text_field :user, 'memory', :type => "text", :class => "form-control", :id => "memoryfield", :placeholder => "Answer:"
-                = file_field :video_memory, :accept => "video/*;capture=camcorder" 
+                <br />
+                <b>Add Video:</b> 
+                = file_field :video_memory, :file, {:accept => "video/*;capture=camcorder", :class => "btn", :style => "margin: auto;"} 
             = submit_tag 'Update Memory', {:id => "updateMemoryButton", :class => "btn"}
         = button_to "Share", "/memory_cards/" + memcard.id.to_s + "/viewShareOptions", {:remote => true, :method => :put, :id => "shareButton", :class => "btn"}
         -if session[:viewShare] == true
