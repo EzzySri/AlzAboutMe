@@ -1,9 +1,5 @@
 class MemoryCardsController < ApplicationController
   helper_method :show
-
-  def newMediaRecording
-    @memory_card = MemoryCard.new
-  end
   
   def index
     if params[:category] == "Shared"
@@ -82,11 +78,6 @@ class MemoryCardsController < ApplicationController
     end
   end
 
-  def upload_video
-    @memcard = MemoryCard.new(video_memory_params)
-    @memcard.save
-  end
-  
   # def share
   #   puts params, "JAJAAJ"
   #   @user_to_share_with_name = params["user"]["share"]

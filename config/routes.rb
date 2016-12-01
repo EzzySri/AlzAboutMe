@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
   
-
-
   put 'memory_cards/:id/edit' => 'memory_cards#edit'
   post 'memory_cards/:id' => 'memory_cards#update' #for the 'cancel button on memory cards'
   put 'memory_cards/:id/share' => 'memory_cards#share'
@@ -45,12 +43,6 @@ Rails.application.routes.draw do
   resources :memory_cards
   get '/memory_cards/:category', :to => 'memory_cards#index'
   get '/memory_cards', :to => 'memory_cards#index'
-
-  get '/media', :to => 'memory_cards#newMediaRecording'
-  post '/video_memory', :to => 'memory_cards#upload_video'
-  
-  
-   
   
   # Example resource route with options:
   #   resources :products do
