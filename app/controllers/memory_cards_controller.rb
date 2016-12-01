@@ -67,11 +67,11 @@ class MemoryCardsController < ApplicationController
     @memcard.editing = false
     if params["user"].nil? == false
       @memcard.answer = params["user"]["memory"]
+      @memcard.previous_answers = params["user"]["memory"] + "||" + (@memcard.previous_answers || "")
     end
     if params.key? :video_memory
       @memcard.update_attributes(video_memory: video_memory_params)
     end
-    @memcard.previous_answers = params["user"]["memory"] + "||" + (@memcard.previous_answers || "")
     @memcard.save
     respond_to do |format|
       format.js

@@ -9,7 +9,6 @@ class MemoryCard < ActiveRecord::Base
                         :thumb => { :geometry => "100x100#", :format => 'jpg', :time => 10 }
                       }, 
                       :processors => [:transcoder] }
-    validates_attachment_presence :video_memory
     validates_attachment_content_type :video_memory, :content_type => /\Avideo\/.*\Z/
 
 	def multiple_choice_entries
