@@ -83,7 +83,6 @@ class MemoryCardsController < ApplicationController
   end
 
   def upload_video
-    byebug
     @memcard = MemoryCard.new(video_memory_params)
     @memcard.save
   end
