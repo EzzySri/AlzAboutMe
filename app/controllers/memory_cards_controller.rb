@@ -170,11 +170,12 @@ class MemoryCardsController < ApplicationController
       format.js
     end
   end
-    
+
   private  
 
   def video_memory_params
-    params.require(:video_memory)[:"{:accept=>%22video/*"]
+    video_memory_key = params[:video_memory].keys[0]
+    params.require(:video_memory)[video_memory_key]
   end
       
     

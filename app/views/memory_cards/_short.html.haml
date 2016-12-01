@@ -4,13 +4,13 @@
             %h1.question= memcard.question
         -if memcard.answer.nil? == false
             %h3.answer= memcard.answer
-        -if memcard.try(:video_memory)
+        -if memcard.video_memory.present?
             = video_tag memcard.video_memory.url(:medium), controls: true, style: "max-width: 100%;"
 
 -if memcard.editing == true
     .backCard
         %h1= memcard.question
-        = form_tag "/memory_cards/"+ memcard.id.to_s , {:html => {:multipart => true}, :method => :put, :remote => true, :data => { :type => :script }, :authenticity_token => true} do
+        = form_tag "/memory_cards/"+ memcard.id.to_s , {:html => {:multipart => true}, :method => :put, :remote => true, :authenticity_token => true, :data => { :type => :script }} do
             .form-group
                 - label :memory, :field
                 - if memcard.answer.nil? == false
